@@ -1,5 +1,17 @@
+// ======================================
+// 1. Базовая инициализация
+// ======================================
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Emozika site JS loaded");
+
+  const prefersReducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ======================================
+  // 2. Анимация появления секций при скролле
+  // ======================================
 
   const revealEls = document.querySelectorAll(".reveal-on-scroll");
 
@@ -19,6 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     revealEls.forEach((el) => observer.observe(el));
   }
 
+  // ======================================
+  // 3. Счётчики в блоке "Цифры и факты"
+  // ======================================
+
   const statsSection = document.querySelector("#stats");
   const statNumbers = document.querySelectorAll(".stat-number[data-target]");
 
@@ -26,10 +42,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const statsObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (!entry.isIntersecting) return;
+
+          if (prefersReducedMotion) {
+            statNumbers.forEach((el) => {
+              const target = parseInt(el.dataset.target, 10);
+              const suffix = el.dataset.suffix || "";
+              if (!isNaN(target)) {
+                el.textContent = target + suffix;
+              }
+            });
+          } else {
             statNumbers.forEach((el) => animateCounter(el));
-            statsObserver.unobserve(entry.target);
           }
+
+          statsObserver.unobserve(entry.target);
         });
       },
       { threshold: 0.3 }
@@ -57,5 +84,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     requestAnimationFrame(tick);
+  }
+
+  // ======================================
+  // 4. Связка CTA → форма контактов
+  // ======================================
+
+  const ctaButtons = document.querySelectorAll('[data-scroll-to="contacts-form"]');
+  const contactsForm = document.getElementById("contacts-form");
+  const phoneInput = document.getElementById("contact-phone");
+
+  if (ctaButtons.length && contactsForm) {
+    ctaButtons.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        contactsForm.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        setTimeout(() => {
+          if (phoneInput) {
+            phoneInput.focus();
+          }
+        }, 600);
+      });
+    });
   }
 });

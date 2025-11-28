@@ -12,6 +12,12 @@
 </head>
 
 <body>
+  <div class="top-banner">
+    <div class="container top-banner-inner">
+      <span>Ближайший показ — 12 декабря, 18:00.</span>
+      <a href="#afisha" class="top-banner-link">Смотреть афишу</a>
+    </div>
+  </div>
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo-badge">
@@ -49,6 +55,9 @@
             <div class="hero-actions">
               <a href="#" class="btn btn-primary">Купить билет</a>
               <a href="#play" class="btn btn-ghost">Подробнее о спектакле</a>
+              <a href="#contacts" class="btn btn-ghost btn-secondary">
+                Записаться в студию
+              </a>
             </div>
           </div>
 
@@ -63,7 +72,7 @@
       </div>
     </section>
 
-    <section id="afisha" class="section section-afisha">
+    <section id="afisha" class="section section-afisha reveal-on-scroll">
       <div class="container">
         <h2 class="section-title">Эмоцика представляет</h2>
         <p class="section-subtitle">
@@ -97,7 +106,7 @@
       </div>
     </section>
 
-    <section id="about" class="section section-about">
+    <section id="about" class="section section-about reveal-on-scroll">
       <div class="container two-column">
         <div class="two-column-text">
           <h2 class="section-title">О театре «Эмоцика»</h2>
@@ -187,22 +196,54 @@
       </div>
     </section>
 
-    <section id="stats" class="section section-stats">
+    <section id="stats" class="section section-stats reveal-on-scroll">
       <div class="container">
         <h2 class="section-title">Цифры и факты</h2>
         <div class="stats-grid">
           <div class="stat-item card-hover">
-            <div class="stat-number">5+</div>
+            <div class="stat-number" data-target="5">5</div>
             <div class="stat-label">лет студии</div>
           </div>
           <div class="stat-item card-hover">
-            <div class="stat-number">200+</div>
+            <div class="stat-number" data-target="200" data-suffix="+">200+</div>
             <div class="stat-label">детей участвовали в постановках</div>
           </div>
           <div class="stat-item card-hover">
-            <div class="stat-number">10</div>
+            <div class="stat-number" data-target="10">10</div>
             <div class="stat-label">спектаклей поставлено</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="section section-reviews reveal-on-scroll">
+      <div class="container">
+        <h2 class="section-title">Что говорят родители</h2>
+        <div class="section-subtitle">
+          Настоящие впечатления детей и взрослых о студии и спектаклях.
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <p class="review-text">
+              «Здесь будет короткая цитата от родителя о том, как ребёнок полюбил сцену и стал увереннее в себе.»
+            </p>
+            <p class="review-author">— Мама ученицы, 10 лет</p>
+          </article>
+
+          <article class="review-card">
+            <p class="review-text">
+              «Ещё один отзыв, 2–3 предложения. Про атмосферу, педагогов и важность первого выхода на сцену.»
+            </p>
+            <p class="review-author">— Папа ученика, 12 лет</p>
+          </article>
+
+          <article class="review-card">
+            <p class="review-text">
+              «Третий отзыв-заглушка. Потом подставим реальные цитаты вместо рыбы.»
+            </p>
+            <p class="review-author">— Семья юной актрисы</p>
+          </article>
         </div>
       </div>
     </section>
@@ -249,36 +290,109 @@
       </div>
     </section>
 
-    <section id="contacts" class="section section-contacts">
+    <section id="faq" class="section section-faq reveal-on-scroll">
       <div class="container">
-        <div class="contacts-panel card-hover">
-          <div class="contacts-main">
-            <h2 class="section-title">Контакты</h2>
-            <p class="section-subtitle">
-              Задайте вопрос, уточните детали спектакля или запишите ребёнка в студию.
-            </p>
+        <h2 class="section-title">Частые вопросы</h2>
 
-            <p><strong>Телефон:</strong> <a href="tel:+7...">+7 ...</a></p>
-            <p><strong>Email:</strong> <a href="mailto:...">...</a></p>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>С какого возраста можно записаться?</summary>
+            <p>Здесь будет ответ про возрастные группы и формат занятий.</p>
+          </details>
 
-            <div class="contacts-actions">
-              <a href="#" class="btn btn-primary">Написать в Telegram</a>
+          <details class="faq-item">
+            <summary>Нужен ли опыт выступлений на сцене?</summary>
+            <p>Ответ про то, что можно приходить «с нуля» и т.д.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как часто проходят занятия и спектакли?</summary>
+            <p>Краткий ответ про расписание, месяцы, премьеры.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="section section-contacts reveal-on-scroll">
+      <div class="container two-column">
+        <div class="two-column-text">
+          <h2 class="section-title">Контакты</h2>
+
+          <div class="contacts-list">
+            <div class="contacts-item">
+              <div class="contacts-icon">📍</div>
+              <div>
+                <div class="contacts-label">Адрес площадки</div>
+                <div class="contacts-value">Санкт-Петербург, ...</div>
+              </div>
+            </div>
+
+            <div class="contacts-item">
+              <div class="contacts-icon">📍</div>
+              <div>
+                <div class="contacts-label">Адрес студии</div>
+                <div class="contacts-value">Санкт-Петербург, ...</div>
+              </div>
+            </div>
+
+            <div class="contacts-item">
+              <div class="contacts-icon">📞</div>
+              <div>
+                <div class="contacts-label">Телефон администратора</div>
+                <div class="contacts-value">
+                  <a href="tel:+7...">+7 ...</a>
+                </div>
+                <div class="contacts-note">Лучше звонить с 11:00 до 20:00.</div>
+              </div>
+            </div>
+
+            <div class="contacts-item">
+              <div class="contacts-icon">✉️</div>
+              <div>
+                <div class="contacts-label">Email</div>
+                <div class="contacts-value">
+                  <a href="mailto:...">...</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contacts-item">
+              <div class="contacts-icon">🌐</div>
+              <div>
+                <div class="contacts-label">Мы в соцсетях</div>
+                <div class="contacts-socials">
+                  <a href="#" class="social-pill">VK</a>
+                  <a href="#" class="social-pill">Telegram</a>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="contacts-socials">
-            <p class="contacts-socials-title">Мы в соцсетях</p>
-            <div class="socials-row">
-              <a href="#" class="social-pill">VK</a>
-              <a href="#" class="social-pill">Telegram</a>
-            </div>
+          <div class="contact-form">
+            <h3 class="contact-form-title">Оставить контакты</h3>
+            <p class="contact-form-desc">
+              Оставьте телефон — мы перезвоним и расскажем о студии и спектаклях.
+            </p>
+
+            <form action="#" method="post">
+              <div class="form-row">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+              </div>
+              <div class="form-row">
+                <input type="tel" name="phone" placeholder="Телефон" required>
+              </div>
+              <div class="form-row">
+                <input type="text" name="child_age" placeholder="Возраст ребёнка (необязательно)">
+              </div>
+              <button type="submit" class="btn btn-primary contact-form-btn">
+                Перезвоните мне
+              </button>
+            </form>
           </div>
         </div>
 
-        <div class="contacts-map card-hover">
-          <div class="map-placeholder">
-            Здесь будет карта площадки (вставим iframe Яндекс.Карт позже)
-          </div>
+        <div class="two-column-media">
+          <div class="media-card placeholder-map"></div>
         </div>
       </div>
     </section>
@@ -303,6 +417,10 @@
       </div>
     </div>
   </footer>
+
+  <a href="#contacts" class="floating-cta">
+    <span class="floating-cta-label">Записаться в студию</span>
+  </a>
 
   <script src="assets/js/main.js"></script>
 </body>

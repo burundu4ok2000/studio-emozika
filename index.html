@@ -129,88 +129,121 @@
 
     <section id="afisha" class="section section-afisha reveal-on-scroll">
       <div class="container">
-        <h2 class="section-title">Ближайшие события</h2>
-        <p class="section-subtitle">
-          Премьеры, новогодние программы и специальные показы в театре «Эмоцика».
-        </p>
+        <div class="section-header">
+          <h2 class="section-title">Афиша театра «Эмоцика»</h2>
+          <p class="section-subtitle">
+            Семейные спектакли, новогодние приключения и премьеры с участием детей и профессиональных актёров.
+          </p>
+        </div>
 
         <div class="afisha-grid">
-          <article class="afisha-card card card-hover">
-            <div class="afisha-layout afisha-layout--premiere">
-              <div class="afisha-date-strip">
-                <div class="afisha-date-day">12</div>
-                <div class="afisha-date-month">дек</div>
-                <div class="afisha-date-time">18:00</div>
-              </div>
+          <article class="afisha-card afisha-card-main">
+            <div class="afisha-poster afisha-poster-love">
+              <span class="afisha-poster-label">Премьера сезона</span>
+            </div>
 
-              <div class="afisha-poster placeholder-poster"></div>
-
-              <div class="afisha-content">
-                <div class="afisha-label">Ближайший показ</div>
+            <div class="afisha-content">
+              <header class="afisha-header">
                 <h3 class="afisha-title">«Любовь у сливного бачка»</h3>
-                <p class="afisha-tagline">
-                  Абсурдная комедия о любви, дружбе и честности, созданная вместе с подростками.
-                </p>
-                <p class="afisha-meta">
-                  Ближайший показ: 12 декабря · Дом культуры (площадка уточняется)
-                </p>
-                <div class="afisha-actions">
-                  <a href="#play" class="btn btn-ghost">Подробнее о спектакле</a>
-                  <a href="#" class="btn btn-primary">Купить билет</a>
+                <div class="afisha-meta-row">
+                  <span class="afisha-age">12+</span>
+                  <span class="afisha-genre">Комедийная драма</span>
+                  <span class="afisha-duration">Продолжительность ~1 ч 10 мин</span>
                 </div>
+              </header>
+
+              <ul class="afisha-meta-list">
+                <li><strong>Режиссёр:</strong> Евгений Баранов</li>
+                <li><strong>Автор идеи и продюсер:</strong> Елена Молодан</li>
+                <li><strong>В ролях:</strong> актёры театра «Эмоцика» и студийцы старших групп</li>
+              </ul>
+
+              <p class="afisha-description">
+                Живая, честная история о подростках, родителях и любви, рассказанная на языке
+                комедийной драмы. Интеллигентный спектакль для старших подростков и взрослых.
+              </p>
+
+              <div class="afisha-buttons">
+                <a href="#play" class="btn btn-secondary">Подробнее о спектакле</a>
+                <a href="https://afisha.yandex.ru/..." class="btn btn-primary" target="_blank" rel="noopener">
+                  Купить на Яндекс.Афише
+                </a>
               </div>
             </div>
           </article>
 
-          <article class="afisha-card card card-hover">
-            <div class="afisha-layout">
-              <div class="afisha-poster afisha-poster--snow">
-                <div class="afisha-poster-label">Новогодняя программа</div>
-              </div>
-              <div class="afisha-content">
-                <div class="afisha-tag">4–12 лет • квест + спектакль</div>
+          <article class="afisha-card afisha-card-secondary">
+            <div class="afisha-poster afisha-poster-snow">
+              <span class="afisha-poster-label">Новогодняя программа</span>
+            </div>
+
+            <div class="afisha-content">
+              <header class="afisha-header">
                 <h3 class="afisha-title">«Снежная королева»</h3>
-                <p class="afisha-desc">
-                  Новогоднее приключение для классов и семей: квест по станциям,
-                  спектакль в камерном зале, Дед Мороз, фотосессия и подарки.
-                </p>
-                <ul class="afisha-meta">
-                  <li><strong>Форматы:</strong> для классов и индивидуальных зрителей</li>
-                  <li><strong>Продолжительность:</strong> 1,5–2 часа</li>
-                </ul>
-                <div class="afisha-actions">
-                  <a href="#" class="btn btn-primary">Купить билеты</a>
-                  <button type="button"
-                          class="btn btn-secondary"
-                          data-scroll-to="contacts-form">
-                    Заявка от класса
-                  </button>
+                <div class="afisha-meta-row">
+                  <span class="afisha-age">6+</span>
+                  <span class="afisha-genre">Квест + спектакль</span>
+                  <span class="afisha-duration">Программа ~2 часа</span>
                 </div>
+              </header>
+
+              <p class="afisha-description">
+                Новогоднее приключение для классов и семей: поиск осколков зеркала,
+                квест по театру, встреча с героями сказки и тёплый финал на сцене.
+              </p>
+
+              <div class="afisha-buttons afisha-buttons-split">
+                <a href="#ny-classes" class="btn btn-secondary">
+                  Для классов
+                </a>
+                <a href="https://afisha.yandex.ru/..." class="btn btn-primary" target="_blank" rel="noopener">
+                  Индивидуальные билеты
+                </a>
               </div>
+
+              <p class="afisha-note">
+                <strong>Ограничение по местам:</strong> камерный зал до 50 зрителей.
+              </p>
             </div>
           </article>
 
-          <article class="afisha-card afisha-card--soon card card-hover">
-            <div class="afisha-layout">
-              <div class="afisha-poster afisha-poster--soon">
-                <div class="afisha-poster-label">Скоро</div>
-              </div>
-              <div class="afisha-content">
-                <div class="afisha-tag">Новая постановка</div>
-                <h3 class="afisha-title">Скоро новая премьера</h3>
-                <p class="afisha-desc">
-                  Готовим следующую историю для детей и подростков. Следите за
-                  новостями в наших соцсетях и на сайте.
-                </p>
-                <div class="afisha-actions">
-                  <a href="#contacts" class="btn btn-ghost">
-                    Подписаться на новости
-                  </a>
-                </div>
+          <article class="afisha-card afisha-card-teaser">
+            <div class="afisha-poster afisha-poster-teaser">
+              <span class="afisha-poster-label">Скоро премьера</span>
+            </div>
+
+            <div class="afisha-content">
+              <h3 class="afisha-title">Новая постановка в разработке</h3>
+              <p class="afisha-description">
+                Сейчас вместе с командой мы готовим следующий спектакль.
+                Следите за новостями в наших соцсетях и на сайте.
+              </p>
+              <div class="afisha-buttons">
+                <a href="#contacts" class="btn btn-secondary">Подписаться на новости</a>
               </div>
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="archive" class="section section-archive reveal-on-scroll">
+      <div class="container">
+        <h2 class="section-title">Другие проекты и награды</h2>
+        <ul class="archive-list">
+          <li class="archive-item">
+            <span class="archive-year">2023</span>
+            <span class="archive-text">
+              «Кошкин дом» — спектакль студии, обладатель Гран-при театрального конкурса (название конкурса).
+            </span>
+          </li>
+          <li class="archive-item">
+            <span class="archive-year">2022</span>
+            <span class="archive-text">
+              Короткометражный фильм студии — участник фестиваля (название) в Москве.
+            </span>
+          </li>
+        </ul>
       </div>
     </section>
 

@@ -1,26 +1,145 @@
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+:root {
+  --color-bg: #FFF4E6;
+  --color-accent: #FFCC80;
+  --color-accent-soft: #FFD1DC;
+  --color-text: #333333;
 }
 
-header {
-  padding: 40px 20px;
-  text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 section {
-  padding: 40px 20px;
+  padding: 60px 0;
 }
 
-h1, h2 {
-  margin: 0 0 16px;
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 244, 230, 0.95);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.main-nav a {
+  margin-left: 16px;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.hero {
+  padding: 80px 0 60px;
+}
+
+.hero-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-content {
+  flex: 1 1 320px;
+}
+
+.hero-image-placeholder {
+  flex: 1 1 280px;
+}
+
+.hero-photo-stub {
+  background: var(--color-accent-soft);
+  border-radius: 16px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* кнопка */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .btn-primary {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 4px;
-  border: 1px solid black;
+  background: var(--color-accent);
+  color: #000;
+}
+
+.about-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.about-text {
+  flex: 1 1 320px;
+}
+
+.about-photos {
+  flex: 1 1 280px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.about-photo-stub {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px 10px;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  margin-top: 0;
+}
+
+.section-lead {
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.section-stats {
+  background: var(--color-accent-soft);
+}
+
+.section-gallery {
+  background: #ffffff;
+}
+
+.section-docs {
+  background: #FFF9F0;
+}
+
+.site-footer {
+  background: #f0e2d3;
+  padding: 24px 0;
+  font-size: 14px;
 }

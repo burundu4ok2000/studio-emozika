@@ -1112,66 +1112,90 @@ img {
 
 /* ===== STUDIO ===== */
 
-.studio {
-  max-width: 1100px;
-  margin: 0 auto;
+.section-studio {
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
-.studio-grid {
-  display: grid;
-  gap: 28px;
-  margin: 32px 0 40px;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+.section-studio h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
-.studio-card {
-  padding: 24px 28px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
-}
-
-.studio-card h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-}
-
-.studio-card p {
-  margin: 0;
-  font-size: 15px;
+.section-studio .section-intro {
+  max-width: 640px;
+  font-size: 14px;
   line-height: 1.5;
-  color: var(--color-text-muted);
+  margin: 0 0 24px;
+  text-align: left;
 }
 
-.studio-results {
-  margin-top: 16px;
+.studio-layout {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-.studio-results-title {
+.studio-column h3 {
   font-size: 18px;
-  margin: 0 0 12px;
+  margin-bottom: 8px;
 }
 
-.studio-results-list {
-  list-style: disc;
-  padding-left: 20px;
-  margin: 0 0 20px;
-  color: var(--color-text-muted);
-  font-size: 15px;
+.studio-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.studio-results-list li + li {
+.studio-list li + li {
   margin-top: 6px;
 }
 
-.studio-cta {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.studio-meta-row {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-.studio-cta-note {
-  font-size: 14px;
+.studio-meta-block-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.studio-note {
+  max-width: 720px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted, #666);
+  margin: 0 0 12px;
+}
+
+.studio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.studio-actions .btn + .btn {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  .studio-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .studio-meta-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .studio-actions .btn + .btn {
+    margin-left: 8px;
+  }
 }
 
 /* ===== FILMS & AWARDS ===== */

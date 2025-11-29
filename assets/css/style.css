@@ -2907,3 +2907,90 @@ h1, h2, h3 {
     padding: 24px 18px;
   }
 }
+
+/* === AFISHA LUXE INTERACTION === */
+
+/* Карточка спектакля: плавный hover и объём */
+.afisha-card {
+  background: var(--color-surface);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.08);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.afisha-card-main {
+  border: 1px solid rgba(122, 47, 180, 0.16);
+}
+
+.afisha-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(8, 2, 26, 0.18);
+}
+
+/* Постер: лёгкий подъём и glow при наведении */
+.afisha-poster {
+  position: relative;
+  min-height: 180px;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  background: radial-gradient(circle at top left, var(--color-brand-dark), var(--color-brand));
+}
+
+.afisha-card:hover .afisha-poster {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 18px 40px rgba(8, 2, 26, 0.35);
+}
+
+/* Glass-бейдж на постере */
+.afisha-poster-label {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.afisha-card:hover .afisha-poster-label {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
+}
+
+/* Мета-строка как афиша сеанса */
+.afisha-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.afisha-meta-row span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.afisha-meta-row span:not(:last-child)::after {
+  content: "•";
+  margin-left: 8px;
+  margin-right: 8px;
+  opacity: 0.55;
+}
+
+/* возрастной рейтинг как чип */
+.afisha-age {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(122, 47, 180, 0.08);
+  color: var(--color-brand-dark);
+  font-weight: 600;
+}

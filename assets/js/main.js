@@ -106,6 +106,68 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================
+  // 5. Путь ученика в студии
+  // ======================================
+
+  const journey = document.querySelector(".studio-journey");
+
+  if (journey) {
+    const steps = Array.from(
+      journey.querySelectorAll(".studio-journey-step[data-title][data-text]")
+    );
+    const detailTitle = journey.querySelector(".studio-journey-detail-title");
+    const detailText = journey.querySelector(".studio-journey-detail-text");
+
+    function setActiveStep(step) {
+      if (!step || !detailTitle || !detailText) {
+        return;
+      }
+
+      steps.forEach((item) => {
+        item.classList.toggle("is-active", item === step);
+      });
+
+      const title = step.getAttribute("data-title") || "";
+      const text = step.getAttribute("data-text") || "";
+
+      detailTitle.textContent = title;
+      detailText.textContent = text;
+    }
+
+    const initiallyActive =
+      journey.querySelector(".studio-journey-step.is-active") || steps[0];
+
+    if (initiallyActive) {
+      setActiveStep(initiallyActive);
+    }
+
+    journey.addEventListener("click", (event) => {
+      const targetStep = event.target.closest(".studio-journey-step");
+      if (!targetStep || !journey.contains(targetStep)) {
+        return;
+      }
+
+      setActiveStep(targetStep);
+    });
+
+    journey.addEventListener("keydown", (event) => {
+      const key = event.key;
+
+      if (key !== "Enter" && key !== " " && key !== "Spacebar") {
+        return;
+      }
+
+      const targetStep = event.target.closest(".studio-journey-step");
+      if (!targetStep || !journey.contains(targetStep)) {
+        return;
+      }
+
+      event.preventDefault();
+      setActiveStep(targetStep);
+    });
+  }
+
+  // ======================================
   // 6. FAQ toggle
   // ======================================
 

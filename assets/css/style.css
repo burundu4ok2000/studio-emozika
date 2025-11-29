@@ -1457,6 +1457,204 @@ img {
   }
 }
 
+/* Путь ученика в студии */
+
+.studio-journey {
+  margin-top: 28px;
+  margin-bottom: 24px;
+  padding: 20px 18px 18px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(213, 154, 255, 0.16),
+    rgba(255, 248, 242, 0.96)
+  );
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.06);
+  border: 1px solid rgba(122, 47, 180, 0.1);
+}
+
+.studio-journey-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.studio-journey-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-brand-dark);
+}
+
+.studio-journey-lead {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Линия и шаги */
+
+.studio-journey-track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 10px 8px;
+  margin-bottom: 18px;
+}
+
+.studio-journey-track::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 22px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(122, 47, 180, 0.22),
+    rgba(255, 122, 78, 0.26)
+  );
+}
+
+/* Кнопки шагов */
+
+.studio-journey-step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  font: inherit;
+  color: var(--color-text-muted);
+}
+
+.studio-journey-step:focus-visible {
+  outline: 2px solid rgba(122, 47, 180, 0.7);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.studio-journey-step-dot {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  background-color: #ffffff;
+  border: 2px solid rgba(122, 47, 180, 0.45);
+  box-shadow: 0 8px 20px rgba(8, 2, 26, 0.2);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.studio-journey-step-label {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 120px;
+}
+
+/* Активный шаг */
+
+.studio-journey-step.is-active .studio-journey-step-dot {
+  background: radial-gradient(circle at 30% 0, #ffcc80, #ff9f80);
+  color: #2b0c3f;
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 26px rgba(8, 2, 26, 0.45);
+  transform: translateY(-1px);
+}
+
+.studio-journey-step.is-active .studio-journey-step-label {
+  color: var(--color-brand-dark);
+  font-weight: 600;
+}
+
+/* Блок с описанием выбранного шага */
+
+.studio-journey-detail {
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(122, 47, 180, 0.12);
+  box-shadow: 0 12px 26px rgba(8, 2, 26, 0.04);
+}
+
+.studio-journey-detail-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-brand-dark);
+}
+
+.studio-journey-detail-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* Мобильная адаптация: шаги в колонку, линия вертикальная */
+
+@media (max-width: 575.98px) {
+  .studio-journey {
+    padding: 18px 14px 16px;
+  }
+
+  .studio-journey-track {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 4px 4px;
+    gap: 4px;
+  }
+
+  .studio-journey-track::before {
+    left: 22px;
+    right: auto;
+    top: 18px;
+    bottom: 16px;
+    width: 2px;
+    height: auto;
+  }
+
+  .studio-journey-step {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 10px;
+    padding: 6px 0;
+  }
+
+  .studio-journey-step-dot {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .studio-journey-step-label {
+    max-width: none;
+    font-size: 13px;
+  }
+}
+
 /* ===== FILMS ===== */
 
 /* Фильмы и награды: social proof */

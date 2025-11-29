@@ -1259,6 +1259,123 @@ img {
   }
 }
 
+/* Emozika purple theme — Studio */
+.section-studio {
+  background: transparent; /* фон берём от body (var(--color-bg)) */
+}
+
+.section-studio h2 {
+  color: var(--color-brand-dark);
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.section-studio .section-intro {
+  max-width: 720px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* Две главные «карточки» — слева направления, справа результат */
+.section-studio .studio-layout {
+  align-items: stretch;
+  margin-top: 16px;
+}
+
+.section-studio .studio-column {
+  background: var(--color-surface);
+  border-radius: 24px;
+  padding: 20px 18px 18px;
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.06);
+  border: 1px solid rgba(122, 47, 180, 0.12);
+}
+
+.section-studio .studio-column h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--color-brand-dark);
+}
+
+/* Списки внутри карточек */
+.section-studio .studio-list {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.section-studio .studio-list li + li {
+  margin-top: 8px;
+}
+
+.section-studio .studio-list strong {
+  color: var(--color-brand-dark);
+}
+
+/* Маленькие «плашки» с мета-информацией (возраст, формат, филиалы) */
+.section-studio .studio-meta-row {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.section-studio .studio-meta-block {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(122, 47, 180, 0.08);
+}
+
+.section-studio .studio-meta-block-title {
+  color: var(--color-brand-dark);
+}
+
+/* Примечание о пробном занятии */
+.section-studio .studio-note {
+  max-width: 720px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* CTA: одна жирная кнопка и один спокойный вторичный вариант */
+.section-studio .studio-actions {
+  margin-top: 20px;
+}
+
+.section-studio .studio-actions .btn {
+  padding-inline: 20px;
+}
+
+.section-studio .studio-actions .btn-primary {
+  background-color: var(--color-brand);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(8, 2, 26, 0.35);
+}
+
+.section-studio .studio-actions .btn-primary:hover {
+  background-color: var(--color-brand-light);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(8, 2, 26, 0.45);
+}
+
+.section-studio .studio-actions .btn-secondary {
+  border-color: rgba(122, 47, 180, 0.3);
+  color: var(--color-brand-dark);
+}
+
+/* Мобильный вид: кнопки в столбик на всю ширину */
+@media (max-width: 575.98px) {
+  .section-studio .studio-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section-studio .studio-actions .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
 /* ===== FILMS ===== */
 
 .section-films {

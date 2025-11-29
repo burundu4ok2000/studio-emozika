@@ -957,6 +957,141 @@ img {
   font-weight: 600;
 }
 
+/* Автоскролл ленты наград для десктопа */
+
+@media (min-width: 1024px) {
+  .awards-strip--auto {
+    overflow: hidden;
+  }
+
+  .awards-strip--auto .awards-strip-inner {
+    animation: awards-strip-scroll 40s linear infinite;
+  }
+
+  .awards-strip--auto:hover .awards-strip-inner {
+    animation-play-state: paused;
+  }
+
+  @keyframes awards-strip-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Уважение к системной настройке уменьшения анимации */
+
+@media (prefers-reduced-motion: reduce) {
+  .awards-strip--auto .awards-strip-inner {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Афиша как маленькая сцена: подиум и свет */
+
+.section-afisha .afisha-card {
+  position: relative; /* опорная точка для псевдоэлементов */
+  overflow: visible; /* даём подиуму выходить за границы */
+  z-index: 0;
+  transform-origin: center bottom;
+  transition:
+    transform 0.28s ease-out,
+    box-shadow 0.28s ease-out;
+}
+
+/* лёгкий выезд карточки вперёд при наведении и фокусе клавиатурой */
+.section-afisha .afisha-card:hover,
+.section-afisha .afisha-card:focus-within {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 24px 60px rgba(8, 2, 26, 0.28);
+}
+
+/* подиум под карточкой (подсвеченная сцена) */
+.section-afisha .afisha-card::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  transform: translateX(-50%) scaleX(0.8);
+  width: 70%;
+  height: 26px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0) 75%
+  );
+  opacity: 0;
+  filter: blur(6px);
+  transition:
+    opacity 0.35s ease-out,
+    transform 0.35s ease-out,
+    filter 0.35s ease-out;
+  z-index: -1; /* слой под карточкой */
+}
+
+/* при наведении подиум расширяется и усиливается */
+.section-afisha .afisha-card:hover::before,
+.section-afisha .afisha-card:focus-within::before {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1.08);
+  filter: blur(10px);
+}
+
+/* мягкий луч софитов сверху */
+.section-afisha .afisha-card::after {
+  content: "";
+  position: absolute;
+  inset: -28px 6% auto;
+  height: 40%;
+  border-radius: 28px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.35s ease-out,
+    transform 0.35s ease-out;
+  z-index: -1;
+}
+
+/* при наведении луч проявляется */
+.section-afisha .afisha-card:hover::after,
+.section-afisha .afisha-card:focus-within::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* уважение системной настройки prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .section-afisha .afisha-card,
+  .section-afisha .afisha-card::before,
+  .section-afisha .afisha-card::after {
+    transition: none;
+  }
+
+  .section-afisha .afisha-card:hover,
+  .section-afisha .afisha-card:focus-within {
+    transform: none;
+    box-shadow: 0 16px 40px rgba(8, 2, 26, 0.12);
+  }
+
+  .section-afisha .afisha-card:hover::before,
+  .section-afisha .afisha-card:focus-within::before,
+  .section-afisha .afisha-card:hover::after,
+  .section-afisha .afisha-card:focus-within::after {
+    opacity: 0;
+  }
+}
+
 .afisha-note {
   color: var(--color-text-muted);
 }
@@ -2164,6 +2299,137 @@ img {
   font-size: 14px;
   line-height: 1.5;
   color: var(--color-text-muted);
+}
+
+/* === Награды и фестивали ====================== */
+
+.section-awards {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background: radial-gradient(
+    circle at top left,
+    rgba(213, 154, 255, 0.14),
+    rgba(255, 249, 235, 0.92)
+  );
+}
+
+.section-awards .section-header {
+  text-align: left;
+  max-width: 760px;
+  margin: 0 auto 28px;
+}
+
+.section-awards .section-title {
+  margin-bottom: 8px;
+}
+
+.section-awards .section-subtitle {
+  margin: 0;
+}
+
+/* Горизонтальная лента наград */
+
+.awards-strip {
+  position: relative;
+  margin-top: 8px;
+  padding: 6px 0 4px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.awards-strip-inner {
+  display: inline-flex;
+  gap: 16px;
+  padding-bottom: 4px;
+}
+
+/* Скроллбар для десктопа */
+
+.awards-strip::-webkit-scrollbar {
+  height: 6px;
+}
+
+.awards-strip::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(122, 47, 180, 0.35);
+}
+
+/* Карточка награды */
+
+.award-badge {
+  flex: 0 0 auto;
+  min-width: 230px;
+  max-width: 280px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(122, 47, 180, 0.18);
+  box-shadow: 0 18px 42px rgba(24, 1, 54, 0.18);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.award-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 52px rgba(8, 2, 26, 0.28);
+  background-color: #ffffff;
+}
+
+.award-badge-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.award-tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(122, 47, 180, 0.06);
+  color: var(--color-brand-dark);
+}
+
+.award-tag--grandprix {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 0, 0.22),
+    rgba(255, 243, 205, 0.96)
+  );
+  color: #7a2fb4;
+}
+
+.award-badge-title {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-brand-dark);
+}
+
+.award-badge-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Мобильная подстройка */
+
+@media (max-width: 600px) {
+  .section-awards {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .award-badge {
+    min-width: 210px;
+    max-width: 260px;
+  }
 }
 
 .section--gallery {

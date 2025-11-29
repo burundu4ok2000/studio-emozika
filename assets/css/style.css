@@ -72,16 +72,21 @@ img {
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 28px;
-  margin: 0 0 12px;
+  font-size: 32px;
   line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--color-brand-dark);
+  margin: 0 0 16px;
 }
 
+.section-intro,
 .section-subtitle {
-  max-width: 640px;
-  margin: 0 0 28px;
-  color: #555;
   font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 auto 24px;
 }
 
 .section-lead {
@@ -109,11 +114,16 @@ img {
 }
 
 .eyebrow {
-  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
   margin: 0 0 8px;
+}
+
+.eyebrow--dark {
+  color: var(--color-text-muted);
 }
 
 .text-muted {
@@ -181,24 +191,32 @@ img {
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 10px 20px;
   border-radius: 999px;
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
 .btn-primary {
-  background-color: var(--color-accent);
-  color: #3b2a1a;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  padding: 12px 22px;
+  border: none;
+  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 40px rgba(8, 2, 26, 0.45);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 18px 52px rgba(8, 2, 26, 0.6);
 }
 
 .btn-ghost {
@@ -238,20 +256,35 @@ img {
 .floating-cta:focus-visible,
 .social-pill:focus-visible,
 .contact-link:focus-visible {
-  outline: 2px solid #ff9800;
+  outline: 2px solid var(--color-brand);
   outline-offset: 3px;
 }
 
 .btn-secondary {
-  font-size: 14px;
+  padding: 11px 20px;
   border-radius: 999px;
-  border: 1px solid rgba(122, 47, 180, 0.2);
+  border: 1px dashed rgba(255, 255, 255, 0.7);
   background: transparent;
-  color: var(--color-brand-dark);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+}
+
+.btn-secondary--dark {
+  border-color: rgba(122, 47, 180, 0.32);
+  color: var(--color-brand-dark);
+}
+
+.btn-secondary--dark:hover {
   background: rgba(122, 47, 180, 0.06);
+  border-color: rgba(122, 47, 180, 0.5);
 }
 
 .badge {
@@ -286,6 +319,7 @@ img {
   transform: translateY(-4px);
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
 }
+
 
 .floating-cta {
   position: fixed;
@@ -585,8 +619,8 @@ img {
 .section-intro {
   max-width: 640px;
   margin: 0 auto 32px;
-  text-align: center;
   font-size: 15px;
+  line-height: 1.6;
   color: var(--color-text-muted);
 }
 
@@ -2258,8 +2292,8 @@ h1, h2, h3 {
 
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .reveal-on-scroll.is-visible {
@@ -2722,6 +2756,33 @@ h1, h2, h3 {
   box-shadow: 0 18px 44px rgba(4, 0, 20, 0.7);
 }
 
+.section--contacts.section-card {
+  color: var(--color-text);
+}
+
+.section--contacts.section-card .section__title {
+  color: var(--color-brand-dark);
+}
+
+.section--contacts.section-card .contacts__text,
+.section--contacts.section-card .contacts__time,
+.section--contacts.section-card .contacts__note {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.section--contacts.section-card .contacts__list dt {
+  color: var(--color-brand-dark);
+}
+
+.section--contacts.section-card .contacts__list dd {
+  color: var(--color-text);
+}
+
+.section--contacts.section-card .contacts__list dd a {
+  color: var(--color-brand);
+}
+
 /* Футер */
 
 .footer {
@@ -2761,5 +2822,52 @@ h1, h2, h3 {
   .section--contacts {
     padding-top: 40px;
     padding-bottom: 40px;
+  }
+}
+
+/* Luxe section shell – белая карточка на фоне */
+.section-card {
+  padding: 80px 0;
+}
+
+.section-card .section-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(8, 2, 26, 0.08);
+  border: 1px solid rgba(122, 47, 180, 0.06);
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  .section-card .section-inner {
+    padding: 40px 48px;
+  }
+}
+
+/* Luxe card – общий стиль премиальных карточек */
+.card-luxe {
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffff, #f6f0ff);
+  box-shadow: 0 20px 60px rgba(8, 2, 26, 0.12);
+  border: 1px solid rgba(122, 47, 180, 0.1);
+  padding: 22px 20px;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.card-luxe:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 70px rgba(8, 2, 26, 0.16);
+}
+
+@media (max-width: 600px) {
+  .section-card {
+    padding: 56px 0;
+  }
+
+  .section-card .section-inner {
+    padding: 24px 18px;
   }
 }

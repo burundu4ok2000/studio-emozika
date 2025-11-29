@@ -3,12 +3,19 @@
    =========================== */
 
 :root {
-  --color-bg: #FFF4E6;
+  --color-bg: #f9f4ff;
   --color-text: #333333;
   --color-text-muted: #6d5c52;
   --color-accent: #FFCC80;
   --color-accent-2: #FFD1DC;
   --color-muted: #C5E1A5;
+
+  /* Фиолетовый дизайн-код Эмоцики */
+  --color-brand: #7a2fb4;
+  --color-brand-dark: #4a177b;
+  --color-brand-light: #d59aff;
+  --color-surface: #ffffff;
+  --color-accent-gold: #ffb74d;
 
   --font-main: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -28,7 +35,7 @@ body {
   margin: 0;
   font-family: var(--font-main, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
   color: #3b2920;
-  background-color: #fffdf8;
+  background-color: var(--color-bg);
   line-height: 1.6;
 }
 
@@ -237,6 +244,14 @@ img {
 
 .btn-secondary {
   font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 47, 180, 0.2);
+  background: transparent;
+  color: var(--color-brand-dark);
+}
+
+.btn-secondary:hover {
+  background: rgba(122, 47, 180, 0.06);
 }
 
 .badge {
@@ -309,9 +324,9 @@ img {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: rgba(255, 244, 230, 0.95);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  background-color: rgba(249, 244, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(122, 47, 180, 0.08);
 }
 
 .header-inner {
@@ -327,7 +342,7 @@ img {
   gap: 8px;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(255, 209, 220, 0.7);
+  background: rgba(122, 47, 180, 0.08);
 }
 
 .logo-mark {
@@ -347,32 +362,45 @@ img {
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 14px;
+  color: var(--color-brand-dark);
 }
 
-.main-nav a {
-  margin-left: 16px;
-  text-decoration: none;
-  color: var(--color-text);
-  font-size: 14px;
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.main-nav a:hover {
-  color: var(--color-accent);
-}
-
+.main-nav a,
 .main-nav button {
   margin-left: 16px;
+  text-decoration: none;
   background: none;
   border: none;
   font: inherit;
-  color: var(--color-text);
   font-size: 14px;
   cursor: pointer;
   padding: 0;
+  color: var(--color-brand-dark);
 }
 
+.main-nav a:hover,
 .main-nav button:hover {
-  color: var(--color-accent);
+  color: var(--color-brand);
+}
+
+.main-nav .nav-link-cta {
+  margin-left: 24px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-brand);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(74, 23, 123, 0.3);
+}
+
+.main-nav .nav-link-cta:hover {
+  background: var(--color-brand-light);
 }
 
 .top-banner {
@@ -398,15 +426,24 @@ img {
 .hero {
   position: relative;
   min-height: 80vh;
-  background: radial-gradient(circle at top left, #FFD1DC 0, #FFF4E6 40%, #FFCC80 100%);
-  color: #2b1a18;
+  background: radial-gradient(
+    circle at top left,
+    var(--color-brand-dark) 0,
+    var(--color-brand) 45%,
+    #2b0f4a 100%
+  );
+  color: #ffffff;
   display: flex;
   align-items: stretch;
 }
 
 .hero-overlay {
   width: 100%;
-  background: rgba(255, 244, 230, 0.75);
+  background: linear-gradient(
+    135deg,
+    rgba(8, 2, 26, 0.6),
+    rgba(122, 47, 180, 0.35)
+  );
 }
 
 .hero-inner {
@@ -439,26 +476,28 @@ img {
 .hero-tagline {
   text-transform: uppercase;
   font-size: 12px;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+  color: var(--color-brand-light);
 }
 
 .hero-title {
   font-family: var(--font-heading);
   font-size: 40px;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   line-height: 1.1;
 }
 
 .hero-desc {
-  font-size: 18px;
-  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 .hero-meta {
   font-size: 14px;
-  color: #5b4639;
-  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 22px;
 }
 
 .hero-actions {
@@ -473,6 +512,25 @@ img {
 
 .hero-actions .btn + .btn {
   margin-left: 10px;
+}
+
+/* Фиолетовые кнопки только в Hero */
+.hero .btn-primary {
+  background-color: var(--color-brand);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(8, 2, 26, 0.55);
+}
+
+.hero .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(8, 2, 26, 0.65);
+}
+
+.hero-actions .btn-secondary {
+  border-style: dashed;
+  opacity: 0.95;
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
 }
 
 .hero-blob {
@@ -500,15 +558,15 @@ img {
 .hero-photo-placeholder {
   position: relative;
   margin-top: 40px;
-  border-radius: 24px;
-  background: radial-gradient(circle at top left, #FFD1DC, #FFF4E6);
+  border-radius: 28px;
+  background: radial-gradient(circle at top left, #ffffff, var(--color-brand-light));
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.45);
   font-size: 14px;
-  color: #4b2c25;
+  color: #2b103f;
   text-align: center;
 }
 
@@ -516,11 +574,6 @@ img {
   background-size: cover;
   background-position: center;
   color: transparent;
-}
-
-.hero-actions .btn-secondary {
-  border-style: dashed;
-  opacity: 0.9;
 }
 
 /* ===== DUAL TRACKS (ТЕАТР / СТУДИЯ) ===== */

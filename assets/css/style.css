@@ -1494,8 +1494,9 @@ img {
 }
 
 .section-people h2 {
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: var(--color-brand-dark);
 }
 
 .section-people .section-intro {
@@ -1503,6 +1504,7 @@ img {
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 24px;
+  color: var(--color-text-muted);
 }
 
 .people-layout {
@@ -1514,6 +1516,7 @@ img {
 .people-group h3 {
   font-size: 18px;
   margin-bottom: 12px;
+  color: var(--color-brand-dark);
 }
 
 .people-grid {
@@ -1523,16 +1526,26 @@ img {
 }
 
 .person-card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  background: var(--color-surface);
+  border-radius: 20px;
+  padding: 18px 16px;
+  box-shadow: 0 14px 32px rgba(28, 5, 63, 0.12);
+  border: 1px solid rgba(122, 47, 180, 0.08);
+}
+
+.people-grid.people-grid--actors .person-card {
+  background: linear-gradient(
+    135deg,
+    rgba(213, 154, 255, 0.12),
+    rgba(255, 255, 255, 1)
+  );
 }
 
 .person-name {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 4px;
+  color: var(--color-brand-dark);
 }
 
 .person-role {
@@ -1551,6 +1564,8 @@ img {
   margin-top: 16px;
   font-size: 13px;
   line-height: 1.6;
+  max-width: 720px;
+  color: var(--color-text-muted);
 }
 
 @media (min-width: 768px) {
@@ -1568,6 +1583,22 @@ img {
 .section-casting {
   padding-top: 64px;
   padding-bottom: 64px;
+  /* свой фон — поверх section-alt */
+  background: radial-gradient(
+    circle at top left,
+    rgba(213, 154, 255, 0.15),
+    rgba(249, 244, 255, 1)
+  );
+}
+
+.section-casting .section-header {
+  text-align: left;
+  max-width: 640px;
+  margin: 0 0 28px;
+}
+
+.section-casting .section-lead {
+  color: var(--color-text-muted);
 }
 
 .casting-layout {
@@ -1608,18 +1639,19 @@ img {
 }
 
 .casting-card {
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(38, 26, 22, 0.08);
-  padding: 20px 20px 18px;
+  background: var(--color-surface);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(28, 5, 63, 0.16);
+  padding: 22px 20px 20px;
+  border: 1px solid rgba(122, 47, 180, 0.12);
 }
 
 .casting-label {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-brand-dark);
   margin-bottom: 8px;
 }
 
@@ -1638,8 +1670,9 @@ img {
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(243, 167, 123, 0.18);
-  color: #5b3325;
+  background: rgba(122, 47, 180, 0.10);
+  color: var(--color-brand-dark);
+  font-weight: 500;
 }
 
 .casting-actions {
@@ -1647,6 +1680,23 @@ img {
   flex-direction: column;
   gap: 8px;
   margin-bottom: 10px;
+}
+
+.section-casting .casting-actions .btn-primary {
+  background-color: var(--color-brand);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(8, 2, 26, 0.35);
+}
+
+.section-casting .casting-actions .btn-primary:hover {
+  background-color: var(--color-brand-light);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(8, 2, 26, 0.45);
+}
+
+.section-casting .casting-actions .btn-outline {
+  border-color: rgba(122, 47, 180, 0.35);
+  color: var(--color-brand-dark);
 }
 
 .btn-fullwidth {
@@ -1657,6 +1707,7 @@ img {
 .casting-hint {
   font-size: 12px;
   line-height: 1.5;
+  color: var(--color-text-muted);
 }
 
 /* ===== WHY US ===== */
@@ -2415,5 +2466,295 @@ h1, h2, h3 {
 
   .gallery__image {
     height: 200px;
+  }
+}
+
+/* ===========================
+   ЕМОЗИКА: оставшиеся блоки (about / why / facts / gallery / docs / faq / contacts / footer)
+   =========================== */
+
+/* 1. О ТЕАТРЕ + ПОЧЕМУ ИМЕННО «ЭМОЦИКА» */
+
+.section-about {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #ffffff;
+}
+
+.section-about h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: var(--color-brand-dark);
+}
+
+.section-about .section-subtitle {
+  max-width: 640px;
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.about-intro p {
+  color: #3d2a3b;
+}
+
+.about-facts-list {
+  gap: 10px;
+}
+
+.about-fact {
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgba(122, 47, 180, 0.06);
+  border: 1px solid rgba(122, 47, 180, 0.16);
+  box-shadow: 0 14px 36px rgba(24, 1, 54, 0.16);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-brand-dark);
+}
+
+/* Почему именно «Эмоцика» */
+
+.section-why {
+  background: radial-gradient(
+    circle at top left,
+    rgba(213, 154, 255, 0.28),
+    #f9f4ff 45%,
+    #ffffff 100%
+  );
+}
+
+.section-why .section-title {
+  text-align: center;
+}
+
+.section-why .section-subtitle {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  color: var(--color-text-muted);
+}
+
+.why-item {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: var(--color-surface);
+  border: 1px solid rgba(122, 47, 180, 0.14);
+  box-shadow: 0 16px 40px rgba(24, 1, 54, 0.16);
+}
+
+.why-title {
+  font-size: 16px;
+  margin: 0 0 6px;
+  color: var(--color-brand-dark);
+}
+
+
+/* 2. ЦИФРЫ И ФАКТЫ */
+
+.section-facts {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: radial-gradient(
+    circle at top,
+    rgba(122, 47, 180, 0.12),
+    #f9f4ff 50%,
+    #ffffff 100%
+  );
+}
+
+.section-facts .section-title,
+.section-facts .section-intro {
+  text-align: center;
+}
+
+.facts-grid {
+  gap: 24px;
+}
+
+.fact-card {
+  border-radius: 20px;
+  background: var(--color-surface);
+  border: 1px solid rgba(122, 47, 180, 0.16);
+  box-shadow: 0 18px 42px rgba(24, 1, 54, 0.16);
+}
+
+.fact-number {
+  font-size: 32px;
+  margin: 0 0 6px;
+  color: var(--color-brand-dark);
+}
+
+.fact-label {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+
+/* 3. ГАЛЕРЕЯ */
+
+.section-gallery {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #ffffff;
+}
+
+.section-gallery .section-title,
+.section-gallery .section-subtitle {
+  text-align: center;
+}
+
+.gallery__item {
+  border-radius: 1.1rem;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at top,
+    rgba(213, 154, 255, 0.2),
+    #1a0b33 80%
+  );
+  box-shadow: 0 16px 40px rgba(5, 0, 20, 0.35);
+}
+
+.gallery__image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.gallery__caption {
+  padding: 0.8rem 1rem 1rem;
+  font-size: 0.9rem;
+  color: #f9f4ff;
+}
+
+/* Видео-блок галереи */
+
+.gallery__video-item iframe {
+  border-radius: 1.1rem;
+  box-shadow: 0 16px 40px rgba(5, 0, 20, 0.35);
+}
+
+
+/* 4. ДОКУМЕНТЫ И FAQ */
+
+.section-docs {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #f9f4ff;
+}
+
+.docs-link {
+  border-radius: 1rem;
+  border: 1px solid rgba(122, 47, 180, 0.18);
+  background: #ffffff;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.docs-link:hover,
+.docs-link:focus-visible {
+  border-color: rgba(122, 47, 180, 0.4);
+  background: #f7efff;
+}
+
+.section--faq {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #ffffff;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(122, 47, 180, 0.2);
+}
+
+.faq-question {
+  font-size: 15px;
+  color: #2a1933;
+}
+
+.faq-answer {
+  color: #3b2a3f;
+}
+
+
+/* 5. КОНТАКТЫ И ФУТЕР */
+
+.section--contacts {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: radial-gradient(circle at top, #1a0730, #070112 70%);
+  color: #f5edff;
+}
+
+.section--contacts .section__title {
+  color: #ffffff;
+}
+
+.contacts__text,
+.contacts__time {
+  color: rgba(245, 237, 255, 0.9);
+}
+
+.contacts__list dt {
+  font-weight: 600;
+  color: #f5edff;
+}
+
+.contacts__list dd a {
+  color: #f5edff;
+}
+
+.contacts__note {
+  opacity: 0.8;
+}
+
+.contacts__map iframe {
+  width: 100%;
+  min-height: 260px;
+  border: 0;
+  border-radius: 1.1rem;
+  box-shadow: 0 18px 44px rgba(4, 0, 20, 0.7);
+}
+
+/* Футер */
+
+.footer {
+  background: radial-gradient(circle at top, #1b0633, #050208 70%);
+  color: #f5edff;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+.footer__mark {
+  background-color: rgba(213, 154, 255, 0.2);
+  color: var(--color-brand-dark);
+}
+
+.footer__copy,
+.footer__dev {
+  opacity: 0.8;
+}
+
+.footer__link {
+  color: #f5edff;
+}
+
+.footer__link--small {
+  opacity: 0.7;
+}
+
+
+/* 6. ВЕРТИКАЛЬНЫЙ РИТМ НА МОБИЛЕ */
+
+@media (max-width: 600px) {
+  .section-about,
+  .section-facts,
+  .section-gallery,
+  .section-docs,
+  .section--faq,
+  .section--contacts {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }

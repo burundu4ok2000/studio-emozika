@@ -212,13 +212,13 @@ img {
 }
 
 .btn-outline {
-  border: 1px solid rgba(75, 44, 37, 0.4);
-  color: #4b2c25;
+  border: 1px solid rgba(122, 47, 180, 0.5);
+  color: var(--color-brand-dark);
   background: transparent;
 }
 
 .btn-outline:hover {
-  background: rgba(75, 44, 37, 0.08);
+  background: rgba(122, 47, 180, 0.06);
 }
 
 .btn,
@@ -801,6 +801,83 @@ img {
   margin-top: 10px;
   font-size: 12px;
   color: var(--color-text-muted, #666);
+}
+
+/* Emozika purple theme — Afisha */
+.section-afisha {
+  background: transparent; /* фон берём из body (var(--color-bg)) */
+}
+
+.section-afisha .section-title {
+  color: var(--color-brand-dark);
+}
+
+.section-afisha .section-subtitle {
+  color: var(--color-text-muted);
+}
+
+/* Карточки спектаклей */
+.afisha-card {
+  background: var(--color-surface);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.08);
+}
+
+.afisha-card-main {
+  border: 1px solid rgba(122, 47, 180, 0.16);
+}
+
+.afisha-card:hover {
+  box-shadow: 0 22px 50px rgba(8, 2, 26, 0.18);
+}
+
+/* Цветные постеры сверху карточек */
+.afisha-poster {
+  background: radial-gradient(circle at top left, var(--color-brand-dark), var(--color-brand));
+}
+
+.afisha-poster-love {
+  /* тёплый, «взрослый» градиент под «Любовь у сливного бачка» */
+  background: linear-gradient(135deg, #ff8a80, #ff5252);
+}
+
+.afisha-poster-snow {
+  /* зимний, но с фиолетовым оттенком под бренд */
+  background: linear-gradient(135deg, #80d8ff, #b388ff);
+}
+
+.afisha-poster-teaser {
+  /* мягкая подсказка: «новая постановка в разработке» */
+  background: linear-gradient(
+    135deg,
+    rgba(122, 47, 180, 0.08),
+    rgba(255, 255, 255, 0.96)
+  );
+}
+
+.afisha-poster-label {
+  background: rgba(8, 2, 26, 0.85);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+/* Мета-информация */
+.afisha-meta-row {
+  color: var(--color-text-muted);
+}
+
+.afisha-age {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(122, 47, 180, 0.08);
+  color: var(--color-brand-dark);
+  font-weight: 600;
+}
+
+.afisha-note {
+  color: var(--color-text-muted);
 }
 /* ===== SNOW QUEEN ===== */
 

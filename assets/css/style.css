@@ -5128,32 +5128,159 @@ gallery__video-item iframe {
   }
 }
 
-/* Футер */
+/* Футер — «сцена» с логотипом и навигацией */
 
 .footer {
-  background-color: var(--footer-bg, #050505);
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(213, 154, 255, 0.24), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(255, 215, 130, 0.16), transparent 55%),
+    var(--footer-bg, #050505);
   color: var(--footer-text, #f5f5f5);
-  padding: 2rem 0;
+  padding: 2.75rem 0 2.4rem;
   font-size: 0.87rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.6); /* эффект «края сцены» */
+  overflow: hidden;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.footer__inner {
+  display: flex; /* flex-контейнер (flexbox-раскладка) */
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Левая колонка — логотип и копирайт */
+
+.footer__brand {
+  flex: 1 1 240px;
+  max-width: 280px;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  text-decoration: none;
+  transition:
+    background-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.footer__logo:hover,
+.footer__logo:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  transform: translateY(-1px);
 }
 
 .footer__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
   background-color: rgba(213, 154, 255, 0.2);
   color: var(--color-brand-dark);
+  font-weight: 700;
+  font-size: 16px;
 }
 
-.footer__copy,
-.footer__dev {
+.footer__name {
+  font-family: var(--font-heading);
+  font-size: 15px;
+}
+
+.footer__copy {
+  margin: 10px 0 0;
   opacity: 0.8;
+}
+
+/* Центральная колонка — навигация по разделам */
+
+.footer__nav {
+  flex: 1.4 1 320px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  justify-content: center;
 }
 
 .footer__link {
   color: #f5edff;
+  text-decoration: none;
+  padding: 2px 0;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  border-color: rgba(245, 237, 255, 0.7);
+  opacity: 1;
 }
 
 .footer__link--small {
   opacity: 0.7;
+  font-size: 0.84rem;
+}
+
+/* Правая колонка — лицензия и кредиты */
+
+.footer__meta {
+  flex: 1 1 220px;
+  max-width: 320px;
+  text-align: right;
+}
+
+.footer__license {
+  margin: 0 0 4px;
+  opacity: 0.75;
+}
+
+.footer__dev {
+  margin: 8px 0 0;
+  opacity: 0.8;
+}
+
+/* Мобильная адаптация */
+
+@media (max-width: 768px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer__nav {
+    justify-content: flex-start;
+  }
+
+  .footer__meta {
+    text-align: left;
+    max-width: none;
+  }
+
+  .footer__dev {
+    max-width: 260px;
+  }
 }
 
 

@@ -1737,11 +1737,25 @@ function initAbonementsBlock(data) {
   grid.innerHTML = "";
 
   abonements.forEach(function (item) {
+    var isHero = item.hero === true;
+
     var card = document.createElement("article");
     card.className = "abonement-card card card-hover";
+
     if (item.highlight) {
       card.classList.add("abonement-card--highlight");
     }
+
+    if (isHero) {
+      card.classList.add("abonement-card--hero");
+    }
+
+    var heroLabelHtml =
+      isHero && item.heroLabel
+        ? '<span class="abonement-hero-label">' +
+          item.heroLabel +
+          "</span>"
+        : "";
 
     var subtitleHtml = item.subtitle
       ? '<p class="abonement-subtitle">' + item.subtitle + "</p>"
@@ -1753,6 +1767,7 @@ function initAbonementsBlock(data) {
 
     card.innerHTML =
       '<div class="abonement-header">' +
+      heroLabelHtml +
       '<h3 class="abonement-title">' +
       item.title +
       "</h3>" +

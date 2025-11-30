@@ -979,27 +979,36 @@ img {
 }
 
 .abonement-card--highlight {
-  border: 1px solid #6b4cff;
-  box-shadow: 0 14px 36px rgba(29, 19, 92, 0.18);
+  border: 1px solid #e0dbff;
+  box-shadow: 0 10px 30px rgba(29, 19, 92, 0.12);
 }
 
-.abonement-card--highlight::before {
-  content: "Учебный модуль";
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  background: rgba(107, 76, 255, 0.08);
-  color: #4c34b5;
+.abonement-card--hero {
+  border-color: #6b4cff;
+  box-shadow: 0 16px 40px rgba(29, 19, 92, 0.24);
+  transform: translateY(-2px);
+}
+
+.abonement-card--hero:hover {
+  transform: translateY(-4px);
 }
 
 .abonement-header {
   margin-bottom: 10px;
+}
+
+.abonement-hero-label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  background: rgba(107, 76, 255, 0.1);
+  color: #4c34b5;
 }
 
 .abonement-title {
@@ -1093,6 +1102,19 @@ img {
 
   .abonements-note {
     max-width: 420px;
+  }
+}
+
+/* уменьшение анимаций при prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .abonement-card,
+  .card-hover {
+    transition: none;
+  }
+
+  .abonement-card--hero,
+  .card-hover:hover {
+    transform: none;
   }
 }
 

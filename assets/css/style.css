@@ -2402,6 +2402,20 @@ body.is-lightbox-open {
   max-width: 120px;
 }
 
+/* Пройденные шаги — мягче, чем активный, но заметно выделены */
+
+.studio-journey-step.is-past .studio-journey-step-dot {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(122, 47, 180, 0.6);
+  box-shadow: 0 6px 18px rgba(8, 2, 26, 0.18);
+}
+
+.studio-journey-step.is-past .studio-journey-step-label {
+  color: var(--color-brand-dark);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
 /* Активный шаг */
 
 .studio-journey-step.is-active .studio-journey-step-dot {

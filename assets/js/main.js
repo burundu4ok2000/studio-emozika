@@ -123,8 +123,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      steps.forEach((item) => {
+      const activeIndex = steps.indexOf(step);
+
+      // подсвечиваем активный шаг и все пройденные
+      steps.forEach((item, index) => {
         item.classList.toggle("is-active", item === step);
+        item.classList.toggle(
+          "is-past",
+          activeIndex !== -1 && index < activeIndex
+        );
       });
 
       const title = step.getAttribute("data-title") || "";
@@ -134,13 +141,56 @@ document.addEventListener("DOMContentLoaded", () => {
       detailText.textContent = text;
     }
 
-    const initiallyActive =
-      journey.querySelector(".studio-journey-step.is-active") || steps[0];
+    // стартовое состояние
+    let initiallyActive = journey.querySelector(
+      ".studio-journey-step.is-active"
+    );
+
+    if (!initiallyActive && steps.length) {
+      initiallyActive = steps[0];
+    }
 
     if (initiallyActive) {
       setActiveStep(initiallyActive);
     }
 
+    // --- авто-перелистывание шагов ---
+
+    let autoRotateId = null;
+    const AUTO_ROTATE_INTERVAL = 8000; // 8 секунд на шаг
+
+    function stopAutoRotate() {
+      if (autoRotateId !== null) {
+        window.clearInterval(autoRotateId);
+        autoRotateId = null;
+      }
+    }
+
+    function startAutoRotate() {
+      // уважаем prefers-reduced-motion и защищаемся от пустого списка шагов
+      if (prefersReducedMotion || steps.length <= 1) {
+        return;
+      }
+
+      stopAutoRotate();
+
+      autoRotateId = window.setInterval(() => {
+        const current =
+          journey.querySelector(".studio-journey-step.is-active") || steps[0];
+        const currentIndex = steps.indexOf(current);
+        const nextIndex = (currentIndex + 1) % steps.length;
+        const nextStep = steps[nextIndex];
+
+        setActiveStep(nextStep);
+      }, AUTO_ROTATE_INTERVAL);
+    }
+
+    // запускаем автопрокрутку только если пользователь не просил "меньше движухи"
+    if (!prefersReducedMotion) {
+      startAutoRotate();
+    }
+
+    // клики по шагам
     journey.addEventListener("click", (event) => {
       const targetStep = event.target.closest(".studio-journey-step");
       if (!targetStep || !journey.contains(targetStep)) {
@@ -148,8 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       setActiveStep(targetStep);
+      startAutoRotate(); // перезапускаем таймер с текущего шага
     });
 
+    // навигация клавишами Enter / Space
     journey.addEventListener("keydown", (event) => {
       const key = event.key;
 
@@ -164,7 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
       setActiveStep(targetStep);
+      startAutoRotate();
     });
+
+    // при наведении мыши — ставим авто-перелистывание на паузу
+    journey.addEventListener("mouseenter", stopAutoRotate);
+    journey.addEventListener("mouseleave", startAutoRotate);
   }
 
   // ======================================

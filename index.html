@@ -114,12 +114,14 @@
 
     <section id="tracks" class="section section-tracks reveal-on-scroll">
       <div class="container">
-        <p class="section-kicker">Выберите, что вам важно сейчас</p>
-        <h2 class="section-title section-title--handdrawn">Два направления</h2>
-        <p class="section-intro">
-          «Эмоцика» — это одновременно независимый театр и студия с киносъёмками
-          для детей и подростков.
-        </p>
+        <header class="section-header">
+          <p class="section-kicker">Выберите, что вам важно сейчас</p>
+          <h2 class="section-title section-title--handdrawn">Два направления</h2>
+          <p class="section-subtitle">
+            «Эмоцика» — это одновременно независимый театр и студия с киносъёмками
+            для детей и подростков.
+          </p>
+        </header>
 
         <div class="tracks-toggle" aria-label="Выбор направления">
           <button type="button"
@@ -201,8 +203,8 @@
       <div class="container">
         <header class="section-header">
           <p class="section-kicker">Форматы занятий</p>
-          <h2>Абонементы студии</h2>
-          <p class="section-intro">
+          <h2 class="section-title">Абонементы студии</h2>
+          <p class="section-subtitle">
             В студии есть несколько форматов занятий — от пробного урока до учебного модуля на 4 месяца.
             Если сомневаетесь, оставьте заявку — поможем подобрать формат под возраст и расписание ребёнка.
           </p>
@@ -260,12 +262,12 @@
     <section id="afisha" class="section section-afisha section-card reveal-on-scroll">
       <div class="section-inner">
         <div class="container">
-        <div class="section-header">
+        <header class="section-header">
           <h2 class="section-title">Афиша театра «Эмоцика»</h2>
           <p class="section-subtitle">
             Семейные спектакли, новогодние приключения и премьеры с участием детей и профессиональных актёров.
           </p>
-        </div>
+        </header>
 
         <div class="afisha-strip-wrapper">
           <button
@@ -298,10 +300,14 @@
 
     <section id="snow-queen" class="section section-snow-queen reveal-on-scroll">
       <div class="container">
-        <h2 class="section-title">Новогодняя программа «Снежная королева»</h2>
-        <p class="section-intro">
-          Тёплый спектакль с квестом по театру и встречей с героями сказки. Формат подходит и для целых классов, и для семейных визитов.
-        </p>
+        <header class="section-header">
+          <p class="section-kicker">Новогодняя программа театра</p>
+          <h2 class="section-title">Новогодняя программа «Снежная королева»</h2>
+          <p class="section-subtitle">
+            Тёплый спектакль с квестом по театру и встречей с героями сказки. Формат подходит и для целых классов,
+            и для семейных визитов.
+          </p>
+        </header>
 
         <div class="snow-meta-main">
           <span class="snow-chip">6+</span>
@@ -413,15 +419,16 @@
       <div class="studio-decor" aria-hidden="true"></div>
       <div class="container">
         <div id="studio-hero" class="studio-hero reveal-on-scroll reveal-studio-1">
-          <p class="eyebrow eyebrow--dark">О театре и студии</p>
-          <h2>Театр «Эмоцика» и студия «Эмоция» в Санкт-Петербурге</h2>
-
-          <p class="section-intro">
-            Театр «Эмоцика» и студия «Эмоция» — это единое пространство в Санкт-Петербурге,
-            где дети от 3,5 до 16 лет проходят путь от первой реплики на репетиции
-            до настоящего спектакля и съёмок в кино. Мы соединяем тёплую атмосферу студии,
-            серьёзную театральную школу и живой репертуар семейного театра.
-          </p>
+          <header class="section-header section-header--left">
+            <p class="section-kicker eyebrow eyebrow--dark">О театре и студии</p>
+            <h2 class="section-title">Театр «Эмоцика» и студия «Эмоция» в Санкт-Петербурге</h2>
+            <p class="section-subtitle">
+              Театр «Эмоцика» и студия «Эмоция» — это единое пространство в Санкт-Петербурге,
+              где дети от 3,5 до 16 лет проходят путь от первой реплики на репетиции
+              до настоящего спектакля и съёмок в кино. Мы соединяем тёплую атмосферу студии,
+              серьёзную театральную школу и живой репертуар семейного театра.
+            </p>
+          </header>
 
           <div class="about-facts">
             <ul class="about-facts-list">
@@ -837,69 +844,70 @@
       </div>
     </section>
 
-    <section id="films" class="section section-films reveal-on-scroll">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Фильмы и награды</h2>
-          <p class="section-subtitle">
-            Короткометражные фильмы Киношколы «Эмоция» и фестивальные победы — живые доказательства того,
-            что дети здесь не просто «занимаются для души», а выходят на экран и получают реальные награды.
+    <section id="films" class="section section-films section-card reveal-on-scroll">
+      <div class="section-inner">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-title">Фильмы и награды</h2>
+            <p class="section-subtitle">
+              Короткометражные фильмы Киношколы «Эмоция» и фестивальные победы — живые доказательства того,
+              что дети здесь не просто «занимаются для души», а выходят на экран и получают реальные награды.
+            </p>
+          </header>
+
+          <div class="films-shell">
+            <!-- Горизонтальная карусель с карточками фильмов -->
+            <div class="films-carousel" data-films-carousel>
+              <!-- Карточки будут подставлены через JS -->
+            </div>
+
+            <aside class="films-detail" data-films-detail data-film-detail>
+              <div class="films-detail-video">
+                <div class="films-video-frame" data-film-embed>
+                  <!-- Сюда JS вставит iframe ВК или заглушку -->
+                </div>
+              </div>
+
+              <div class="films-detail-body">
+                <h3 class="films-detail-title" data-film-title></h3>
+                <p class="films-detail-meta" data-film-meta></p>
+
+                <div class="films-detail-authors" data-film-authors></div>
+
+                <ul class="films-detail-awards" data-film-awards>
+                  <!-- Пункты наград -->
+                </ul>
+
+                <div class="films-detail-synopsis" data-film-synopsis></div>
+
+                <a class="btn btn-ghost films-detail-vk"
+                   data-film-vk-link
+                   target="_blank"
+                   rel="noopener">
+                  Смотреть на ВК
+                </a>
+              </div>
+            </aside>
+          </div>
+
+          <p class="films-summary">
+            Ученики студии регулярно становятся лауреатами фестивалей, а фильмы и спектакли
+            получают десятки дипломов и гран-при — для родителей это наглядный показатель уровня подготовки.
           </p>
         </div>
-
-        <div class="films-shell">
-          <!-- Горизонтальная карусель с карточками фильмов -->
-          <div class="films-carousel" data-films-carousel>
-            <!-- Карточки будут подставлены через JS -->
-          </div>
-
-          <!-- Детальная панель выбранного фильма -->
-          <div class="films-detail" data-film-detail>
-            <div class="films-detail-video">
-              <div class="films-video-frame" data-film-embed>
-                <!-- Сюда JS вставит iframe ВК или заглушку -->
-              </div>
-            </div>
-
-            <div class="films-detail-body">
-              <h3 class="films-detail-title" data-film-title></h3>
-              <p class="films-detail-meta" data-film-meta></p>
-
-              <div class="films-detail-authors" data-film-authors></div>
-
-              <ul class="films-detail-awards" data-film-awards>
-                <!-- Пункты наград -->
-              </ul>
-
-              <div class="films-detail-synopsis" data-film-synopsis></div>
-
-              <a class="btn btn-ghost films-detail-vk"
-                 data-film-vk-link
-                 target="_blank"
-                 rel="noopener">
-                Смотреть на ВК
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <p class="films-summary">
-          Ученики студии регулярно становятся лауреатами фестивалей, а фильмы и спектакли
-          получают десятки дипломов и гран-при — для родителей это наглядный показатель уровня подготовки.
-        </p>
       </div>
     </section>
 
         <section id="people" class="section section-people section-card reveal-on-scroll">
       <div class="section-inner">
         <div class="container">
-          <div class="section-header">
+          <header class="section-header">
             <h2 class="section-title section-title--handdrawn">Люди театра</h2>
-            <p class="section-intro">
+            <p class="section-subtitle">
               За спектаклями и занятиями в «Эмоцике» стоят режиссёры, педагоги, актёры и
               юные артисты студии. Здесь только часть нашей команды и звёзд студии.
             </p>
-          </div>
+          </header>
 
           <div class="people-shell">
             <div class="people-filters" data-people-filters role="tablist" aria-label="Группы людей театра">
@@ -1158,10 +1166,12 @@
 
     <section id="gallery" class="section section-gallery">
       <div class="container">
-        <h2 class="section-title section__title">Галерея</h2>
-        <p class="section-subtitle section__subtitle">
-          Несколько кадров с наших репетиций, спектаклей и закулисья.
-        </p>
+        <header class="section-header">
+          <h2 class="section-title section__title">Галерея</h2>
+          <p class="section-subtitle section__subtitle">
+            Несколько кадров с наших репетиций, спектаклей и закулисья.
+          </p>
+        </header>
 
         <div class="gallery">
           <div class="gallery__header">
@@ -1244,10 +1254,12 @@
     <section id="docs" class="section section-docs section-card">
       <div class="section-inner">
         <div class="container">
-        <h2 class="section-title">Документы</h2>
-        <p class="section-subtitle">
-          Все официальные бумаги театра «Эмоция» доступны для скачивания.
-        </p>
+        <header class="section-header">
+          <h2 class="section-title">Документы</h2>
+          <p class="section-subtitle">
+            Все официальные бумаги театра «Эмоция» доступны для скачивания.
+          </p>
+        </header>
 
         <div class="docs">
           <ul class="docs-list">
@@ -1295,7 +1307,12 @@
     <section id="faq" class="section section--faq section-card reveal-on-scroll">
       <div class="section-inner">
         <div class="container">
-        <h2 class="section-title">Частые вопросы</h2>
+        <header class="section-header">
+          <h2 class="section-title">Частые вопросы</h2>
+          <p class="section-subtitle">
+            Мы собрали ответы на самые частые вопросы родителей о занятиях, спектаклях и записи в студию.
+          </p>
+        </header>
 
         <div class="faq">
 
@@ -1512,14 +1529,16 @@
       <div class="section-inner">
         <div class="container contacts">
           <div class="contacts__info">
-            <h2 class="section-title">Контакты</h2>
+        <header class="section-header section-header--left">
+          <p class="section-kicker">Как с нами связаться</p>
+          <h2 class="section-title">Контакты</h2>
+          <p class="contacts__text section-subtitle">
+            Записаться на пробное занятие, уточнить расписание или задать любой вопрос
+            можно у администратора театра и студии.
+          </p>
+        </header>
 
-            <p class="contacts__text">
-              Записаться на пробное занятие, уточнить расписание или задать любой вопрос
-              можно у администратора театра и студии.
-            </p>
-
-            <dl class="contacts__list">
+        <dl class="contacts__list">
               <div class="contacts__row">
                 <dt>Телефон:</dt>
                 <dd>

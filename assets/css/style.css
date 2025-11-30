@@ -640,6 +640,59 @@ img {
   color: transparent;
 }
 
+.hero-poster {
+  position: relative;
+  margin-top: 40px;
+  border-radius: 28px;
+  background: radial-gradient(
+    circle at top left,
+    #ffffff,
+    var(--color-brand-light)
+  );
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.45);
+  overflow: hidden;
+}
+
+.hero-poster-image {
+  border-radius: 20px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #3e155e, #9b4dff);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+}
+
+.hero-poster-image--empty {
+  /* спец-класс на случай, пока нет реального фото */
+}
+
+.hero-poster-caption {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-poster-badge {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.hero-poster-caption-text {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
 /* ===== DUAL TRACKS (ТЕАТР / СТУДИЯ) ===== */
 
 .section-tracks {

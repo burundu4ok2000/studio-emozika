@@ -4835,70 +4835,100 @@ gallery__video-item iframe {
 }
 
 
-/* 5. КОНТАКТЫ И ФУТЕР */
+/* ===== CONTACTS ===== */
 
-.section--contacts {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background: radial-gradient(circle at top, #1a0730, #070112 70%);
-  color: #f5edff;
+.section--contacts .contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.section--contacts .section__title {
-  color: #ffffff;
+.contacts__info {
+  flex: 1 1 0;
 }
 
-.contacts__text,
-.contacts__time {
-  color: rgba(245, 237, 255, 0.9);
+.contacts__map {
+  flex: 1 1 0;
 }
 
-.contacts__list dt {
+.contacts__text {
+  margin: 8px 0 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.contacts__list {
+  margin: 0 0 16px;
+}
+
+.contacts__row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  align-items: baseline;
+}
+
+.contacts__row dt {
+  min-width: 110px;
   font-weight: 600;
-  color: #f5edff;
+  font-size: 13px;
+  color: var(--color-text-muted);
 }
 
-.contacts__list dd a {
-  color: #f5edff;
+.contacts__row dd {
+  margin: 0;
+  font-size: 14px;
 }
 
 .contacts__note {
-  opacity: 0.8;
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.contacts__time {
+  margin: 8px 0 18px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.contacts__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .contacts__map iframe {
+  display: block;
   width: 100%;
-  min-height: 260px;
+  min-height: 220px;
   border: 0;
-  border-radius: 1.1rem;
-  box-shadow: 0 18px 44px rgba(4, 0, 20, 0.7);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.18);
 }
 
-.section--contacts.section-card {
-  color: var(--color-text);
-}
-
-.section--contacts.section-card .section__title {
+.contacts__map-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
   color: var(--color-brand-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
-.section--contacts.section-card .contacts__text,
-.section--contacts.section-card .contacts__time,
-.section--contacts.section-card .contacts__note {
-  color: var(--color-text-muted);
-  opacity: 1;
-}
+@media (min-width: 768px) {
+  .section--contacts .contacts {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 32px;
+  }
 
-.section--contacts.section-card .contacts__list dt {
-  color: var(--color-brand-dark);
-}
-
-.section--contacts.section-card .contacts__list dd {
-  color: var(--color-text);
-}
-
-.section--contacts.section-card .contacts__list dd a {
-  color: var(--color-brand);
+  .contacts__map iframe {
+    min-height: 260px;
+  }
 }
 
 /* Футер */

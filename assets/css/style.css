@@ -3,20 +3,44 @@
    =========================== */
 
 :root {
-  --color-bg: #f9f4ff;
-  --color-text: #333333;
-  --color-text-muted: #6d5c52;
-  --color-accent: #FFCC80;
-  --color-accent-2: #FFD1DC;
-  --color-muted: #C5E1A5;
+  /* 1. Базовые фоны и поверхности */
+  --color-bg: #f9f4ff;           /* общий фон страницы */
+  --color-surface: #ffffff;      /* белая «карта» / карточки */
 
-  /* Фиолетовый дизайн-код Эмоцики */
+  /* Расширенные фоны для разных типов секций */
+  --color-bg-warm: #fff8f2;      /* тёплый кремовый фон (процессы, студия, направления) */
+  --color-bg-paper: #fffaf4;     /* «бумажный» фон (архив, документы, афиша, FAQ) */
+  --color-bg-lilac: #f7f4ff;     /* мягкий лиловый фон (абонементы, детские блоки) */
+  --color-bg-film: #fdf8ff;      /* кино / галерея, лёгкий фиолетовый фон */
+
+  /* 2. Текст */
+  --color-text: #333333;         /* основной текст */
+  --color-text-main: #222222;    /* плотный текст для ключевых фраз и заголовков */
+  --color-text-muted: #6d5c52;   /* подписи, подзаголовки */
+  --color-text-soft: #666666;    /* вторичный текст, хинты, мелкие подписи */
+
+  /* 3. Фиолетовый дизайн-код Эмоцики */
   --color-brand: #7a2fb4;
   --color-brand-dark: #4a177b;
   --color-brand-light: #d59aff;
-  --color-surface: #ffffff;
-  --color-accent-gold: #ffb74d;
 
+  /* 4. Сцена и «дерево» */
+  --color-stage-deep: #0d0418;   /* глубокий фон сценических / кино-карточек (галерея) */
+  --color-stage-wood: #4b2c25;   /* тёплый «деревянный» коричневый для акцентного текста */
+
+  /* 5. Акценты и статусы */
+  --color-accent: #FFCC80;       /* тёплый акцент (забота, атмосфера, комфорт) */
+  --color-accent-2: #FFD1DC;     /* розовый акцент (младшие группы, нежные блоки) */
+  --color-muted: #C5E1A5;        /* мягкий зелёный (развитие, поддержка, «экология» среды) */
+  --color-accent-gold: #ffb74d;  /* золото наград, фестивали, цифры успеха */
+
+  /* 6. Футер и бордеры */
+  --footer-bg: #050505;          /* базовый фон футера (ночной) */
+  --footer-text: #f5f5f5;        /* текст в футере */
+  --border-soft: rgba(8, 2, 26, 0.08);          /* мягкая тень/граница для карточек */
+  --border-brand-soft: rgba(122, 47, 180, 0.12);/* бордер с фиолетовым оттенком */
+
+  /* 7. Типографика и ручной штрих */
   --font-main: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
@@ -412,7 +436,7 @@ img {
   padding: 10px 18px;
   border-radius: 999px;
   background: var(--color-accent);
-  color: #4b2c25;
+  color: var(--color-stage-wood);
   font-family: var(--font-heading);
   font-size: 14px;
   text-decoration: none;
@@ -534,7 +558,7 @@ img {
 .top-banner-link {
   font-weight: 600;
   text-decoration: none;
-  color: #4b2c25;
+  color: var(--color-stage-wood);
   border-bottom: 1px solid rgba(75, 44, 37, 0.5);
 }
 
@@ -747,7 +771,7 @@ img {
 /* ===== DUAL TRACKS (ТЕАТР / СТУДИЯ) ===== */
 
 .section-tracks {
-  background: #fff8f2;
+  background: var(--color-bg-warm);
 }
 
 .section-intro {
@@ -900,7 +924,7 @@ img {
   border: 1px solid rgba(0, 0, 0, 0.06);
   background: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  color: var(--color-text, #4b2c25);
+  color: var(--color-stage-wood);
   cursor: pointer;
 }
 
@@ -942,7 +966,7 @@ img {
    ====================================== */
 
 .section-abonements {
-  background: #f7f4ff;
+  background: var(--color-bg-lilac);
 }
 
 .section-abonements .section-header {
@@ -1067,7 +1091,7 @@ img {
 .abonement-price {
   margin: 0;
   font-weight: 600;
-  color: #4b2c25;
+  color: var(--color-stage-wood);
 }
 
 .abonement-note {
@@ -1208,7 +1232,7 @@ img {
 /* ===== AFISHA / СПЕКТАКЛИ ===== */
 
 .section-afisha {
-  background: #fff;
+  background: var(--color-bg-paper);
 }
 
 .section-afisha .section-subtitle {
@@ -1225,7 +1249,7 @@ img {
 .afisha-card {
   display: flex;
   flex-direction: column;
-  background: #fffaf4;
+  background: var(--color-bg-paper);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
@@ -1361,7 +1385,7 @@ img {
 
 /* Emozika purple theme — Afisha */
 .section-afisha {
-  background: transparent; /* фон берём из body (var(--color-bg)) */
+  background: var(--color-bg-paper); /* бумажный фон афиши */
 }
 
 .section-afisha .section-title {
@@ -1562,7 +1586,7 @@ img {
   overflow: hidden;
   background:
     radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.06), transparent 55%),
-    #0d0418;
+    var(--color-stage-deep);
   box-shadow: 0 24px 60px rgba(5, 0, 25, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transform-origin: center bottom;
@@ -2058,7 +2082,7 @@ body.is-lightbox-open {
 /* ===== ARCHIVE ===== */
 
 .section-archive {
-  background: #fffaf4;
+  background: var(--color-bg-paper);
 }
 
 .archive-list {
@@ -2244,7 +2268,7 @@ body.is-lightbox-open {
   margin: 0;
   font-size: 14px;
   line-height: 1.7;
-  color: #4b2c25;
+  color: var(--color-stage-wood);
 }
 
 .about-intro p + p {
@@ -2282,6 +2306,7 @@ body.is-lightbox-open {
 #studio.section-studio {
   position: relative;
   isolation: isolate;
+  background-color: var(--color-bg-warm);
 }
 
 #studio.section-studio::before,
@@ -2382,7 +2407,7 @@ body.is-lightbox-open {
     position: sticky;
     top: 64px;
     z-index: 5;
-    background: linear-gradient(to bottom, #fdf8ff, rgba(253, 248, 255, 0.92));
+    background: linear-gradient(to bottom, var(--color-bg-film), rgba(253, 248, 255, 0.92));
     padding-block: 8px;
   }
 }
@@ -2606,7 +2631,7 @@ body.is-lightbox-open {
   background: radial-gradient(
       circle at top left,
       rgba(122, 47, 180, 0.08),
-      #fdf9ff
+      var(--color-bg-film)
     );
   border: 1px solid rgba(122, 47, 180, 0.12);
   box-shadow: 0 12px 30px rgba(8, 2, 26, 0.04);
@@ -2647,7 +2672,7 @@ body.is-lightbox-open {
   background: radial-gradient(
       circle at top left,
       rgba(122, 47, 180, 0.12),
-      #f8f4ff
+      var(--color-bg-film)
     );
 }
 
@@ -3503,7 +3528,7 @@ body.is-lightbox-open {
   background: radial-gradient(
     circle at top left,
     rgba(213, 154, 255, 0.18),
-    rgba(249, 244, 255, 1)
+    var(--color-bg-film)
   );
 }
 
@@ -4418,7 +4443,7 @@ body.is-lightbox-open {
 .fact-card {
   padding: 18px 20px;
   border-radius: 18px;
-  background: #ffffff;
+  background: var(--color-surface);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
 }
 
@@ -6329,9 +6354,9 @@ gallery__video-item iframe {
   margin: 0 auto;
   padding: 32px 24px;
   border-radius: 32px;
-  background: #ffffff;
-  box-shadow: 0 22px 60px rgba(8, 2, 26, 0.08);
-  border: 1px solid rgba(122, 47, 180, 0.06);
+  background: var(--color-surface);
+  box-shadow: 0 22px 60px var(--border-soft);
+  border: 1px solid var(--border-brand-soft);
   box-sizing: border-box;
 }
 

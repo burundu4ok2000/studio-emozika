@@ -115,15 +115,39 @@
 
     <section id="tracks" class="section section-tracks reveal-on-scroll">
       <div class="container">
+        <p class="section-kicker">Выберите, что вам важно сейчас</p>
         <h2 class="section-title section-title--handdrawn">Два направления</h2>
         <p class="section-intro">
           «Эмоцика» — это одновременно независимый театр и студия с киносъёмками
           для детей и подростков.
         </p>
 
+        <div class="tracks-toggle" aria-label="Выбор направления">
+          <button type="button"
+                  class="tracks-toggle-btn tracks-toggle-btn--primary"
+                  data-scroll-to="afisha">
+            Хочу на спектакль
+          </button>
+          <button type="button"
+                  class="tracks-toggle-btn"
+                  data-scroll-to="studio">
+            Хочу занятия для ребёнка
+          </button>
+        </div>
+
         <div class="tracks-grid">
           <article class="track-card track-card-theatre card-luxe">
-            <h3 class="track-title">Театр «Эмоцика»</h3>
+            <h3 class="track-title">
+              <span class="track-title-icon track-title-icon--theatre" aria-hidden="true"></span>
+              Театр «Эмоцика»
+            </h3>
+
+            <div class="track-badges">
+              <span class="track-badge">Семейные спектакли</span>
+              <span class="track-badge">Премьеры сезона</span>
+              <span class="track-badge">Новогодние программы</span>
+            </div>
+
             <p class="track-text">
               Премьерные спектакли, новогодние программы и семейные показы
               с участием профессиональных актёров и наших студийцев.
@@ -137,7 +161,17 @@
           </article>
 
           <article class="track-card track-card-school card-luxe">
-            <h3 class="track-title">Студия и киношкола</h3>
+            <h3 class="track-title">
+              <span class="track-title-icon track-title-icon--school" aria-hidden="true"></span>
+              Студия и киношкола
+            </h3>
+
+            <div class="track-badges">
+              <span class="track-badge">Дети 4–16 лет</span>
+              <span class="track-badge">Занятия 1–2 раза в неделю</span>
+              <span class="track-badge">Киносъёмки и фестивали</span>
+            </div>
+
             <p class="track-text">
               Занятия по актёрскому мастерству, сценической речи и киносъёмкам
               для детей от 4 лет до подростков.
@@ -154,6 +188,11 @@
             </button>
           </article>
         </div>
+
+        <p class="tracks-bridge">
+          Часто ребёнок начинает со студии, а потом выходит на сцену театра —
+          это единая творческая экосистема «Эмоцики».
+        </p>
       </div>
     </section>
 

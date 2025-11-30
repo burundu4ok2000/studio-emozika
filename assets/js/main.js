@@ -1,282 +1,3 @@
-// Данные спектаклей, загруженные из JSON
-let playsData = [];
-
-// Получить спектакль по id
-function getPlayById(id) {
-  return playsData.find(function (play) {
-    return play.id === id;
-  });
-}
-
-function renderAfishaCards() {
-  const afishaContainer = document.querySelector("[data-afisha-list]");
-  if (!afishaContainer || !Array.isArray(playsData)) {
-    return;
-  }
-
-  const cardsHtml = playsData
-    .map(function (play) {
-      const badges = [];
-
-      if (play.isPremiere) {
-        badges.push(
-          '<span class="afisha-badge afisha-badge--premiere">Премьера сезона</span>'
-        );
-      }
-
-      if (play.isNewYearProgram) {
-        badges.push(
-          '<span class="afisha-badge afisha-badge--ny">Новогодняя программа</span>'
-        );
-      }
-
-      const metaParts = [];
-      if (play.age) metaParts.push(play.age);
-      if (play.genre) metaParts.push(play.genre);
-      if (play.duration) metaParts.push(play.duration);
-
-      const metaLine = metaParts.join(" • ");
-
-      return (
-        '<article class="afisha-card" data-play-id="' +
-        play.id +
-        '">' +
-        '<div class="afisha-card__header">' +
-        badges.join("") +
-        "</div>" +
-        '<div class="afisha-card__body">' +
-        '<h3 class="afisha-card__title">' +
-        play.title +
-        "</h3>" +
-        (metaLine ? '<p class="afisha-card__meta">' + metaLine + "</p>" : "") +
-        (play.afishaShort
-          ? '<p class="afisha-card__text">' + play.afishaShort + "</p>"
-          : "") +
-        (play.afishaNote
-          ? '<p class="afisha-card__note">' + play.afishaNote + "</p>"
-          : "") +
-        "</div>" +
-        '<div class="afisha-card__footer">' +
-        '<button class="btn btn-primary afisha-card__btn" type="button" data-play-open="' +
-        play.id +
-        '">' +
-        "Подробнее о спектакле" +
-        "</button>" +
-        "</div>" +
-        "</article>"
-      );
-    })
-    .join("");
-
-  afishaContainer.innerHTML = cardsHtml;
-}
-
-function initPlayModal() {
-  const modal = document.getElementById("play-modal");
-  if (!modal) {
-    return;
-  }
-
-  const body = document.body;
-
-  const titleEl = modal.querySelector("[data-play-modal-title]");
-  const taglineEl = modal.querySelector("[data-play-modal-tagline]");
-  const metaEl = modal.querySelector("[data-play-modal-meta]");
-  const descEl = modal.querySelector("[data-play-modal-description]");
-  const whyEl = modal.querySelector("[data-play-modal-why]");
-  const creditsEl = modal.querySelector("[data-play-modal-credits]");
-  const mainMediaEl = modal.querySelector("[data-play-modal-main-media]");
-  const thumbsEl = modal.querySelector("[data-play-modal-thumbs]");
-
-  function renderPlayInModal(playId) {
-    const play = getPlayById(playId);
-    if (!play) {
-      return;
-    }
-
-    if (titleEl) {
-      titleEl.textContent = play.title || "";
-    }
-
-    if (taglineEl) {
-      taglineEl.textContent = play.tagline || "";
-    }
-
-    if (metaEl) {
-      const metaParts = [];
-      if (play.age) metaParts.push(play.age);
-      if (play.genre) metaParts.push(play.genre);
-      if (play.duration) metaParts.push(play.duration);
-      if (play.hall) metaParts.push(play.hall);
-
-      metaEl.innerHTML = metaParts
-        .map(function (item) {
-          return '<div class="play-modal__meta-item">' + item + "</div>";
-        })
-        .join("");
-    }
-
-    if (descEl) {
-      const description = Array.isArray(play.description) ? play.description : [];
-      descEl.innerHTML = description
-        .map(function (paragraph) {
-          return "<p>" + paragraph + "</p>";
-        })
-        .join("");
-    }
-
-    if (whyEl) {
-      const whyList = Array.isArray(play.whyToWatch) ? play.whyToWatch : [];
-      whyEl.innerHTML = whyList
-        .map(function (item) {
-          return "<li>" + item + "</li>";
-        })
-        .join("");
-    }
-
-    if (creditsEl) {
-      const creditsHtml = [];
-      if (play.credits) {
-        if (play.credits.author) {
-          creditsHtml.push(
-            "<p><strong>Автор пьесы:</strong> " + play.credits.author + "</p>"
-          );
-        }
-        if (play.credits.director) {
-          creditsHtml.push(
-            "<p><strong>Режиссёр:</strong> " + play.credits.director + "</p>"
-          );
-        }
-        if (Array.isArray(play.credits.cast) && play.credits.cast.length > 0) {
-          const castTitle = play.credits.castTitle || "В ролях";
-          creditsHtml.push(
-            "<p><strong>" +
-              castTitle +
-              ":</strong> " +
-              play.credits.cast.join(", ") +
-              "</p>"
-          );
-        }
-      }
-      creditsEl.innerHTML = creditsHtml.join("");
-    }
-
-    const media = play.media || {};
-    const photos = Array.isArray(media.photos) ? media.photos : [];
-    const video = media.video || "";
-
-    if (mainMediaEl) {
-      if (video) {
-        mainMediaEl.innerHTML =
-          '<div class="play-modal__video-placeholder">Здесь будет видео спектакля</div>';
-      } else if (photos.length > 0) {
-        mainMediaEl.innerHTML =
-          '<img src="' +
-          photos[0] +
-          '" alt="' +
-          play.title +
-          '">';
-      } else {
-        mainMediaEl.innerHTML = "";
-      }
-    }
-
-    if (thumbsEl) {
-      if (photos.length > 0) {
-        thumbsEl.innerHTML = photos
-          .map(function (src, index) {
-            return (
-              '<button type="button" class="play-modal__thumb" data-play-thumb="' +
-              index +
-              '">' +
-              '<img src="' +
-              src +
-              '" alt="' +
-              play.title +
-              ", кадр " +
-              (index + 1) +
-              '">' +
-              "</button>"
-            );
-          })
-          .join("");
-      } else {
-        thumbsEl.innerHTML = "";
-      }
-
-      thumbsEl.onclick = function (event) {
-        const btn = event.target.closest("[data-play-thumb]");
-        if (!btn || !mainMediaEl) return;
-        const index = Number(btn.getAttribute("data-play-thumb"));
-        if (!Number.isNaN(index) && photos[index]) {
-          mainMediaEl.innerHTML =
-            '<img src="' +
-            photos[index] +
-            '" alt="' +
-            play.title +
-            ", кадр " +
-            (index + 1) +
-            '">';
-        }
-      };
-    }
-  }
-
-  function openModal(playId) {
-    renderPlayInModal(playId);
-    modal.classList.add("play-modal--open");
-    body.classList.add("no-scroll");
-  }
-
-  function closeModal() {
-    modal.classList.remove("play-modal--open");
-    body.classList.remove("no-scroll");
-  }
-
-  function bindOpenButtons() {
-    const openButtons = document.querySelectorAll("[data-play-open]");
-    openButtons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const playId = btn.getAttribute("data-play-open");
-        if (playId) {
-          openModal(playId);
-        }
-      });
-    });
-  }
-
-  const closeElements = modal.querySelectorAll("[data-play-modal-close]");
-  closeElements.forEach(function (el) {
-    el.addEventListener("click", closeModal);
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      closeModal();
-    }
-  });
-
-  bindOpenButtons();
-}
-
-function loadPlaysData() {
-  return fetch("assets/data/plays.json")
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error("Ошибка загрузки plays.json");
-      }
-      return response.json();
-    })
-    .then(function (data) {
-      playsData = Array.isArray(data.plays) ? data.plays : [];
-      renderAfishaCards();
-      initPlayModal();
-    })
-    .catch(function (error) {
-      console.error("Не удалось загрузить данные спектаклей:", error);
-    });
-}
-
 // ======================================
 // 1. Базовая инициализация
 // ======================================
@@ -285,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion =
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  loadPlaysData();
 
   // ======================================
   // 2. Анимация появления секций при скролле
@@ -445,6 +165,397 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       setActiveStep(targetStep);
     });
+  }
+
+  // ======================================
+  // 5. Афиша спектаклей (киноряд + модальное окно)
+  // ======================================
+
+  const afishaSection = document.querySelector("#afisha");
+
+  if (afishaSection) {
+    const stripEl = afishaSection.querySelector("[data-afisha-strip]");
+    const prevBtn = afishaSection.querySelector(".afisha-strip-arrow--prev");
+    const nextBtn = afishaSection.querySelector(".afisha-strip-arrow--next");
+
+    const modalEl = document.querySelector("[data-play-modal]");
+    const modalCloseEls = modalEl
+      ? modalEl.querySelectorAll("[data-play-modal-close]")
+      : [];
+    const badgeEl = modalEl ? modalEl.querySelector("[data-play-badge]") : null;
+    const titleEl = modalEl ? modalEl.querySelector("[data-play-title]") : null;
+    const metaEl = modalEl ? modalEl.querySelector("[data-play-meta]") : null;
+    const taglineEl = modalEl
+      ? modalEl.querySelector("[data-play-tagline]")
+      : null;
+    const descEl = modalEl
+      ? modalEl.querySelector("[data-play-description]")
+      : null;
+    const whyListEl = modalEl ? modalEl.querySelector("[data-play-why]") : null;
+    const whyBlockEl = modalEl
+      ? modalEl.querySelector("[data-play-why-container]")
+      : null;
+    const authorEl = modalEl
+      ? modalEl.querySelector("[data-play-author]")
+      : null;
+    const directorEl = modalEl
+      ? modalEl.querySelector("[data-play-director]")
+      : null;
+    const castTitleEl = modalEl
+      ? modalEl.querySelector("[data-play-cast-title]")
+      : null;
+    const castListEl = modalEl
+      ? modalEl.querySelector("[data-play-cast]")
+      : null;
+    const castBlockEl = modalEl
+      ? modalEl.querySelector("[data-play-cast-container]")
+      : null;
+    const mediaPhotosEl = modalEl
+      ? modalEl.querySelector("[data-play-photos]")
+      : null;
+    const mediaVideoEl = modalEl
+      ? modalEl.querySelector("[data-play-video]")
+      : null;
+    const ticketEl = modalEl
+      ? modalEl.querySelector("[data-play-ticket]")
+      : null;
+
+    let playsData = [];
+
+    function getAfishaPlays() {
+      return playsData
+        .filter(function (play) {
+          return play.showInAfisha;
+        })
+        .sort(function (a, b) {
+          const orderA =
+            typeof a.afishaOrder === "number" ? a.afishaOrder : 999;
+          const orderB =
+            typeof b.afishaOrder === "number" ? b.afishaOrder : 999;
+          return orderA - orderB;
+        });
+    }
+
+    function buildMetaLine(play) {
+      const parts = [];
+      if (play.age) parts.push(play.age);
+      if (play.genre) parts.push(play.genre);
+      if (play.duration) parts.push(play.duration);
+      if (play.hall) parts.push(play.hall);
+      if (play.city) parts.push(play.city);
+      return parts.join(" • ");
+    }
+
+    function renderAfishaStrip() {
+      if (!stripEl) return;
+
+      const afishaPlays = getAfishaPlays();
+      if (!afishaPlays.length) {
+        stripEl.innerHTML =
+          '<p class="afisha-empty">Скоро здесь появятся спектакли театра «Эмоцика».</p>';
+        return;
+      }
+
+      const html = afishaPlays
+        .map(function (play) {
+          const posterDesktop =
+            play.poster && play.poster.desktop ? play.poster.desktop : "";
+          const metaLine = buildMetaLine(play);
+
+          let badgeHtml = "";
+          if (play.badge) {
+            let badgeClass = "afisha-card-badge";
+            if (play.badgeType) {
+              badgeClass += " afisha-card-badge--" + play.badgeType;
+            }
+            badgeHtml =
+              '<span class="' + badgeClass + '">' + play.badge + "</span>";
+          }
+
+          const noteHtml = play.afishaNote
+            ? '<p class="afisha-card-note">' + play.afishaNote + "</p>"
+            : "";
+
+          return (
+            '<article class="afisha-card afisha-card--strip card-luxe" data-play-id="' +
+            play.id +
+            '">' +
+            '<div class="afisha-card-poster-wrapper">' +
+            (posterDesktop
+              ? '<img class="afisha-card-poster-image" src="' +
+                posterDesktop +
+                '" alt="Постер спектакля ' +
+                play.title +
+                '">' +
+                (badgeHtml
+                  ? '<div class="afisha-card-badge-wrap">' +
+                    badgeHtml +
+                    "</div>"
+                  : "")
+              : "") +
+            "</div>" +
+            '<div class="afisha-content">' +
+            '<header class="afisha-header">' +
+            '<h3 class="afisha-title">' +
+            play.title +
+            "</h3>" +
+            (metaLine
+              ? '<p class="afisha-meta-row">' + metaLine + "</p>"
+              : "") +
+            "</header>" +
+            (play.afishaShort
+              ? '<p class="afisha-description">' +
+                play.afishaShort +
+                "</p>"
+              : "") +
+            noteHtml +
+            '<div class="afisha-buttons afisha-buttons--strip">' +
+            (play.ticketUrl
+              ? '<a class="btn btn-primary" href="' +
+                play.ticketUrl +
+                '" target="_blank" rel="noopener">Купить билет</a>'
+              : "") +
+            '<button type="button" class="afisha-more" data-play-open="' +
+            play.id +
+            '">Подробнее о спектакле</button>' +
+            "</div>" +
+            "</div>" +
+            "</article>"
+          );
+        })
+        .join("");
+
+      stripEl.innerHTML = html;
+    }
+
+    function openPlayModal(playId) {
+      if (!modalEl || !playsData.length) return;
+
+      const play = playsData.find(function (item) {
+        return item.id === playId;
+      });
+      if (!play) return;
+
+      const metaLine = buildMetaLine(play);
+
+      if (badgeEl) {
+        if (play.badge) {
+          badgeEl.textContent = play.badge;
+          badgeEl.classList.remove("is-hidden");
+        } else {
+          badgeEl.textContent = "";
+          badgeEl.classList.add("is-hidden");
+        }
+      }
+
+      if (titleEl) {
+        titleEl.textContent = play.title || "";
+      }
+
+      if (metaEl) {
+        metaEl.textContent = metaLine || "";
+        metaEl.classList.toggle("is-hidden", !metaLine);
+      }
+
+      if (taglineEl) {
+        taglineEl.textContent = play.tagline || "";
+        taglineEl.classList.toggle("is-hidden", !play.tagline);
+      }
+
+      if (descEl) {
+        descEl.innerHTML = "";
+        if (Array.isArray(play.description) && play.description.length) {
+          play.description.forEach(function (paragraph) {
+            const p = document.createElement("p");
+            p.textContent = paragraph;
+            descEl.appendChild(p);
+          });
+        }
+      }
+
+      if (whyListEl && whyBlockEl) {
+        whyListEl.innerHTML = "";
+        if (Array.isArray(play.whyToWatch) && play.whyToWatch.length) {
+          play.whyToWatch.forEach(function (item) {
+            const li = document.createElement("li");
+            li.textContent = item;
+            whyListEl.appendChild(li);
+          });
+          whyBlockEl.classList.remove("is-hidden");
+        } else {
+          whyBlockEl.classList.add("is-hidden");
+        }
+      }
+
+      if (authorEl) {
+        const hasAuthor = play.credits && play.credits.author;
+        authorEl.textContent = hasAuthor ? "Автор: " + play.credits.author : "";
+        authorEl.classList.toggle("is-hidden", !hasAuthor);
+      }
+
+      if (directorEl) {
+        const hasDirector = play.credits && play.credits.director;
+        directorEl.textContent = hasDirector
+          ? "Режиссёр: " + play.credits.director
+          : "";
+        directorEl.classList.toggle("is-hidden", !hasDirector);
+      }
+
+      if (castListEl && castTitleEl && castBlockEl) {
+        castListEl.innerHTML = "";
+        const cast =
+          play.credits && Array.isArray(play.credits.cast)
+            ? play.credits.cast
+            : [];
+        if (cast.length) {
+          const castTitle = play.credits.castTitle || "В ролях";
+          castTitleEl.textContent = castTitle;
+          cast.forEach(function (name) {
+            const li = document.createElement("li");
+            li.textContent = name;
+            castListEl.appendChild(li);
+          });
+          castBlockEl.classList.remove("is-hidden");
+        } else {
+          castBlockEl.classList.add("is-hidden");
+        }
+      }
+
+      if (mediaPhotosEl) {
+        mediaPhotosEl.innerHTML = "";
+        if (
+          play.media &&
+          Array.isArray(play.media.photos) &&
+          play.media.photos.length
+        ) {
+          play.media.photos.forEach(function (src) {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = "Фотография спектакля " + play.title;
+            img.className = "play-modal-photo";
+            mediaPhotosEl.appendChild(img);
+          });
+        }
+      }
+
+      if (mediaVideoEl) {
+        mediaVideoEl.innerHTML = "";
+        if (play.media && play.media.video) {
+          const videoPlaceholder = document.createElement("div");
+          videoPlaceholder.className = "play-modal-video-placeholder";
+          videoPlaceholder.textContent =
+            "Видео спектакля скоро появится на сайте.";
+          mediaVideoEl.appendChild(videoPlaceholder);
+        }
+      }
+
+      if (ticketEl) {
+        if (play.ticketUrl) {
+          ticketEl.href = play.ticketUrl;
+          ticketEl.classList.remove("is-hidden");
+        } else {
+          ticketEl.removeAttribute("href");
+          ticketEl.classList.add("is-hidden");
+        }
+      }
+
+      modalEl.removeAttribute("hidden");
+      document.body.classList.add("has-modal-open");
+    }
+
+    function closePlayModal() {
+      if (!modalEl) return;
+      modalEl.setAttribute("hidden", "true");
+      document.body.classList.remove("has-modal-open");
+    }
+
+    function bindAfishaEvents() {
+      if (!stripEl) return;
+
+      // Кнопки «Подробнее о спектакле»
+      stripEl.addEventListener("click", function (event) {
+        const moreBtn = event.target.closest("[data-play-open]");
+        if (!moreBtn) {
+          return;
+        }
+        const playId = moreBtn.getAttribute("data-play-open");
+        if (playId) {
+          openPlayModal(playId);
+        }
+      });
+
+      // Стрелки киноряда
+      function scrollStrip(direction) {
+        if (!stripEl) return;
+        const firstCard = stripEl.querySelector(".afisha-card--strip");
+        const cardWidth = firstCard
+          ? firstCard.getBoundingClientRect().width
+          : 320;
+        const gap = 20;
+        const delta =
+          direction === "next" ? cardWidth + gap : -(cardWidth + gap);
+
+        stripEl.scrollBy({
+          left: delta,
+          behavior: "smooth"
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", function () {
+          scrollStrip("prev");
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", function () {
+          scrollStrip("next");
+        });
+      }
+
+      // Закрытие модалки
+      if (modalEl) {
+        modalCloseEls.forEach(function (btn) {
+          btn.addEventListener("click", closePlayModal);
+        });
+
+        modalEl.addEventListener("click", function (event) {
+          if (event.target === modalEl) {
+            closePlayModal();
+          }
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (
+            event.key === "Escape" &&
+            modalEl &&
+            !modalEl.hasAttribute("hidden")
+          ) {
+            closePlayModal();
+          }
+        });
+      }
+    }
+
+    // Загружаем данные спектаклей из JSON
+    fetch("assets/data/plays.json")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("HTTP " + response.status);
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        if (!data || !Array.isArray(data.plays)) {
+          return;
+        }
+        playsData = data.plays.slice();
+        renderAfishaStrip();
+        bindAfishaEvents();
+      })
+      .catch(function (error) {
+        console.error("Не удалось загрузить данные спектаклей:", error);
+      });
   }
 
   // ======================================

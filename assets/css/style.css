@@ -3642,9 +3642,149 @@ body.is-lightbox-open {
   background: rgba(122, 47, 180, 0.04);
 }
 
-/* ===========================
+/* ================================
+   Афиша: горизонтальный киноряд
+   ================================ */
+
+.afisha-strip-wrapper {
+  position: relative;
+  margin-top: 24px;
+}
+
+.afisha-strip {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 4px 4px 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.afisha-strip::-webkit-scrollbar {
+  height: 6px;
+}
+
+.afisha-strip::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.afisha-strip::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+}
+
+.afisha-card--strip {
+  flex: 0 0 auto;
+  min-width: 280px;
+  max-width: 320px;
+  scroll-snap-align: start;
+}
+
+.afisha-card-poster-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.afisha-card-poster-image {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.afisha-card-badge-wrap {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+}
+
+.afisha-card-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(8, 2, 26, 0.85);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.afisha-card-badge--premiere {
+  background: linear-gradient(135deg, #ffcf33, #ff7a00);
+}
+
+.afisha-card-badge--ny {
+  background: linear-gradient(135deg, #89c4ff, #4a1fb8);
+}
+
+.afisha-buttons--strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.afisha-more {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: var(--color-brand, #4a1fb8);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.afisha-card-note {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted, #666);
+}
+
+.afisha-hint {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--color-text-muted, #666);
+}
+
+/* Стрелки киноряда — только на десктопе */
+
+.afisha-strip-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(8, 2, 26, 0.85);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.afisha-strip-arrow--prev {
+  left: -18px;
+}
+
+.afisha-strip-arrow--next {
+  right: -18px;
+}
+
+@media (min-width: 768px) {
+  .afisha-strip-arrow {
+    display: inline-flex;
+  }
+}
+
+/* ================================
    Модальное окно спектакля
-   =========================== */
+   ================================ */
 
 .play-modal {
   position: fixed;
@@ -3652,842 +3792,161 @@ body.is-lightbox-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+  padding: 24px;
+  background: rgba(5, 2, 20, 0.75);
+  z-index: 2000;
 }
 
-.play-modal--open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.play-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(14, 3, 34, 0.75);
-  backdrop-filter: blur(8px);
+.play-modal[hidden] {
+  display: none;
 }
 
 .play-modal__dialog {
   position: relative;
-  max-width: 1080px;
+  max-width: 960px;
   width: 100%;
-  max-height: 90vh;
-  background: var(--surface-color, #fff);
-  border-radius: 28px;
+  max-height: 100%;
+  overflow: auto;
+  background: #fff;
+  border-radius: 24px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-  padding: 24px 28px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  padding: 24px 24px 20px;
 }
 
 .play-modal__close {
   position: absolute;
-  top: 12px;
+  top: 14px;
   right: 16px;
   border: none;
   background: transparent;
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
-  color: #7140d6;
 }
 
-.play-modal__layout {
+.play-modal__header {
+  margin-bottom: 16px;
+}
+
+.play-modal__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: #f2ecff;
+  color: #4a1fb8;
+  margin-bottom: 8px;
+}
+
+.play-modal__badge.is-hidden {
+  display: none;
+}
+
+.play-modal__title {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.play-modal__meta {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-muted, #666);
+}
+
+.play-modal__meta.is-hidden {
+  display: none;
+}
+
+.play-modal__tagline {
+  font-weight: 500;
+  margin: 12px 0 10px;
+}
+
+.play-modal__body {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
-  gap: 24px;
-  overflow: hidden;
-  max-height: calc(90vh - 56px);
-  margin-top: 12px;
+  gap: 18px;
+}
+
+@media (min-width: 768px) {
+  .play-modal__body {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+    align-items: flex-start;
+  }
+}
+
+.play-modal__description p {
+  margin: 0 0 10px;
+}
+
+.play-modal__why-list {
+  padding-left: 18px;
+  margin: 6px 0 0;
+}
+
+.play-modal__why.is-hidden {
+  display: none;
+}
+
+.play-modal__credits p {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.play-modal__cast-list {
+  padding-left: 18px;
+  margin: 4px 0 0;
+}
+
+.play-modal__cast.is-hidden {
+  display: none;
 }
 
 .play-modal__media {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.play-modal__media-main {
-  border-radius: 20px;
-  overflow: hidden;
-  background: #150625;
-  min-height: 220px;
-}
-
-.play-modal__video-placeholder {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #e7ddff;
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-.play-modal__media-main img,
-.play-modal__media-main iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.play-modal__media-strip {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-}
-
-.play-modal__thumb {
-  border: none;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  flex: 0 0 auto;
-  border-radius: 12px;
-  overflow: hidden;
-  opacity: 0.8;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.play-modal__thumb img {
-  display: block;
-  width: 88px;
-  height: 56px;
-  object-fit: cover;
-}
-
-.play-modal__thumb:hover,
-.play-modal__thumb:focus-visible {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.play-modal__content {
-  overflow-y: auto;
-  padding-right: 8px;
-}
-
-.play-modal__tagline {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #a383ff;
-  margin-bottom: 8px;
-}
-
-.play-modal__title {
-  font-size: 1.6rem;
-  margin-bottom: 12px;
-}
-
-.play-modal__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 12px;
-  font-size: 0.9rem;
-  color: #6d5e8f;
-  margin-bottom: 16px;
-}
-
-.play-modal__description p + p {
-  margin-top: 8px;
-}
-
-.play-modal__why-wrapper {
-  margin-top: 16px;
-}
-
-.play-modal__subtitle {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.play-modal__why {
-  list-style: disc;
-  padding-left: 18px;
-  margin: 0;
-}
-
-.play-modal__why li + li {
-  margin-top: 4px;
-}
-
-.play-modal__credits {
-  margin-top: 16px;
-  font-size: 0.95rem;
-}
-
-.play-modal__credits p + p {
-  margin-top: 4px;
-}
-
-.play-modal__actions {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
   gap: 8px;
 }
 
-/* Блокировка скролла фона, когда модалка открыта */
-body.no-scroll {
-  overflow: hidden;
-}
-
-/* Адаптация под мобильные устройства */
-@media (max-width: 768px) {
-  .play-modal__dialog {
-    max-height: 100vh;
-    border-radius: 0;
-  }
-
-  .play-modal__layout {
-    grid-template-columns: 1fr;
-    max-height: calc(100vh - 56px);
-  }
-
-  .play-modal__media-main {
-    min-height: 180px;
-  }
-}
-
-.docs-title {
-  font-weight: 500;
-}
-
-.docs-meta {
-  font-size: 0.85rem;
-  opacity: 0.7;
-  white-space: nowrap;
-}
-
-.docs-note {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
-
-/* ===========================
-   FAQ
-   =========================== */
-
-.section--faq {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.faq {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 12px 0;
-}
-
-.faq-question {
+.play-modal-photo {
   width: 100%;
-  background: none;
-  border: none;
-  padding: 12px 0;
-  text-align: left;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.faq-icon {
-  font-size: 20px;
-  transition: transform 0.2s ease;
-}
-
-.faq-question[aria-expanded="true"] .faq-icon {
-  transform: rotate(45deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease;
-  font-size: 15px;
-  color: #4a3c36;
-  line-height: 1.5;
-  padding-right: 32px;
-}
-
-.faq-answer.open {
-  padding-top: 6px;
-  max-height: 500px;
-}
-
-@media (max-width: 600px) {
-  .docs-link {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .docs-meta {
-    white-space: normal;
-  }
-}
-
-.doc-title {
-  font-size: 15px;
-  margin: 0 0 4px;
-}
-
-.doc-desc {
-  margin: 0;
-  font-size: 13px;
-  color: #666;
-}
-
-.section--contacts {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.contacts {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: flex-start;
-}
-
-.contacts__text {
-  margin: 0 0 1rem;
-}
-
-.contacts__list {
-  margin: 0 0 1.5rem;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.contacts__row {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 10px;
-  align-items: baseline;
-}
-
-.contacts__row dt {
-  font-weight: 600;
-}
-
-.contacts__row dd {
-  margin: 0;
-}
-
-.contacts__note {
-  display: inline-block;
-  margin-left: 6px;
-  font-size: 0.9rem;
-  opacity: 0.75;
-}
-
-.contacts__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 1rem 0;
-}
-
-.contacts__time {
-  font-size: 0.9rem;
-  opacity: 0.85;
-  margin: 0;
-}
-
-.contacts__map iframe {
-  width: 100%;
-  min-height: 320px;
-  border: 0;
-  border-radius: 1rem;
-}
-
-@media (max-width: 900px) {
-  .contacts {
-    grid-template-columns: 1fr;
-  }
-
-  .contacts__map iframe {
-    min-height: 260px;
-  }
-}
-
-@media (max-width: 600px) {
-  .section--contacts {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .contacts__actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
-
-h1, h2, h3 {
-  font-family: var(--font-heading);
-  margin-top: 0;
-}
-
-.site-footer {
-  display: none;
-}
-
-.footer {
-  background-color: var(--footer-bg, #050505);
-  color: var(--footer-text, #f5f5f5);
-  padding: 2rem 0;
-  font-size: 0.87rem;
-}
-
-.footer__inner {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.footer__brand {
-  max-width: 260px;
-}
-
-.footer__logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-.footer__mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background-color: var(--color-accent, #ff6a3d);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-
-.footer__name {
-  font-weight: 600;
-}
-
-.footer__copy {
-  opacity: 0.8;
-}
-
-.footer__nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.footer__link {
-  text-decoration: none;
-  opacity: 0.9;
-  color: inherit;
-}
-
-.footer__link:hover,
-.footer__link:focus-visible {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-.footer__link--small {
-  font-size: 0.8rem;
-}
-
-.footer__meta {
-  max-width: 260px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.footer__license,
-.footer__dev {
-  opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-  .footer {
-    padding-top: 1.8rem;
-    padding-bottom: 1.8rem;
-  }
-
-  .footer__inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ===========================
-   5. АНИМАЦИИ И МЕДИА-ЗАПРОСЫ
-   =========================== */
-
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-on-scroll {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .afisha-card-main {
-    grid-column: auto;
-  }
-
-  .ny-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .ny-sidebar {
-    justify-content: flex-start;
-  }
-
-  .ny-info-card {
-    max-width: 100%;
-  }
-
-  .ny-subsection-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .about-content {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .studio-card {
-    padding: 20px 22px;
-  }
-
-  .person-card,
-  .person-card--compact {
-    grid-template-columns: 64px minmax(0, 1fr);
-  }
-
-  .casting-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .casting-sidebar {
-    max-width: 100%;
-  }
-
-  .films-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .main-nav a {
-    margin-left: 0;
-    margin-right: 12px;
-  }
-
-  .hero-inner {
-    min-height: auto;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .hero-title {
-    font-size: 30px;
-  }
-
-  .hero-visual {
-    order: -1;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-  }
-
-  .section {
-    padding: 40px 0;
-  }
-
-  .two-column {
-    flex-direction: column;
-  }
-
-  .contacts-inner {
-    flex-direction: column-reverse;
-    gap: 24px;
-  }
-
-  .afisha-poster {
-    min-height: 200px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 600px) {
-  .films-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .awards-strip {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .top-banner {
-    padding: 6px 0;
-  }
-
-  .top-banner-inner {
-    padding: 4px 0;
-    font-size: 12px;
-  }
-
-  .site-header {
-    padding: 10px 0;
-  }
-
-  .hero {
-    padding-top: 32px;
-    padding-bottom: 32px;
-    min-height: 70vh;
-  }
-
-  .hero-title {
-    font-size: 24px;
-  }
-
-  .hero-desc {
-    font-size: 14px;
-  }
-
-  .floating-cta {
-    right: 14px;
-    bottom: 14px;
-    padding: 8px 14px;
-    font-size: 13px;
-  }
-
-  .contacts-quick-links {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .top-banner-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ===========================
-   ЕМОЗИКА: оставшиеся блоки (about / why / facts / gallery / docs / faq / contacts / footer)
-   =========================== */
-
-/* 1. О ТЕАТРЕ + ПОЧЕМУ ИМЕННО «ЭМОЦИКА» */
-
-.section-about {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background: #ffffff;
-}
-
-.section-about h2 {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  margin-bottom: 10px;
-  color: var(--color-brand-dark);
-}
-
-.section-about .section-subtitle {
-  max-width: 640px;
-  margin: 0 0 24px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-text-muted);
-}
-
-.about-intro p {
-  color: #3d2a3b;
-}
-
-.about-facts-list {
-  gap: 10px;
-}
-
-.about-fact {
-  padding: 12px 16px;
   border-radius: 16px;
-  background: rgba(122, 47, 180, 0.06);
-  border: 1px solid rgba(122, 47, 180, 0.16);
-  box-shadow: 0 14px 36px rgba(24, 1, 54, 0.16);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-brand-dark);
-}
-
-/* Почему именно «Эмоцика» */
-
-.section-why {
-  background: radial-gradient(
-    circle at top left,
-    rgba(213, 154, 255, 0.28),
-    #f9f4ff 45%,
-    #ffffff 100%
-  );
-}
-
-.section-why .section-title {
-  text-align: center;
-}
-
-.section-why .section-subtitle {
-  max-width: 700px;
-  margin: 0 auto 28px;
-  color: var(--color-text-muted);
-}
-
-.why-item {
-  padding: 18px 20px;
-  border-radius: 18px;
-  background: var(--color-surface);
-  border: 1px solid rgba(122, 47, 180, 0.14);
-  box-shadow: 0 16px 40px rgba(24, 1, 54, 0.16);
-}
-
-.why-title {
-  font-size: 16px;
-  margin: 0 0 6px;
-  color: var(--color-brand-dark);
-}
-
-
-/* 2. ЦИФРЫ И ФАКТЫ */
-
-.section-facts {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background: radial-gradient(
-    circle at top,
-    rgba(122, 47, 180, 0.12),
-    #f9f4ff 50%,
-    #ffffff 100%
-  );
-}
-
-.section-facts .section-title,
-.section-facts .section-intro {
-  text-align: center;
-}
-
-.facts-grid {
-  gap: 24px;
-}
-
-.fact-card {
-  border-radius: 20px;
-  background: var(--color-surface);
-  border: 1px solid rgba(122, 47, 180, 0.16);
-  box-shadow: 0 18px 42px rgba(24, 1, 54, 0.16);
-}
-
-.fact-number {
-  font-size: 32px;
-  margin: 0 0 6px;
-  color: var(--color-brand-dark);
-}
-
-.fact-label {
-  margin: 0 0 6px;
-  font-weight: 600;
-}
-
-
-/* 3. ГАЛЕРЕЯ */
-
-.section-gallery {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background: #ffffff;
-}
-
-.section-gallery .section-title,
-.section-gallery .section-subtitle {
-  text-align: center;
-}
-
-.gallery__item {
-  border-radius: 1.1rem;
-  overflow: hidden;
-  background: radial-gradient(
-    circle at top,
-    rgba(213, 154, 255, 0.2),
-    #1a0b33 80%
-  );
-  box-shadow: 0 16px 40px rgba(5, 0, 20, 0.35);
-}
-
-.gallery__image {
-  display: block;
-  width: 100%;
-  height: 220px;
   object-fit: cover;
+  display: block;
 }
 
-.gallery__caption {
-  padding: 0.8rem 1rem 1rem;
-  font-size: 0.9rem;
-  color: #f9f4ff;
+.play-modal-video-placeholder {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #f5f3ff;
+  font-size: 14px;
 }
 
-/* Видео-блок галереи */
+.play-modal__footer {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
 
-.gallery__video-item iframe {
+.play-modal__footer .btn {
+  min-width: 180px;
+}
+
+/* Утилита для скрытия элементов */
+
+.is-hidden {
+  display: none !important;
+}
+
+/* Блокируем скролл страницы, когда открыта модалка */
+
+body.has-modal-open {
+  overflow: hidden;
+}
+gallery__video-item iframe {
   border-radius: 1.1rem;
   box-shadow: 0 16px 40px rgba(5, 0, 20, 0.35);
 }

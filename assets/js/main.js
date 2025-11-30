@@ -1554,6 +1554,129 @@ function initVideoReviewsSection() {
 }
 
 // ======================================
+// Филиалы и площадки студии
+// ======================================
+
+async function loadBranchesData() {
+  try {
+    const response = await fetch("assets/data/branches.json");
+    if (!response.ok) return [];
+    const json = await response.json();
+    return Array.isArray(json.branches) ? json.branches : [];
+  } catch (e) {
+    console.error("Branches: failed to load data", e);
+    return [];
+  }
+}
+
+function createBranchCard(branch) {
+  const card = document.createElement("article");
+  card.className = "branch-card card-luxe";
+
+  const metro = document.createElement("div");
+  metro.className = "branch-metro-badge";
+  metro.textContent = branch.metro || "";
+  card.appendChild(metro);
+
+  const title = document.createElement("h3");
+  title.className = "branch-place";
+  title.textContent = branch.place || "";
+  card.appendChild(title);
+
+  const address = document.createElement("p");
+  address.className = "branch-address";
+  address.textContent = branch.address || "";
+  card.appendChild(address);
+
+  if (branch.phones && branch.phones.length) {
+    const phoneP = document.createElement("p");
+    phoneP.className = "branch-phones";
+
+    phoneP.innerHTML = branch.phones
+      .map(function (phone) {
+        const clean = phone.replace(/[^+\d]/g, "");
+        return '<a href="tel:' + clean + '">' + phone + "</a>";
+      })
+      .join(" · ");
+
+    card.appendChild(phoneP);
+  }
+
+  if (branch.isAdults) {
+    const tag = document.createElement("span");
+    tag.className = "branch-tag branch-tag--adults";
+    tag.textContent = "Группы для взрослых 18+";
+    card.appendChild(tag);
+  }
+
+  return card;
+}
+
+function applyBranchesFilter(branches, filter) {
+  if (filter === "adults") {
+    return branches.filter(function (b) {
+      return b.isAdults;
+    });
+  }
+  return branches;
+}
+
+function renderBranchesList(listEl, branches, filter) {
+  const filtered = applyBranchesFilter(branches, filter);
+  listEl.innerHTML = "";
+
+  if (!filtered.length) {
+    listEl.innerHTML =
+      '<p class="branches-empty">Скоро здесь появится список филиалов.</p>';
+    return;
+  }
+
+  filtered.forEach(function (branch) {
+    listEl.appendChild(createBranchCard(branch));
+  });
+}
+
+function initBranchesFilters(rootEl, branches) {
+  const filtersEl = rootEl.querySelector("[data-branches-filters]");
+  if (!filtersEl) return;
+
+  const buttons = filtersEl.querySelectorAll(".branches-filter");
+  if (!buttons.length) return;
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const filter = btn.getAttribute("data-filter") || "all";
+
+      buttons.forEach(function (b) {
+        b.classList.toggle("is-active", b === btn);
+      });
+
+      const listEl = rootEl.querySelector("[data-branches-list]");
+      if (listEl) {
+        renderBranchesList(listEl, branches, filter);
+      }
+    });
+  });
+}
+
+async function initBranchesSection() {
+  const sectionEl = document.querySelector("#branches");
+  if (!sectionEl) return;
+
+  const listEl = sectionEl.querySelector("[data-branches-list]");
+  if (!listEl) return;
+
+  const branches = await loadBranchesData();
+  if (!branches.length) return;
+
+  // первичный рендер "Все филиалы"
+  renderBranchesList(listEl, branches, "all");
+
+  // инициализируем фильтры
+  initBranchesFilters(sectionEl, branches);
+}
+
+// ======================================
 // Награды и фестивали — данные
 // ======================================
 
@@ -2035,6 +2158,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Видеоистории родителей
   initVideoReviewsSection();
+
+  // Филиалы и площадки
+  initBranchesSection();
 
   // Люди театра — загрузка JSON и рендер
   fetch("assets/data/people.json")

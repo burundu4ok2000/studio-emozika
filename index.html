@@ -1138,7 +1138,6 @@
       </div>
     </section>
 
-    <!-- СЕКЦИЯ: Награды и фестивали -->
     <section id="awards" class="section section-awards reveal-on-scroll">
       <div class="container">
         <div class="section-header">
@@ -1150,87 +1149,21 @@
           </p>
         </div>
 
-        <div class="awards-strip awards-strip--auto" aria-label="Награды и фестивали">
-          <div class="awards-strip-inner">
-            <!-- 1. Гран-при «На берегах Невы» -->
-            <article class="award-badge award-badge--grandprix">
-              <div class="award-badge-tags">
-                <span class="award-tag award-tag--grandprix">Гран-при</span>
-                <span class="award-tag">Спектакль</span>
-              </div>
-              <h3 class="award-badge-title">«На берегах Невы»</h3>
-              <p class="award-badge-text">
-                Международный конкурс-фестиваль, Санкт-Петербург.
-                Спектакль «Кошкин дом».
-              </p>
-            </article>
+        <!-- Витрина топ-наград (бегущая лента бейджей) -->
+        <div class="awards-strip awards-strip--auto" aria-label="Главные фестивальные награды">
+          <div class="awards-strip-inner" data-top-awards-root>
+            <!-- JS вставит сюда бейджи топ-наград -->
+          </div>
+        </div>
 
-            <!-- 2. Гран-при «Волшебная маска» -->
-            <article class="award-badge award-badge--grandprix">
-              <div class="award-badge-tags">
-                <span class="award-tag award-tag--grandprix">Гран-при</span>
-                <span class="award-tag">Спектакль</span>
-              </div>
-              <h3 class="award-badge-title">«Волшебная маска»</h3>
-              <p class="award-badge-text">
-                Международный конкурс-фестиваль, Санкт-Петербург.
-                Спектакль «Город Чудаков».
-              </p>
-            </article>
+        <!-- Карточки фестивалей -->
+        <div class="awards-festivals">
+          <h3 class="awards-festivals-title">
+            Фестивали последних лет
+          </h3>
 
-            <!-- 3. Лауреаты I степени «Сокровища Востока» -->
-            <article class="award-badge">
-              <div class="award-badge-tags">
-                <span class="award-tag">Лауреаты I степени</span>
-                <span class="award-tag">Спектакль</span>
-              </div>
-              <h3 class="award-badge-title">«Сокровища Востока»</h3>
-              <p class="award-badge-text">
-                Международный фестиваль, Казань. Спектакль «Кошкин дом».
-              </p>
-            </article>
-
-            <!-- 4. Лауреаты I степени «Славянские Сваяцтва» -->
-            <article class="award-badge">
-              <div class="award-badge-tags">
-                <span class="award-tag">Лауреаты I степени</span>
-                <span class="award-tag">Спектакль</span>
-              </div>
-              <h3 class="award-badge-title">«Славянские Сваяцтва»</h3>
-              <p class="award-badge-text">
-                Международный фестиваль, Минск. Спектакль «Кошкин дом».
-              </p>
-            </article>
-
-            <!-- 5. Гран-при «Династия» — фильмы -->
-            <article class="award-badge award-badge--grandprix">
-              <div class="award-badge-tags">
-                <span class="award-tag award-tag--grandprix">Гран-при</span>
-                <span class="award-tag">Фильм</span>
-              </div>
-              <h3 class="award-badge-title">«Династия» — «Твори добро»</h3>
-              <p class="award-badge-text">
-                VIII Международный фестиваль искусств «Династия», номинация «Дорогою добра».
-                Короткометражный фильм «Твори добро».
-              </p>
-            </article>
-
-            <!-- 6. Гран-при «Династия» — ещё один фильм -->
-            <article class="award-badge award-badge--grandprix">
-              <div class="award-badge-tags">
-                <span class="award-tag award-tag--grandprix">Гран-при</span>
-                <span class="award-tag">Фильм</span>
-              </div>
-              <h3 class="award-badge-title">«Династия» — «Особняк потерянных шагов»</h3>
-              <p class="award-badge-text">
-                VIII Международный фестиваль искусств «Династия», номинация «Петербургские тайны».
-                Короткометражный фильм «Особняк потерянных шагов».
-              </p>
-            </article>
-
-            <!-- ДЛЯ БЕСКОНЕЧНОЙ ЛЕНТЫ:
-                 при желании можно продублировать этот набор карточек ниже
-                 внутри awards-strip-inner, чтобы анимация была бесшовной -->
+          <div class="awards-festivals-grid" data-festivals-root>
+            <!-- JS вставит сюда карточки фестивалей -->
           </div>
         </div>
       </div>

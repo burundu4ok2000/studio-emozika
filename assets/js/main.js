@@ -2,6 +2,8 @@
 // 1. Базовая инициализация
 // ======================================
 
+const ABONEMENTS_DATA_URL = 'assets/data/abonements.json';
+
 document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion =
     window.matchMedia &&
@@ -1881,81 +1883,103 @@ function initBranchesSection(branches) {
 }
 
 // ======================================
-// Абонементы студии — рендер из JSON
+// Абонементы студии — рендер из JSON и CTA
 // ======================================
 
-function initAbonementsBlock(data) {
-  var section = document.querySelector("#abonements");
-  if (!section) return;
+function createAbonementCard(abonement) {
+  const article = document.createElement('article');
+  article.className = 'abonement-card';
 
-  var grid = section.querySelector("[data-abonements-grid]");
-  if (!grid) return;
+  if (abonement.highlight || abonement.isHero) {
+    article.classList.add('abonement-card--highlight');
+  }
 
-  var abonements = Array.isArray(data) ? data : [];
-  if (!abonements.length) {
-    grid.innerHTML = "";
+  article.dataset.abonementId = abonement.id;
+
+  article.innerHTML = `
+    ${abonement.tagLine ? `<p class="abonement-tagline">${abonement.tagLine}</p>` : ''}
+    <h3 class="abonement-name">${abonement.name}</h3>
+    ${abonement.age ? `<p class="abonement-age">${abonement.age}</p>` : ''}
+    ${abonement.description ? `<p class="abonement-description">${abonement.description}</p>` : ''}
+    ${
+      Array.isArray(abonement.bullets) && abonement.bullets.length
+        ? `<ul class="abonement-list">
+            ${abonement.bullets.map((item) => `<li>${item}</li>`).join('')}
+          </ul>`
+        : ''
+    }
+    <div class="abonement-bottom">
+      ${abonement.price ? `<p class="abonement-price">${abonement.price}</p>` : ''}
+      ${abonement.note ? `<p class="abonement-note">${abonement.note}</p>` : ''}
+    </div>
+    ${abonement.badge ? `<span class="abonement-badge">${abonement.badge}</span>` : ''}
+  `;
+
+  if (abonement.isHero) {
+    article.classList.add('abonement-card--hero');
+    article.setAttribute(
+      'aria-label',
+      `${abonement.name}. Чаще всего родители выбирают именно этот формат.`
+    );
+  }
+
+  return article;
+}
+
+function renderAbonementsGrid(container, abonements) {
+  container.innerHTML = '';
+
+  abonements.forEach((item) => {
+    const card = createAbonementCard(item);
+    container.appendChild(card);
+  });
+}
+
+function loadAbonementsData() {
+  return fetch(ABONEMENTS_DATA_URL)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Не удалось загрузить данные абонементов');
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      console.error('[Abonements] Ошибка загрузки данных:', error);
+      return [];
+    });
+}
+
+function initAbonementsSection() {
+  const gridRoot = document.querySelector('[data-abonements-root]');
+
+  if (!gridRoot) {
     return;
   }
 
-  grid.innerHTML = "";
-
-  abonements.forEach(function (item) {
-    var isHero = item.hero === true;
-
-    var card = document.createElement("article");
-    card.className = "abonement-card card card-hover";
-
-    if (isHero) {
-      card.classList.add("abonement-card--hero");
+  // Рендер карточек из JSON
+  loadAbonementsData().then((abonements) => {
+    if (!Array.isArray(abonements) || abonements.length === 0) {
+      return;
     }
 
-    var heroLabelHtml =
-      isHero && item.heroLabel
-        ? '<span class="abonement-hero-label">' +
-          item.heroLabel +
-          "</span>"
-        : "";
-
-    var subtitleHtml = item.subtitle
-      ? '<p class="abonement-subtitle">' + item.subtitle + "</p>"
-      : "";
-
-    var noteHtml = item.note
-      ? '<p class="abonement-note">' + item.note + "</p>"
-      : "";
-
-    card.innerHTML =
-      '<div class="abonement-header">' +
-      heroLabelHtml +
-      '<h3 class="abonement-title">' +
-      item.title +
-      "</h3>" +
-      subtitleHtml +
-      "</div>" +
-      '<dl class="abonement-meta">' +
-      '<div class="abonement-meta-row">' +
-      "<dt>Формат:</dt>" +
-      "<dd>" +
-      item.classes +
-      "</dd>" +
-      "</div>" +
-      '<div class="abonement-meta-row">' +
-      "<dt>Длительность:</dt>" +
-      "<dd>" +
-      item.duration +
-      "</dd>" +
-      "</div>" +
-      "</dl>" +
-      '<p class="abonement-bestfor">' +
-      item.bestFor +
-      "</p>" +
-      '<p class="abonement-description">' +
-      item.description +
-      "</p>" +
-      noteHtml;
-
-    grid.appendChild(card);
+    renderAbonementsGrid(gridRoot, abonements);
   });
+
+  // Главный CTA: прокрутка к контактам
+  const contactsSection = document.getElementById('contacts');
+  const ctaButtons = document.querySelectorAll('[data-scroll-to="contacts"]');
+
+  if (contactsSection && ctaButtons.length) {
+    ctaButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        contactsSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+  }
 }
 
 // ======================================
@@ -2474,18 +2498,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Не удалось загрузить данные людей театра:", error);
     });
 
-  // Абонементы студии — загрузка JSON и рендер
-  fetch("assets/data/abonements.json")
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error("HTTP " + response.status);
-      }
-      return response.json();
-    })
-    .then(function (data) {
-      initAbonementsBlock(data);
-    })
-    .catch(function (error) {
-      console.error("Не удалось загрузить данные абонементов:", error);
-    });
+  // Абонементы студии — рендер из JSON + CTA
+  initAbonementsSection();
 });

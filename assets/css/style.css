@@ -945,12 +945,17 @@ img {
   background: #f7f4ff;
 }
 
-.section-abonements .section-title {
-  text-align: left;
+.section-abonements .section-header {
+  max-width: 760px;
+  margin-bottom: 20px;
+}
+
+.section-abonements h2 {
+  margin-bottom: 6px;
 }
 
 .section-abonements .section-intro {
-  max-width: 640px;
+  max-width: 720px;
   margin-left: 0;
   margin-right: 0;
 }
@@ -975,149 +980,226 @@ img {
 
 .abonement-card {
   position: relative;
-  padding: 20px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 18px 18px 16px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 26px rgba(8, 2, 26, 0.06);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+
+.abonement-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(8, 2, 26, 0.1);
+}
+
+.abonement-card--highlight {
+  border-color: rgba(122, 47, 180, 0.45);
+  box-shadow:
+    0 0 0 2px rgba(122, 47, 180, 0.16),
+    0 18px 46px rgba(122, 47, 180, 0.2);
 }
 
 .abonement-card--hero {
-  border-color: #6b4cff;
-  box-shadow: 0 16px 40px rgba(29, 19, 92, 0.24);
-  transform: translateY(-2px);
+  border-color: rgba(122, 47, 180, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(122, 47, 180, 0.2),
+    0 20px 48px rgba(29, 19, 92, 0.24);
 }
 
-.abonement-card--hero:hover {
-  transform: translateY(-4px);
-}
-
-.abonement-header {
-  margin-bottom: 10px;
-}
-
-.abonement-hero-label {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 6px;
-  padding: 4px 9px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  background: rgba(107, 76, 255, 0.1);
-  color: #4c34b5;
-}
-
-.abonement-title {
-  margin: 0 0 4px;
-  font-size: 16px;
-  line-height: 1.4;
-}
-
-.abonement-subtitle {
+.abonement-tagline {
   margin: 0;
   font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
   color: rgba(0, 0, 0, 0.55);
 }
 
-.abonement-meta {
-  margin: 0 0 10px;
-}
-
-.abonement-meta-row {
-  display: flex;
-  gap: 4px;
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.abonement-meta-row dt {
-  flex: 0 0 auto;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.68);
-}
-
-.abonement-meta-row dd {
+.abonement-name {
   margin: 0;
-  flex: 1 1 auto;
+  font-size: 18px;
+  line-height: 1.35;
 }
 
-.abonement-bestfor {
-  margin: 0 0 8px;
-  font-size: 13px;
-  line-height: 1.5;
-  font-weight: 500;
+.abonement-age {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .abonement-description {
-  margin: 0 0 10px;
+  margin: 4px 0;
   font-size: 13px;
   line-height: 1.5;
   color: var(--color-text-muted);
 }
 
+.abonement-list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.abonement-list li {
+  margin-bottom: 4px;
+}
+
+.abonement-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.abonement-price {
+  margin: 0;
+  font-weight: 600;
+  color: #4b2c25;
+}
+
 .abonement-note {
   margin: 0;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.06);
   font-size: 12px;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.65);
 }
 
-.abonements-footer {
-  margin-top: 24px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(0, 0, 0, 0.04);
+.abonement-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(122, 47, 180, 0.1);
+  color: #4a1fb8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Абонементы — блок с главным CTA */
+
+.section-abonements-cta {
+  margin-top: 2.5rem;
+  padding: 1.75rem 1.5rem;
+  border-radius: 1.25rem;
+  background: var(--section-abonements-cta-bg, rgba(20, 8, 40, 0.98));
+  color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
+  gap: 1.25rem;
 }
 
-.abonements-note {
+.section-abonements-cta-text {
+  max-width: 480px;
+}
+
+.section-abonements-cta-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.section-abonements-cta-subtitle {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
-.abonements-cta {
+.section-abonements-cta-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
+
+.section-abonements-cta-main {
+  padding-inline: 1.75rem;
+}
+
+.section-abonements-cta-secondary {
+  padding-inline: 1.25rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: inherit;
+}
+
+.section-abonements-cta-secondary:hover,
+.section-abonements-cta-secondary:focus-visible {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.section-abonements-cta-phone {
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  opacity: 0.9;
+}
+
+.section-abonements-cta-phone:hover,
+.section-abonements-cta-phone:focus-visible {
+  opacity: 1;
+}
+
+.abonements-cta-footnote {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted-foreground, rgba(255, 255, 255, 0.75));
+}
+
+.abonements-cta-footnote strong {
+  font-weight: 600;
+}
+
+/* Десктопная компоновка CTA */
 
 @media (min-width: 768px) {
-  .abonements-footer {
+  .section-abonements-cta {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
   }
 
-  .abonements-note {
+  .section-abonements-cta-text {
     max-width: 420px;
+  }
+
+  .section-abonements-cta-actions {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .section-abonements-cta-phone {
+    margin-left: 0.5rem;
   }
 }
 
-/* уменьшение анимаций при prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .abonement-card {
     transition: none;
     transform: none;
   }
-}
-
-/* уменьшение анимаций при prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .abonement-card,
-  .card-hover {
-    transition: none;
-  }
 
   .abonement-card--hero,
-  .card-hover:hover {
+  .abonement-card:hover {
     transform: none;
+    box-shadow: 0 10px 26px rgba(8, 2, 26, 0.06);
   }
 }
 

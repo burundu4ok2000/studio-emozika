@@ -1681,6 +1681,14 @@ function renderBranchesList(rootEl, branches, filter, highlightMetro) {
       var phonesList = document.createElement("div");
       phonesList.className = "branch-phones";
 
+      var phonesLabel = document.createElement("span");
+      phonesLabel.className = "branch-phones-label";
+      phonesLabel.textContent =
+        branch.phones.length > 1
+          ? "Телефоны администратора:"
+          : "Телефон администратора:";
+      phonesList.appendChild(phonesLabel);
+
       branch.phones.forEach(function (phone) {
         var link = document.createElement("a");
         link.className = "branch-phone-link";

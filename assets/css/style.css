@@ -5319,6 +5319,11 @@ gallery__video-item iframe {
   margin-bottom: 8px;
 }
 
+.section-branches .section-kicker {
+  text-align: left;
+  margin-bottom: 6px;
+}
+
 /* Верхний блок: текст + карта */
 
 .branches-top-layout {
@@ -5413,6 +5418,13 @@ gallery__video-item iframe {
   font-size: 13px;
   line-height: 1.4;
   cursor: pointer;
+}
+
+.branches-my-metro-hint {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
 }
 
 /* Сетка карточек филиалов */
@@ -5516,8 +5528,15 @@ gallery__video-item iframe {
 .branch-phones {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
+  gap: 4px 10px;
+  margin-top: 8px;
+  align-items: baseline;
+}
+
+.branch-phones-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
 .branch-phone-link {
@@ -5546,6 +5565,20 @@ gallery__video-item iframe {
   margin-top: 16px;
   font-size: 13px;
   color: var(--color-text-muted);
+}
+
+.branches-note-link {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-brand-dark);
+  text-decoration: none;
+}
+
+.branches-note-link:hover,
+.branches-note-link:focus-visible {
+  text-decoration: underline;
 }
 
 .branches-empty {

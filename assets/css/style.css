@@ -5230,11 +5230,80 @@ gallery__video-item iframe {
 
 .section-branches .branches-header {
   max-width: 640px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .section-branches .section-title {
   margin-bottom: 8px;
+}
+
+/* Верхний блок: текст + карта */
+
+.branches-top-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.branches-top-main {
+  flex: 2 1 0;
+}
+
+.branches-map {
+  flex: 1.2 1 0;
+  border-radius: 24px;
+  background: radial-gradient(circle at 0 0, #ffe9ff 0, #fff6ff 40%, #ffffff 70%);
+  padding: 12px 14px 14px;
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.branches-map-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.branches-map-legend {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.branches-map-legend-title {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.branches-area-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.branches-area-item {
+  position: relative;
+  padding-left: 16px;
+  font-size: 12px;
+}
+
+.branches-area-item::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7a2fb4, #ff6ac1);
+  transform: translateY(-50%);
 }
 
 .branches-preferences {
@@ -5264,6 +5333,8 @@ gallery__video-item iframe {
   cursor: pointer;
 }
 
+/* Сетка карточек филиалов */
+
 .branches-list {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -5272,6 +5343,11 @@ gallery__video-item iframe {
 }
 
 @media (min-width: 768px) {
+  .branches-top-layout {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
   .branches-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -5341,6 +5417,13 @@ gallery__video-item iframe {
 .branch-city {
   font-size: 12px;
   color: var(--color-text-muted);
+}
+
+.branch-area {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(8, 2, 26, 0.04);
 }
 
 .branch-comment {

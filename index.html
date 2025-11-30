@@ -1406,43 +1406,61 @@
 
     <section id="branches" class="section section-branches reveal-on-scroll">
       <div class="container">
-        <header class="branches-header">
-          <h2 class="section-title">Филиалы и площадки</h2>
-          <p class="section-intro">
-            Занятия студии «Эмоция» и театра «Эмоцика» проходят в разных районах
-            Петербурга и в Кудрово. Выберите удобную площадку и уточните расписание у администратора.
-          </p>
-        </header>
+        <div class="branches-top-layout">
+          <div class="branches-top-main">
+            <header class="branches-header">
+              <h2 class="section-title">Филиалы и площадки</h2>
+              <p class="section-intro">
+                Занятия студии «Эмоция» и театра «Эмоцика» проходят в разных районах
+                Петербурга и в Кудрово. Выберите удобную площадку и уточните расписание у администратора.
+              </p>
+            </header>
 
-        <div class="branches-preferences">
-          <label class="branches-my-metro">
-            <span class="branches-my-metro-label">Моя станция метро:</span>
-            <select
-              class="branches-my-metro-select"
-              name="my-metro"
-              data-branch-my-metro
-            >
-              <option value="">Не выбрано</option>
-              <!-- варианты метро будут добавлены через JS -->
-            </select>
-          </label>
-        </div>
+            <div class="branches-preferences">
+              <label class="branches-my-metro">
+                <span class="branches-my-metro-label">Моя станция метро:</span>
+                <select
+                  class="branches-my-metro-select"
+                  name="my-metro"
+                  data-branch-my-metro
+                >
+                  <option value="">Не выбрано</option>
+                  <!-- варианты метро будут добавлены через JS -->
+                </select>
+              </label>
+            </div>
 
-        <div class="branches-filters" aria-label="Фильтр по филиалам">
-          <button
-            type="button"
-            class="branches-filter is-active"
-            data-branch-filter="all"
-          >
-            Все филиалы
-          </button>
-          <button
-            type="button"
-            class="branches-filter"
-            data-branch-filter="adults"
-          >
-            Группы 18+
-          </button>
+            <div class="branches-filters" aria-label="Фильтр по филиалам">
+              <button
+                type="button"
+                class="branches-filter is-active"
+                data-branch-filter="all"
+              >
+                Все филиалы
+              </button>
+              <button
+                type="button"
+                class="branches-filter"
+                data-branch-filter="adults"
+              >
+                Группы 18+
+              </button>
+            </div>
+          </div>
+
+          <figure class="branches-map">
+            <img
+              src="assets/img/branches-map.svg"
+              alt="Карта с отмеченными районами, где проходят занятия студии «Эмоция»"
+              class="branches-map-image"
+            />
+            <figcaption class="branches-map-legend">
+              <p class="branches-map-legend-title">Районы, где идут занятия:</p>
+              <ul class="branches-area-list" data-branches-areas>
+                <!-- сюда JS подставит список районов -->
+              </ul>
+            </figcaption>
+          </figure>
         </div>
 
         <div class="branches-list" data-branches-list></div>

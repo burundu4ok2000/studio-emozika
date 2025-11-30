@@ -1554,7 +1554,7 @@ function initVideoReviewsSection() {
 }
 
 // ======================================
-// Филиалы и площадки — сортировка, фильтр, подсветка метро
+// Филиалы и площадки — сортировка, фильтр, подсветка метро, районы
 // ======================================
 
 function sortBranches(branches) {
@@ -1648,7 +1648,7 @@ function renderBranchesList(rootEl, branches, filter, highlightMetro) {
     address.className = "branch-address";
     address.textContent = branch.address || "";
 
-    // Город / доп. мета
+    // Город / район
     var metaRow = document.createElement("div");
     metaRow.className = "branch-meta";
 
@@ -1657,6 +1657,13 @@ function renderBranchesList(rootEl, branches, filter, highlightMetro) {
       citySpan.className = "branch-city";
       citySpan.textContent = branch.city;
       metaRow.appendChild(citySpan);
+    }
+
+    if (branch.area) {
+      var areaSpan = document.createElement("span");
+      areaSpan.className = "branch-area";
+      areaSpan.textContent = branch.area;
+      metaRow.appendChild(areaSpan);
     }
 
     // Комментарий (если есть)
@@ -1723,6 +1730,48 @@ function getUniqueMetros(branches) {
   return metros;
 }
 
+function getUniqueAreas(branches) {
+  var seen = {};
+  var areas = [];
+
+  if (!Array.isArray(branches)) return areas;
+
+  branches.forEach(function (branch) {
+    var area = branch.area || "";
+    if (!area) return;
+    if (seen[area]) return;
+    seen[area] = true;
+    areas.push(area);
+  });
+
+  areas.sort(function (a, b) {
+    return a.localeCompare(b, "ru");
+  });
+
+  return areas;
+}
+
+function renderBranchesAreas(rootEl, areas) {
+  if (!rootEl) return;
+
+  rootEl.innerHTML = "";
+
+  if (!Array.isArray(areas) || !areas.length) {
+    var fallback = document.createElement("li");
+    fallback.className = "branches-area-item";
+    fallback.textContent = "Санкт-Петербург и Кудрово";
+    rootEl.appendChild(fallback);
+    return;
+  }
+
+  areas.forEach(function (area) {
+    var li = document.createElement("li");
+    li.className = "branches-area-item";
+    li.textContent = area;
+    rootEl.appendChild(li);
+  });
+}
+
 function getMetroFromQuery() {
   if (!window.location || !window.location.search) return "";
 
@@ -1742,6 +1791,7 @@ function initBranchesSection(branches) {
   var listRoot = section.querySelector("[data-branches-list]");
   var filterButtons = section.querySelectorAll("[data-branch-filter]");
   var myMetroSelect = section.querySelector("[data-branch-my-metro]");
+  var areasRoot = section.querySelector("[data-branches-areas]");
 
   if (!listRoot) return;
 
@@ -1787,7 +1837,6 @@ function initBranchesSection(branches) {
 
   // Наполняем селект «Моя станция метро» вариантами
   if (myMetroSelect) {
-    // очищаем, оставляем только первый option "Не выбрано"
     myMetroSelect.innerHTML = "";
     var placeholder = document.createElement("option");
     placeholder.value = "";
@@ -1802,7 +1851,6 @@ function initBranchesSection(branches) {
       myMetroSelect.appendChild(option);
     });
 
-    // если в URL было метро — заранее проставим
     if (highlightMetro) {
       myMetroSelect.value = highlightMetro;
     }
@@ -1811,6 +1859,12 @@ function initBranchesSection(branches) {
       var value = myMetroSelect.value || "";
       setHighlightMetro(value);
     });
+  }
+
+  // Наполняем легенду районов у карты
+  if (areasRoot) {
+    var areas = getUniqueAreas(sorted);
+    renderBranchesAreas(areasRoot, areas);
   }
 
   if (filterButtons && filterButtons.length) {

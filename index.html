@@ -1395,31 +1395,36 @@
 
     <section id="branches" class="section section-branches reveal-on-scroll">
       <div class="container">
-        <h2>Филиалы и площадки</h2>
+        <header class="branches-header">
+          <h2 class="section-title">Филиалы и площадки</h2>
+          <p class="section-intro">
+            Занятия студии «Эмоция» и театра «Эмоцика» проходят в разных районах
+            Петербурга и в Кудрово. Выберите удобную площадку и уточните расписание у администратора.
+          </p>
+        </header>
 
-        <p class="section-intro">
-          Занятия проходят в разных районах города — выбирайте площадку,
-          до которой удобно добираться именно вам.
-        </p>
-
-        <div class="branches-layout">
-          <div class="branches-filters" data-branches-filters>
-            <button type="button" class="branches-filter is-active" data-filter="all">
-              Все филиалы
-            </button>
-            <button type="button" class="branches-filter" data-filter="adults">
-              Группы для взрослых 18+
-            </button>
-          </div>
-
-          <div class="branches-list" data-branches-list>
-            <!-- сюда JS подставит карточки филиалов -->
-          </div>
+        <div class="branches-filters" aria-label="Фильтр по филиалам">
+          <button
+            type="button"
+            class="branches-filter is-active"
+            data-branch-filter="all"
+          >
+            Все филиалы
+          </button>
+          <button
+            type="button"
+            class="branches-filter"
+            data-branch-filter="adults"
+          >
+            Группы 18+
+          </button>
         </div>
 
+        <div class="branches-list" data-branches-list></div>
+
         <p class="branches-note">
-          Актуальное расписание и наличие мест — по телефону студии
-          или в ваших родительских чатах.
+          Полный список филиалов и набор в группы уточняйте у администратора —
+          расписание может меняться в течение года.
         </p>
       </div>
     </section>

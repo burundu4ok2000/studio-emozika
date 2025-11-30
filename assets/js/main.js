@@ -1634,126 +1634,167 @@ function initVideoReviewsSection() {
 }
 
 // ======================================
-// Филиалы и площадки студии
+// Филиалы и площадки — сортировка и фильтр
 // ======================================
 
-async function loadBranchesData() {
-  try {
-    const response = await fetch("assets/data/branches.json");
-    if (!response.ok) return [];
-    const json = await response.json();
-    return Array.isArray(json.branches) ? json.branches : [];
-  } catch (e) {
-    console.error("Branches: failed to load data", e);
-    return [];
-  }
+function sortBranches(branches) {
+  if (!Array.isArray(branches)) return [];
+
+  return branches.slice().sort(function (a, b) {
+    if (a.isAdults && !b.isAdults) return -1;
+    if (!a.isAdults && b.isAdults) return 1;
+
+    var metroA = (a.metro || "").toLowerCase();
+    var metroB = (b.metro || "").toLowerCase();
+    if (metroA < metroB) return -1;
+    if (metroA > metroB) return 1;
+
+    var cityA = (a.city || "").toLowerCase();
+    var cityB = (b.city || "").toLowerCase();
+    if (cityA < cityB) return -1;
+    if (cityA > cityB) return 1;
+
+    var placeA = (a.place || "").toLowerCase();
+    var placeB = (b.place || "").toLowerCase();
+    if (placeA < placeB) return -1;
+    if (placeA > placeB) return 1;
+
+    return 0;
+  });
 }
 
-function createBranchCard(branch) {
-  const card = document.createElement("article");
-  card.className = "branch-card card-luxe";
+function renderBranchesList(rootEl, branches, filter) {
+  if (!rootEl) return;
 
-  const metro = document.createElement("div");
-  metro.className = "branch-metro-badge";
-  metro.textContent = branch.metro || "";
-  card.appendChild(metro);
+  rootEl.innerHTML = "";
 
-  const title = document.createElement("h3");
-  title.className = "branch-place";
-  title.textContent = branch.place || "";
-  card.appendChild(title);
+  var filtered = Array.isArray(branches) ? branches.slice() : [];
 
-  const address = document.createElement("p");
-  address.className = "branch-address";
-  address.textContent = branch.address || "";
-  card.appendChild(address);
-
-  if (branch.phones && branch.phones.length) {
-    const phoneP = document.createElement("p");
-    phoneP.className = "branch-phones";
-
-    phoneP.innerHTML = branch.phones
-      .map(function (phone) {
-        const clean = phone.replace(/[^+\d]/g, "");
-        return '<a href="tel:' + clean + '">' + phone + "</a>";
-      })
-      .join(" · ");
-
-    card.appendChild(phoneP);
-  }
-
-  if (branch.isAdults) {
-    const tag = document.createElement("span");
-    tag.className = "branch-tag branch-tag--adults";
-    tag.textContent = "Группы для взрослых 18+";
-    card.appendChild(tag);
-  }
-
-  return card;
-}
-
-function applyBranchesFilter(branches, filter) {
   if (filter === "adults") {
-    return branches.filter(function (b) {
-      return b.isAdults;
+    filtered = filtered.filter(function (branch) {
+      return branch.isAdults;
     });
   }
-  return branches;
-}
-
-function renderBranchesList(listEl, branches, filter) {
-  const filtered = applyBranchesFilter(branches, filter);
-  listEl.innerHTML = "";
 
   if (!filtered.length) {
-    listEl.innerHTML =
-      '<p class="branches-empty">Скоро здесь появится список филиалов.</p>';
+    var empty = document.createElement("p");
+    empty.className = "branches-empty";
+    empty.textContent =
+      filter === "adults"
+        ? "Сейчас группы для взрослых проходят только на части площадок. Уточните расписание у администратора студии."
+        : "Филиалы временно недоступны.";
+    rootEl.appendChild(empty);
     return;
   }
 
   filtered.forEach(function (branch) {
-    listEl.appendChild(createBranchCard(branch));
+    var card = document.createElement("article");
+    card.className =
+      "branch-card card-hover" +
+      (branch.isAdults ? " branch-card--adults" : "");
+
+    var topRow = document.createElement("div");
+    topRow.className = "branch-card-top";
+
+    var metroBadge = document.createElement("span");
+    metroBadge.className = "branch-metro";
+    metroBadge.textContent = branch.metro || "";
+
+    var placeTitle = document.createElement("h3");
+    placeTitle.className = "branch-place";
+    placeTitle.textContent = branch.place || "";
+
+    topRow.appendChild(metroBadge);
+    topRow.appendChild(placeTitle);
+
+    var address = document.createElement("p");
+    address.className = "branch-address";
+    address.textContent = branch.address || "";
+
+    var metaRow = document.createElement("div");
+    metaRow.className = "branch-meta";
+
+    if (branch.city) {
+      var citySpan = document.createElement("span");
+      citySpan.className = "branch-city";
+      citySpan.textContent = branch.city;
+      metaRow.appendChild(citySpan);
+    }
+
+    var comment = null;
+    if (branch.comment) {
+      comment = document.createElement("p");
+      comment.className = "branch-comment";
+      comment.textContent = branch.comment;
+    }
+
+    var phonesList = null;
+    if (branch.phones && branch.phones.length) {
+      phonesList = document.createElement("div");
+      phonesList.className = "branch-phones";
+
+      branch.phones.forEach(function (phone) {
+        var link = document.createElement("a");
+        link.className = "branch-phone-link";
+        link.href = "tel:" + phone.replace(/\s+/g, "");
+        link.textContent = phone;
+        phonesList.appendChild(link);
+      });
+    }
+
+    card.appendChild(topRow);
+    card.appendChild(address);
+    if (metaRow.childNodes.length) {
+      card.appendChild(metaRow);
+    }
+    if (comment) {
+      card.appendChild(comment);
+    }
+    if (phonesList) {
+      card.appendChild(phonesList);
+    }
+    if (branch.isAdults) {
+      var badge = document.createElement("span");
+      badge.className = "branch-adults-badge";
+      badge.textContent = "Группы 18+";
+      card.appendChild(badge);
+    }
+
+    rootEl.appendChild(card);
   });
 }
 
-function initBranchesFilters(rootEl, branches) {
-  const filtersEl = rootEl.querySelector("[data-branches-filters]");
-  if (!filtersEl) return;
+function initBranchesSection(branches) {
+  var section = document.querySelector("#branches");
+  if (!section) return;
 
-  const buttons = filtersEl.querySelectorAll(".branches-filter");
-  if (!buttons.length) return;
+  var listRoot = section.querySelector("[data-branches-list]");
+  var filterButtons = section.querySelectorAll("[data-branch-filter]");
 
-  buttons.forEach(function (btn) {
+  if (!listRoot || !filterButtons.length) return;
+
+  var sorted = sortBranches(branches);
+  var activeFilter = "all";
+
+  function setActiveFilter(value) {
+    activeFilter = value;
+
+    filterButtons.forEach(function (btn) {
+      var btnFilter = btn.getAttribute("data-branch-filter") || "all";
+      btn.classList.toggle("is-active", btnFilter === activeFilter);
+    });
+
+    renderBranchesList(listRoot, sorted, activeFilter);
+  }
+
+  filterButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
-      const filter = btn.getAttribute("data-filter") || "all";
-
-      buttons.forEach(function (b) {
-        b.classList.toggle("is-active", b === btn);
-      });
-
-      const listEl = rootEl.querySelector("[data-branches-list]");
-      if (listEl) {
-        renderBranchesList(listEl, branches, filter);
-      }
+      var value = btn.getAttribute("data-branch-filter") || "all";
+      setActiveFilter(value);
     });
   });
-}
 
-async function initBranchesSection() {
-  const sectionEl = document.querySelector("#branches");
-  if (!sectionEl) return;
-
-  const listEl = sectionEl.querySelector("[data-branches-list]");
-  if (!listEl) return;
-
-  const branches = await loadBranchesData();
-  if (!branches.length) return;
-
-  // первичный рендер "Все филиалы"
-  renderBranchesList(listEl, branches, "all");
-
-  // инициализируем фильтры
-  initBranchesFilters(sectionEl, branches);
+  setActiveFilter(activeFilter);
 }
 
 // ======================================
@@ -2239,8 +2280,23 @@ document.addEventListener("DOMContentLoaded", function () {
   // Видеоистории родителей
   initVideoReviewsSection();
 
-  // Филиалы и площадки
-  initBranchesSection();
+  // Загрузка филиалов из JSON и инициализация секции
+  fetch("assets/data/branches.json")
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+      return response.json();
+    })
+    .then(function (json) {
+      var branches = Array.isArray(json) ? json : json.branches || [];
+      if (branches.length) {
+        initBranchesSection(branches);
+      }
+    })
+    .catch(function (error) {
+      console.error("Не удалось загрузить филиалы:", error);
+    });
 
   // Люди театра — загрузка JSON и рендер
   fetch("assets/data/people.json")

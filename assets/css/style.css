@@ -3829,14 +3829,16 @@ body.is-lightbox-open {
   margin: 0 auto;
 }
 
-.people-filters {
+.people-filters,
+.branches-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 20px;
 }
 
-.people-filter {
+.people-filter,
+.branches-filter {
   border-radius: 999px;
   border: 1px solid rgba(122, 47, 180, 0.25);
   background: rgba(255, 255, 255, 0.9);
@@ -3852,14 +3854,16 @@ body.is-lightbox-open {
     border-color 0.15s ease-out;
 }
 
-.people-filter.is-active {
+.people-filter.is-active,
+.branches-filter.is-active {
   background: linear-gradient(135deg, #7a2fb4, #ff6ac1);
   color: #ffffff;
   border-color: transparent;
   box-shadow: 0 12px 30px rgba(122, 47, 180, 0.5);
 }
 
-.people-filter:focus-visible {
+.people-filter:focus-visible,
+.branches-filter:focus-visible {
   outline: 2px solid #ffb6ff;
   outline-offset: 2px;
 }
@@ -5163,118 +5167,138 @@ gallery__video-item iframe {
   margin-bottom: 0;
 }
 
-/* ===== ФИЛИАЛЫ / ПЛОЩАДКИ ===== */
+/* ===========================
+   Филиалы и площадки
+   =========================== */
 
 .section-branches {
-  background: #fff;
+  background: var(--color-bg);
 }
 
-.section-branches .section-intro {
+.section-branches .branches-header {
   max-width: 640px;
-  margin: 0 auto 28px;
+  margin-bottom: 20px;
 }
 
-.branches-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.branches-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.branches-filter {
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 13px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  background: rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-}
-
-.branches-filter.is-active {
-  border-color: rgba(122, 47, 180, 0.6);
-  background: rgba(122, 47, 180, 0.06);
-  color: var(--color-brand-dark);
+.section-branches .section-title {
+  margin-bottom: 8px;
 }
 
 .branches-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+@media (min-width: 768px) {
+  .branches-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .branches-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .branch-card {
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: #fffaf4;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+  position: relative;
+  background: var(--color-surface, #ffffff);
+  border-radius: 20px;
+  padding: 14px 16px 18px;
+  box-shadow: 0 10px 26px rgba(8, 2, 26, 0.06);
 }
 
-.branch-metro-badge {
-  display: inline-flex;
-  align-items: center;
+.branch-card--adults {
+  border: 1px solid rgba(122, 47, 180, 0.5);
+}
+
+.branch-card-top {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.branch-metro {
   padding: 4px 10px;
   border-radius: 999px;
+  background: rgba(122, 47, 180, 0.08);
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  background: rgba(122, 47, 180, 0.06);
+  font-weight: 600;
   color: var(--color-brand-dark);
-  margin-bottom: 10px;
+  text-transform: none;
 }
 
 .branch-place {
-  font-size: 16px;
-  margin: 0 0 6px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .branch-address {
-  font-size: 14px;
   margin: 0 0 4px;
-  color: var(--color-text-muted);
-}
-
-.branch-phones {
-  font-size: 14px;
-}
-
-.branch-phones a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.branch-phones a:hover {
-  text-decoration: underline;
-}
-
-.branch-tag {
-  display: inline-flex;
-  margin-top: 10px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.branch-tag--adults {
-  background: rgba(122, 47, 180, 0.08);
-  color: var(--color-brand-dark);
-}
-
-.branches-note {
-  margin-top: 18px;
   font-size: 13px;
   color: var(--color-text-muted);
 }
 
-@media (max-width: 768px) {
-  .branches-list {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.branch-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.branch-city {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.branch-comment {
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.branch-phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.branch-phone-link {
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--color-brand-dark);
+}
+
+.branch-phone-link:hover {
+  text-decoration: underline;
+}
+
+.branch-adults-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(122, 47, 180, 0.9);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.branches-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.branches-empty {
+  font-size: 13px;
+  color: var(--color-text-muted);
 }
 
 /* ===== CONTACTS ===== */

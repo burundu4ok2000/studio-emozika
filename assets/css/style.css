@@ -98,14 +98,63 @@ img {
   padding: 64px 0;
 }
 
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 40px;
+}
+
+/* Вариант, если в каких-то секциях нужно выровнять заголовок влево */
+.section-header--left {
+  text-align: left;
+  margin-left: 0;
+}
+
+/* Маленький верхний бейдж над заголовком (для разделов типа «Два направления») */
+.section-kicker {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin: 0 0 8px;
+}
+
+/* Основной секционный заголовок */
 .section-title {
   font-family: var(--font-heading);
-  font-size: 32px;
-  line-height: 1.2;
+  font-size: 28px;
+  line-height: 1.25;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   color: var(--color-brand-dark);
-  margin: 0 0 16px;
+  margin: 0 0 12px;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 32px;
+  }
+}
+
+/* Подзаголовок / вступление под заголовком — один стиль на весь сайт */
+.section-intro,
+.section-subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 auto 0;
+}
+
+/* Чуть более крупное вступление для важных блоков (если используешь) */
+.section-lead {
+  max-width: 780px;
+  margin: 8px auto 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-stage-wood);
 }
 
 .section-title--handdrawn {
@@ -185,23 +234,6 @@ img {
   transition-delay: 0.4s;
 }
 
-.section-intro,
-.section-subtitle {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--color-text-muted);
-  max-width: 640px;
-  margin: 0 auto 24px;
-}
-
-.section-lead {
-  max-width: 780px;
-  margin: 0 auto 24px;
-  color: #5c4033;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
 .section-alt {
   background: #fff9f4;
 }
@@ -210,12 +242,6 @@ img {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
-}
-
-.section-header {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 32px;
 }
 
 .eyebrow {
@@ -6369,16 +6395,9 @@ gallery__video-item iframe {
 /* Luxe card – общий стиль премиальных карточек */
 .card-luxe {
   border-radius: 24px;
-  background: linear-gradient(145deg, #ffffff, #f6f0ff);
-  box-shadow: 0 20px 60px rgba(8, 2, 26, 0.12);
-  border: 1px solid rgba(122, 47, 180, 0.1);
-  padding: 22px 20px;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-}
-
-.card-luxe:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 26px 70px rgba(8, 2, 26, 0.16);
+  box-shadow: 0 18px 45px var(--border-soft);
+  border: 1px solid var(--border-brand-soft);
+  /* без background и padding — их задают сами типы карточек */
 }
 
 @media (max-width: 600px) {

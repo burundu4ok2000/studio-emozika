@@ -3782,7 +3782,7 @@ body.is-lightbox-open {
 
 .afisha-strip {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   overflow-x: auto;
   padding: 4px 4px 10px;
   scroll-snap-type: x mandatory;
@@ -3802,12 +3802,23 @@ body.is-lightbox-open {
   border-radius: 999px;
 }
 
+/* Карточка в киноряде: делаем её шире */
+
 .afisha-card--strip {
   flex: 0 0 auto;
-  min-width: 280px;
-  max-width: 320px;
+  min-width: 360px;
+  max-width: 400px;
   scroll-snap-align: start;
 }
+
+@media (max-width: 640px) {
+  .afisha-card--strip {
+    min-width: 82vw;
+    max-width: 82vw;
+  }
+}
+
+/* Постер почти на всю карточку */
 
 .afisha-card-poster-wrapper {
   position: relative;
@@ -3818,9 +3829,16 @@ body.is-lightbox-open {
 .afisha-card-poster-image {
   display: block;
   width: 100%;
-  height: 210px;
+  height: 250px;
   object-fit: cover;
+  transition: transform 180ms ease-out;
 }
+
+.afisha-card--strip:hover .afisha-card-poster-image {
+  transform: scale(1.03);
+}
+
+/* Бейдж поверх постера */
 
 .afisha-card-badge-wrap {
   position: absolute;
@@ -3850,28 +3868,69 @@ body.is-lightbox-open {
   background: linear-gradient(135deg, #89c4ff, #4a1fb8);
 }
 
+/* Низ карточки: мини-текст + кнопки */
+
+.afisha-card-footer {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.afisha-card-subline {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-muted, #666);
+}
+
+/* Название спектакля в киноряде чуть компактнее */
+
+.afisha-card--strip .afisha-title {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Кнопки под постером */
+
 .afisha-buttons--strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 8px;
+  margin-top: 8px;
 }
+
+@media (max-width: 640px) {
+  .afisha-buttons--strip {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Ссылка "Подробнее о спектакле" */
 
 .afisha-more {
   border: none;
   background: transparent;
   padding: 0;
   font: inherit;
-  color: var(--color-brand, #4a1fb8);
-  text-decoration: underline;
   cursor: pointer;
+  color: var(--color-brand, #4a1fb8);
+  position: relative;
 }
 
-.afisha-card-note {
-  margin-top: 6px;
-  font-size: 13px;
-  color: var(--color-text-muted, #666);
+.afisha-more::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 150ms ease-out;
 }
+
+.afisha-more:hover::after,
+.afisha-more:focus-visible::after {
+  transform: translateX(2px);
+}
+
+/* Подсказка под кинорядом */
 
 .afisha-hint {
   margin-top: 10px;

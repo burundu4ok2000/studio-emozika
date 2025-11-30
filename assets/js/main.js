@@ -246,6 +246,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return parts.join(" • ");
     }
 
+    function buildAfishaSubline(play) {
+      const parts = [];
+      if (play.genre) parts.push(play.genre);
+      if (play.age) parts.push(play.age);
+      return parts.join(" • ");
+    }
+
     function renderAfishaStrip() {
       if (!stripEl) return;
 
@@ -260,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .map(function (play) {
           const posterDesktop =
             play.poster && play.poster.desktop ? play.poster.desktop : "";
-          const metaLine = buildMetaLine(play);
+          const subline = buildAfishaSubline(play);
 
           let badgeHtml = "";
           if (play.badge) {
@@ -271,10 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
             badgeHtml =
               '<span class="' + badgeClass + '">' + play.badge + "</span>";
           }
-
-          const noteHtml = play.afishaNote
-            ? '<p class="afisha-card-note">' + play.afishaNote + "</p>"
-            : "";
 
           return (
             '<article class="afisha-card afisha-card--strip card-luxe" data-play-id="' +
@@ -290,25 +293,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 (badgeHtml
                   ? '<div class="afisha-card-badge-wrap">' +
                     badgeHtml +
-                    "</div>"
-                  : "")
-              : "") +
+                  "</div>"
+                : "")
+            : "") +
             "</div>" +
-            '<div class="afisha-content">' +
-            '<header class="afisha-header">' +
+            '<div class="afisha-card-footer">' +
+            (subline
+              ? '<p class="afisha-card-subline">' + subline + "</p>"
+              : "") +
             '<h3 class="afisha-title">' +
             play.title +
             "</h3>" +
-            (metaLine
-              ? '<p class="afisha-meta-row">' + metaLine + "</p>"
-              : "") +
-            "</header>" +
-            (play.afishaShort
-              ? '<p class="afisha-description">' +
-                play.afishaShort +
-                "</p>"
-              : "") +
-            noteHtml +
             '<div class="afisha-buttons afisha-buttons--strip">' +
             (play.ticketUrl
               ? '<a class="btn btn-primary" href="' +

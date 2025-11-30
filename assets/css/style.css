@@ -1147,6 +1147,26 @@ img {
   }
 }
 
+/* Разрешаем афише “выходить” за границы белой карты секции */
+.section-afisha .section-inner {
+  overflow: visible;
+}
+
+/* Поднимаем карточки афиши над фоном секции */
+.section-afisha .afisha-card {
+  position: relative;
+  z-index: 1;
+}
+
+/* Чуть больше воздуха сверху у постера и бейджа */
+.afisha-poster {
+  padding-top: 1.75rem;
+}
+
+.afisha-poster-label {
+  top: 0.75rem;
+}
+
 /* ======================================
    Галерея: карусель + кино-стиль
    ====================================== */
@@ -1615,8 +1635,17 @@ body.is-lightbox-open {
 /* ===== SNOW QUEEN ===== */
 
 .section-snow-queen {
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding: 64px 0 56px;
+  background:
+    radial-gradient(circle at top left,
+      rgba(122, 47, 180, 0.16),
+      transparent 55%
+    ),
+    radial-gradient(circle at bottom right,
+      rgba(128, 216, 255, 0.25),
+      transparent 60%
+    ),
+    #f9f4ff;
 }
 
 .section-snow-queen h2 {
@@ -1625,53 +1654,95 @@ body.is-lightbox-open {
 }
 
 .section-snow-queen .section-intro {
-  max-width: 640px;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 24px;
+  max-width: 720px;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  text-align: left;
 }
+
+/* чипы-мета под заголовком */
+
+.snow-meta-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 28px;
+}
+
+.snow-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 14px rgba(8, 2, 26, 0.1);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-brand-dark);
+  white-space: nowrap;
+}
+
+/* две «карточки» форматов посещения */
 
 .snow-layout {
   display: grid;
-  gap: 24px;
+  gap: 22px;
   margin-bottom: 24px;
+}
+
+.snow-column {
+  padding: 18px 18px 20px;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.08);
+  border: 1px solid rgba(122, 47, 180, 0.08);
 }
 
 .snow-column h3 {
   font-size: 18px;
-  margin-bottom: 8px;
+  margin: 0 0 10px;
 }
 
 .snow-meta {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 0;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .snow-meta li + li {
   margin-top: 6px;
 }
 
+/* кнопки */
+
 .snow-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin: 4px 0 20px;
+}
+
+.snow-actions .btn {
+  min-width: 220px;
 }
 
 .snow-actions .btn + .btn {
   margin-left: 0;
 }
 
+/* подписи внизу */
+
 .snow-description,
 .snow-credits {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 0 6px;
   color: var(--color-text-muted, #666);
+  max-width: 760px;
 }
+
+/* адаптив */
 
 @media (min-width: 768px) {
   .snow-layout {
@@ -1680,6 +1751,16 @@ body.is-lightbox-open {
 
   .snow-actions .btn + .btn {
     margin-left: 8px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section-snow-queen h2 {
+    font-size: 22px;
+  }
+
+  .snow-actions .btn {
+    width: 100%;
   }
 }
 /* ===== ARCHIVE ===== */
@@ -3938,4 +4019,24 @@ h1, h2, h3 {
   background: rgba(122, 47, 180, 0.08);
   color: var(--color-brand-dark);
   font-weight: 600;
+}
+
+/* Афиша: делаем два главных спектакля равными по размеру */
+.section-afisha .afisha-grid {
+  /* чуть крупнее карточки, аккуратная сетка */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.section-afisha .afisha-card-main {
+  /* убираем растяжение на две колонки — все главные карточки одинаковой ширины */
+  grid-column: auto;
+}
+
+@media (min-width: 900px) {
+  /* тизерная карточка — отдельной строкой по центру */
+  .section-afisha .afisha-card-teaser {
+    grid-column: 1 / -1;
+    max-width: 640px;
+    margin-inline: auto;
+  }
 }

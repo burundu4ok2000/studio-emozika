@@ -440,21 +440,91 @@
 
         <!-- Этаж 2: две карточки "Театр" и "Студия" -->
         <div class="studio-duo reveal-on-scroll reveal-studio-2" aria-label="Театр и студия">
-          <article class="studio-card studio-card--theatre">
-            <div class="studio-card-kicker">Театр</div>
-            <h3 class="studio-card-title">Театр «Эмоцика»</h3>
-            <p class="studio-card-text">
-              Камерный семейный театр, где играют дети и взрослые. 
-              На сцене идут спектакли по классической и современной драматургии, 
-              новогодние программы и премьеры студии.
+          <article class="studio-column studio-column--theatre">
+        <header class="studio-track-header">
+          <div class="studio-track-icon studio-track-icon--theatre" aria-hidden="true"></div>
+          <div class="studio-track-title">
+            <h3 class="studio-track-name">Театральная студия</h3>
+            <p class="studio-track-caption">
+              Регулярные занятия и спектакли на сцене нашего театра.
             </p>
-            <ul class="studio-card-list">
-              <li>Камерный зал для детей и родителей.</li>
-              <li>Семейные спектакли и премьеры сезона.</li>
-              <li>Новогодние программы и специальные показы.</li>
-              <li>Участие в фестивалях и городских проектах.</li>
-            </ul>
-          </article>
+          </div>
+        </header>
+
+        <div class="studio-track-overview">
+          <p>
+            Дети занимаются актёрским мастерством, речью и пластикой в группах по возрасту,
+            репетируют сцены и готовят спектакли.
+          </p>
+          <p>
+            В конце сезона ребята выходят на сцену нашего театра в настоящем спектакле.
+          </p>
+        </div>
+
+        <section
+          class="studio-track-path"
+          aria-label="Путь ученика в театральной студии"
+          data-timeline="theatre"
+          data-autoplay="true"
+        >
+          <h4 class="studio-track-path-title">
+            Путь ученика в студии
+          </h4>
+
+          <ol class="timeline timeline--vertical">
+            <li class="timeline-step timeline-step--active" data-step="1">
+              <div class="timeline-step-marker">
+                <span class="timeline-step-number">1</span>
+              </div>
+              <div class="timeline-step-body">
+                <h5 class="timeline-step-title">Первое знакомство</h5>
+                <p class="timeline-step-text">
+                  Пробное занятие, знакомство с педагогом, группой и сценой через игровые упражнения.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-step" data-step="2">
+              <div class="timeline-step-marker">
+                <span class="timeline-step-number">2</span>
+              </div>
+              <div class="timeline-step-body">
+                <h5 class="timeline-step-title">Занятия и тренинг</h5>
+                <p class="timeline-step-text">
+                  Регулярные уроки по актёрскому мастерству, речи и пластике,
+                  работа в сценах и этюдах.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-step" data-step="3">
+              <div class="timeline-step-marker">
+                <span class="timeline-step-number">3</span>
+              </div>
+              <div class="timeline-step-body">
+                <h5 class="timeline-step-title">Репетиции спектакля</h5>
+                <p class="timeline-step-text">
+                  Сборка спектакля: репетируем сцены, примеряем костюмы,
+                  привыкаем к сцене, свету и залу.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline-step" data-step="4">
+              <div class="timeline-step-marker">
+                <span class="timeline-step-number">4</span>
+              </div>
+              <div class="timeline-step-body">
+                <h5 class="timeline-step-title">Премьера на сцене</h5>
+                <p class="timeline-step-text">
+                  Показ спектакля для зрителей на сцене театра —
+                  первый большой сценический опыт ребёнка.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </article>
 
           <article class="studio-card studio-card--school">
             <div class="studio-card-kicker">Студия и киношкола</div>

@@ -33,6 +33,7 @@
   --color-accent-2: #FFD1DC;     /* розовый акцент (младшие группы, нежные блоки) */
   --color-muted: #C5E1A5;        /* мягкий зелёный (развитие, поддержка, «экология» среды) */
   --color-accent-gold: #ffb74d;  /* золото наград, фестивали, цифры успеха */
+  --color-accent-soft: #4b2c25;  /* мягкий тёмный акцент для бейджей */
 
   /* 6. Футер и бордеры */
   --footer-bg: #050505;          /* базовый фон футера (ночной) */
@@ -397,6 +398,7 @@ img {
 .floating-cta:focus-visible,
 .social-pill:focus-visible,
 .contact-link:focus-visible,
+.badge:focus-visible,
 .afisha-card:focus-visible,
 .abonement-card:focus-visible,
 .films-card:focus-visible,
@@ -432,65 +434,70 @@ img {
   border-color: rgba(122, 47, 180, 0.5);
 }
 
-/* ----------------------------------------
-   BADGE SYSTEM
-   .badge         – базовая таблетка
-   .badge--brand  – фирменный фиолетовый акцент
-   .badge--soft   – мягкий вспомогательный бейдж
-   .badge--gold   – награды / фестивали
-   .badge--outline – спокойный контурный бейдж
-   .badge--glass  – стеклянный бейдж на тёмных/фото-фонах
------------------------------------------ */
-
-.badge {
+/* 7.x Badge system – базовый стиль + мост для legacy-классов */
+.badge,
+.afisha-card-badge,
+.films-card-award-pill,
+.branch-metro,
+.branch-area,
+.branch-adults-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 11px;
+  line-height: 1.2;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  line-height: 1.3;
   white-space: nowrap;
+  border: 1px solid transparent;
+  background-color: var(--badge-bg-soft, rgba(255, 255, 255, 0.08));
+  color: var(--badge-text-soft, var(--color-accent-soft));
+  box-shadow: 0 8px 20px rgba(8, 2, 26, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition:
+    background-color var(--motion-fast) var(--motion-ease-soft),
+    color var(--motion-fast) var(--motion-ease-soft),
+    box-shadow var(--motion-fast) var(--motion-ease-soft),
+    transform var(--motion-fast) var(--motion-ease-soft);
 }
 
-/* Фирменный плотный бейдж (важные статусы) */
+/* Модификаторы работают и с legacy-классами */
 .badge--brand {
-  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
-  color: #ffffff;
-}
-
-/* Мягкий бейдж (характеристики, форматы, ценности) */
-.badge--soft {
-  background: rgba(122, 47, 180, 0.08);
-  color: var(--color-brand-dark);
-}
-
-/* Золотой бейдж (награды, фестивали) */
-.badge--gold {
-  background: var(--color-accent-gold);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 248, 242, 0.08),
+    rgba(255, 193, 120, 0.22)
+  );
+  border-color: rgba(255, 193, 120, 0.55);
   color: var(--color-stage-wood);
 }
 
-/* Контурный бейдж (спокойные теги, районы и т.п.) */
+.badge--soft {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.badge--gold {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 234, 174, 0.08),
+    rgba(255, 208, 112, 0.4)
+  );
+  border-color: rgba(255, 216, 142, 0.85);
+  color: #2a103f;
+}
+
 .badge--outline {
-  border: 1px solid rgba(122, 47, 180, 0.35);
-  background: transparent;
-  color: var(--color-brand-dark);
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.88);
 }
 
-/* Стеклянный бейдж (hero, афиша, тёмные фоны) */
-.badge--glass {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.06));
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  color: #ffffff;
-  backdrop-filter: blur(10px);
-}
-
-/* Мост для старых имен, если где-то всплывут */
 .badge-primary {
   background: var(--color-accent);
   color: var(--color-stage-wood);
@@ -499,6 +506,13 @@ img {
 .badge-soft {
   background: var(--color-accent-2);
   color: var(--color-brand-dark);
+}
+
+/* Лёгкое движение для всех бейджей */
+.badge:hover,
+.badge:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(8, 2, 26, 0.24);
 }
 
 .card {
@@ -3843,18 +3857,17 @@ body.is-lightbox-open {
   gap: 4px;
 }
 
+/* Films – пилюля наград: визуально = badge, здесь только отступы */
 .films-card-award-pill {
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: rgba(122, 47, 180, 0.06);
-  color: var(--color-brand-dark);
-  white-space: nowrap;
+  margin-top: 14px;
+  align-self: flex-start;
+  /* фон/цвет не задаём – их даёт .badge--* */
 }
 
-.films-card-award-pill--more {
-  background: rgba(0, 0, 0, 0.04);
-  color: var(--color-text-muted);
+.films-card-award-pill svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* Детальная панель выбранного фильма */
@@ -4951,27 +4964,15 @@ body.is-lightbox-open {
 /* Бейдж поверх постера */
 
 .afisha-card-badge-wrap {
-  position: absolute;
-  left: 12px;
-  top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
 }
 
 .afisha-card-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.06));
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  color: #ffffff;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  align-self: flex-start;
+  /* цвет, фон, бордер идут от .badge / .badge--* */
 }
 
 .afisha-card-badge--premiere {
@@ -5548,18 +5549,17 @@ gallery__video-item iframe {
   margin-bottom: 6px;
 }
 
-.branch-metro {
+/* Branch badges – метро / район / взрослые */
+.branch-metro,
+.branch-area,
+.branch-adults-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(122, 47, 180, 0.08);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-brand-dark);
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 4px;
+  /* ни фона, ни цвета – если нужен чип, в разметке добавляем .badge / .badge--outline */
 }
 
 .branch-place {
@@ -5587,18 +5587,7 @@ gallery__video-item iframe {
 }
 
 .branch-area {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3px 9px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid rgba(122, 47, 180, 0.28);
-  background: rgba(8, 2, 26, 0.02);
-  color: var(--color-brand-dark);
+  /* поведение задаётся через .badge / .badge--* */
 }
 
 .branch-comment {
@@ -5634,18 +5623,13 @@ gallery__video-item iframe {
   position: absolute;
   top: 10px;
   right: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
-  color: #ffffff;
-  box-shadow: 0 8px 22px rgba(27, 5, 56, 0.28);
+}
+
+.branch-metro svg,
+.branch-area svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .branches-note {
@@ -6438,6 +6422,27 @@ gallery__video-item iframe {
     box-shadow var(--motion-normal) var(--motion-ease-soft),
     border-color var(--motion-fast) var(--motion-ease-soft),
     background-color var(--motion-fast) var(--motion-ease-soft);
+}
+
+/* Глобальное движение карточек */
+.card-luxe,
+.afisha-card,
+.abonement-card,
+.films-card,
+.gallery-card {
+  transition:
+    transform var(--motion-fast) var(--motion-ease-soft),
+    box-shadow var(--motion-fast) var(--motion-ease-soft),
+    background-color var(--motion-fast) var(--motion-ease-soft);
+}
+
+.card-luxe:hover,
+.afisha-card:hover,
+.abonement-card:hover,
+.films-card:hover,
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(8, 2, 26, 0.28);
 }
 
 @media (max-width: 600px) {

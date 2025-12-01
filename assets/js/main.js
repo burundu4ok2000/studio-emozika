@@ -2594,4 +2594,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Абонементы студии — рендер из JSON + CTA
   initAbonementsSection();
+
+  // Кастинг: временно отключаем скачок страницы по кнопке подписки
+  const castingNewsButton = document.querySelector(
+    ".section-casting .casting-btn-secondary"
+  );
+
+  if (castingNewsButton) {
+    castingNewsButton.addEventListener("click", (event) => {
+      // пока нет отдельной страницы/формы — не прыгаем наверх
+      event.preventDefault();
+    });
+  }
 });

@@ -4370,6 +4370,37 @@ body.is-lightbox-open {
   margin: 0 0 12px;
 }
 
+.casting-lead {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-main);
+}
+
+.casting-pillars {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+
+.casting-pillar-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--color-brand-dark);
+}
+
+.casting-pillar .casting-list {
+  margin: 0 0 16px 18px;
+}
+
+@media (min-width: 768px) {
+  .casting-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+  }
+}
+
 .casting-subtitle {
   font-size: 18px;
   font-weight: 600;

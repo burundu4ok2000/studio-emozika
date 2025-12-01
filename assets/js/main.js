@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           let badgeHtml = "";
           if (play.badge) {
-            let badgeClass = "afisha-card-badge";
+            let badgeClass = "afisha-card-badge badge badge--glass";
             if (play.badgeType) {
               badgeClass += " afisha-card-badge--" + play.badgeType;
             }
@@ -650,6 +650,24 @@ document.addEventListener("DOMContentLoaded", () => {
           const visibleAwards = awards.slice(0, 2);
           const extraCount = awards.length > 2 ? awards.length - 2 : 0;
 
+          const awardsHtml = visibleAwards
+            .map((a) => {
+              let pillClass = "films-card-award-pill badge badge--soft";
+
+              if (a.status && /гран[- ]?при/i.test(a.status)) {
+                pillClass = "films-card-award-pill badge badge--gold";
+              }
+
+              const text = [a.status, a.festival].filter(Boolean).join(" ");
+              return `<span class="${pillClass}">${text}</span>`;
+            })
+            .join("");
+
+          const extraHtml =
+            extraCount > 0
+              ? `<span class="films-card-award-pill films-card-award-pill--more badge badge--outline">+${extraCount} фестиваля</span>`
+              : "";
+
           card.innerHTML = `
             <div class="films-card-poster">
               <div class="films-card-poster-inner">
@@ -661,20 +679,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="films-card-meta">${yearLabel} · ${cityLabel}</p>
               <p class="films-card-logline">${film.logline || ""}</p>
               <div class="films-card-awards">
-                ${visibleAwards
-                  .map(
-                    (a) => `
-                  <span class="films-card-award-pill">
-                    ${[a.status, a.festival].filter(Boolean).join(" ")}
-                  </span>
-                `
-                  )
-                  .join("")}
-                ${
-                  extraCount > 0
-                    ? `<span class="films-card-award-pill films-card-award-pill--more">+${extraCount} фестиваля</span>`
-                    : ""
-                }
+                ${awardsHtml}${extraHtml}
               </div>
             </div>
           `;

@@ -418,21 +418,73 @@ img {
   border-color: rgba(122, 47, 180, 0.5);
 }
 
+/* ----------------------------------------
+   BADGE SYSTEM
+   .badge         – базовая таблетка
+   .badge--brand  – фирменный фиолетовый акцент
+   .badge--soft   – мягкий вспомогательный бейдж
+   .badge--gold   – награды / фестивали
+   .badge--outline – спокойный контурный бейдж
+   .badge--glass  – стеклянный бейдж на тёмных/фото-фонах
+----------------------------------------- */
+
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 11px;
-  text-transform: uppercase;
+  font-weight: 600;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  white-space: nowrap;
 }
 
+/* Фирменный плотный бейдж (важные статусы) */
+.badge--brand {
+  background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
+  color: #ffffff;
+}
+
+/* Мягкий бейдж (характеристики, форматы, ценности) */
+.badge--soft {
+  background: rgba(122, 47, 180, 0.08);
+  color: var(--color-brand-dark);
+}
+
+/* Золотой бейдж (награды, фестивали) */
+.badge--gold {
+  background: var(--color-accent-gold);
+  color: var(--color-stage-wood);
+}
+
+/* Контурный бейдж (спокойные теги, районы и т.п.) */
+.badge--outline {
+  border: 1px solid rgba(122, 47, 180, 0.35);
+  background: transparent;
+  color: var(--color-brand-dark);
+}
+
+/* Стеклянный бейдж (hero, афиша, тёмные фоны) */
+.badge--glass {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+/* Мост для старых имен, если где-то всплывут */
 .badge-primary {
-  background: #FFCC80;
+  background: var(--color-accent);
+  color: var(--color-stage-wood);
 }
 
 .badge-soft {
-  background: #FFD1DC;
+  background: var(--color-accent-2);
+  color: var(--color-brand-dark);
 }
 
 .card {

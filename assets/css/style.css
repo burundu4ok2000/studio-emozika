@@ -2225,6 +2225,65 @@ body.is-lightbox-open {
   }
 }
 
+/* Снежный слой поверх всей секции Snow Queen – только на десктопе */
+@media (min-width: 768px) {
+  .section-snow-queen {
+    position: relative;
+    z-index: 0;
+  }
+
+  .section-snow-queen::after {
+    content: "";
+    position: absolute;
+    inset: -32px -24px;
+    pointer-events: none;
+    z-index: 0;
+    /* два слоя полупрозрачных «снежинок» */
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0) 55%),
+      radial-gradient(circle, rgba(255, 255, 255, 0.6) 0, rgba(255, 255, 255, 0) 50%);
+    background-repeat: repeat;
+    background-size:
+      180px 260px,
+      220px 300px;
+    background-position:
+      0 0,
+      80px -40px;
+    mix-blend-mode: screen;
+    opacity: 0.55;
+    animation: snow-drift var(--motion-snow) linear infinite;
+  }
+
+  /* поднимаем контент над снежным слоем */
+  .section-snow-queen > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Для тех, кто включает уменьшение анимации – просто лёгкий статичный шум */
+@media (prefers-reduced-motion: reduce) {
+  .section-snow-queen::after {
+    animation: none;
+    opacity: 0.35;
+  }
+}
+
+/* Лёгкий снег для новогодней секции */
+@keyframes snow-drift {
+  0% {
+    background-position:
+      0 0,
+      80px -40px;
+  }
+
+  100% {
+    background-position:
+      -140px 80px,
+      0 40px;
+  }
+}
+
 /* ===== ARCHIVE ===== */
 
 .section-archive {
@@ -2868,209 +2927,6 @@ body.is-lightbox-open {
   margin-bottom: 4px;
 }
 
-/* Этаж 5: живая жизнь студии — мини-лента */
-
-.section-studio .studio-stream {
-  margin: 18px 0 18px;
-}
-
-.section-studio .studio-stream-header {
-  max-width: 640px;
-  margin-bottom: 8px;
-}
-
-.section-studio .studio-stream-title {
-  margin: 0 0 4px;
-  font-size: 16px;
-  line-height: 1.3;
-  color: var(--color-brand-dark, #2a103f);
-}
-
-.section-studio .studio-stream-lead {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--color-text-muted, #666666);
-}
-
-/* окно ленты */
-.section-studio .studio-stream-viewport {
-  position: relative;
-  overflow: hidden;
-  margin-top: 6px;
-}
-
-/* дорожка карточек */
-.section-studio .studio-stream-inner {
-  display: flex;
-  gap: 12px;
-  padding: 0.5rem 0.25rem 0.75rem;
-}
-
-/* карточки событий студии */
-.section-studio .studio-stream-card {
-  position: relative;
-  flex: 0 0 auto;
-  min-width: min(260px, 80vw);
-  padding: 12px 14px 12px;
-  border-radius: 18px;
-  border: 1px solid rgba(122, 47, 180, 0.16);
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(255, 255, 255, 0.98),
-      #faf5ff
-    );
-  box-shadow: 0 12px 28px rgba(8, 2, 26, 0.04);
-  scroll-snap-align: start;
-  transition:
-    transform 0.18s ease-out,
-    box-shadow 0.18s ease-out,
-    border-color 0.18s ease-out,
-    background 0.18s ease-out;
-}
-
-/* лёгкий "свет" снизу, как от рампы */
-.section-studio .studio-stream-card::after {
-  content: "";
-  position: absolute;
-  left: 12%;
-  right: 12%;
-  bottom: -18px;
-  height: 30px;
-  background: radial-gradient(
-    circle at 50% 0,
-    rgba(122, 47, 180, 0.18),
-    rgba(122, 47, 180, 0) 70%
-  );
-  opacity: 0;
-  transform: scale(0.8);
-  pointer-events: none;
-  transition:
-    opacity 0.22s ease-out,
-    transform 0.22s ease-out;
-}
-
-.section-studio .studio-stream-card:hover,
-.section-studio .studio-stream-card:focus-within {
-  transform: translateY(-3px);
-  border-color: rgba(122, 47, 180, 0.38);
-  box-shadow: 0 16px 40px rgba(8, 2, 26, 0.1);
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(122, 47, 180, 0.12),
-      #f7f1ff
-    );
-}
-
-.section-studio .studio-stream-card:hover::after,
-.section-studio .studio-stream-card:focus-within::after {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* шапочка карточки */
-.section-studio .studio-stream-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 8px;
-  margin-bottom: 4px;
-  border-radius: 999px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--color-brand, #7a2fb4);
-  background: rgba(233, 219, 252, 0.9);
-}
-
-.section-studio .studio-stream-card-title {
-  margin: 0 0 4px;
-  font-size: 14px;
-  line-height: 1.4;
-  color: var(--color-brand-dark, #2a103f);
-}
-
-.section-studio .studio-stream-card-text {
-  margin: 0 0 8px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--color-text-main, #222222);
-}
-
-/* ссылка-стрелка */
-.section-studio .studio-stream-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--color-brand, #7a2fb4);
-  text-decoration: none;
-}
-
-.section-studio .studio-stream-link span[aria-hidden="true"] {
-  transform: translateY(1px);
-  transition: transform 0.18s ease-out;
-}
-
-.section-studio .studio-stream-link:hover span[aria-hidden="true"],
-.section-studio .studio-stream-link:focus-visible span[aria-hidden="true"] {
-  transform: translate(2px, 1px);
-}
-
-/* мобилки: ручной горизонтальный скролл */
-@media (max-width: 1023px) {
-  .section-studio .studio-stream-inner {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .section-studio .studio-stream-inner::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .section-studio .studio-stream-inner::-webkit-scrollbar-thumb {
-    background: rgba(122, 47, 180, 0.25);
-    border-radius: 999px;
-  }
-}
-
-/* десктоп: лёгкое авто-покачивание ленты */
-@media (min-width: 1024px) {
-  .section-studio .studio-stream--auto .studio-stream-inner {
-    animation: studio-stream-scroll 32s ease-in-out infinite;
-    will-change: transform;
-  }
-
-  .section-studio .studio-stream--auto:hover .studio-stream-inner {
-    animation-play-state: paused;
-  }
-
-  @keyframes studio-stream-scroll {
-    0%,
-    18% {
-      transform: translateX(0);
-    }
-    50%,
-    68% {
-      transform: translateX(-16%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-}
-
-/* уважение к системной настройке уменьшения анимации */
-@media (prefers-reduced-motion: reduce) {
-  .section-studio .studio-stream--auto .studio-stream-inner {
-    animation: none;
-    transform: none;
-  }
-}
-
 .studio-note {
   max-width: 720px;
   font-size: 13px;
@@ -3293,10 +3149,6 @@ body.is-lightbox-open {
 }
 
 @media (min-width: 768px) {
-  .studio-layout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .studio-meta-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -3315,40 +3167,6 @@ body.is-lightbox-open {
   color: var(--color-brand-dark);
   font-size: 26px;
   margin-bottom: 10px;
-}
-
-/* Две главные «карточки» — слева направления, справа результат */
-.section-studio .studio-layout {
-  align-items: stretch;
-  margin-top: 16px;
-}
-
-.section-studio .studio-column {
-  background: var(--color-surface);
-  border-radius: 24px;
-  padding: 20px 18px 18px;
-  box-shadow: 0 18px 40px rgba(8, 2, 26, 0.06);
-  border: 1px solid rgba(122, 47, 180, 0.12);
-}
-
-.section-studio .studio-column h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: var(--color-brand-dark);
-}
-
-/* Списки внутри карточек */
-.section-studio .studio-list {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.section-studio .studio-list li + li {
-  margin-top: 8px;
-}
-
-.section-studio .studio-list strong {
-  color: var(--color-brand-dark);
 }
 
 /* Маленькие «плашки» с мета-информацией (возраст, формат, филиалы) */

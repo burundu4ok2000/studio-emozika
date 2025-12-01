@@ -61,8 +61,8 @@
       "hall": "Камерный зал до 50 зрителей",
       "city": "Санкт-Петербург",
       "poster": {
-        "desktop": "assets/img/posters/snow-wide.jpg",
-        "mobile": "assets/img/posters/snow-vert.jpg"
+        "desktop": "assets/img/posters/snow-queen.png",
+        "mobile": "assets/img/posters/snow-queen.png"
       },
       "badge": "Новогодняя программа",
       "badgeType": "ny",

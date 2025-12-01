@@ -2249,18 +2249,26 @@ body.is-lightbox-open {
   }
 }
 
-/* Постер новогодней программы «Снежная королева» */
-.section-snow-queen .snow-poster {
-  max-width: 420px;
-  margin: 0 auto 1.75rem;
-}
+/* Desktop: Snow Queen section as full-screen background */
+@media (min-width: 768px) {
+  .section-snow-queen {
+    min-height: 100vh;
+    padding-top: 96px;
+    padding-bottom: 96px;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(6, 3, 27, 0.7),
+        rgba(6, 3, 27, 0.3),
+        rgba(6, 3, 27, 0.85)
+      ),
+      url("assets/img/posters/snow-queen-horizontal.png")
+        center center / cover no-repeat;
+  }
 
-.snow-poster-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 22px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+  .section-snow-queen .snow-poster {
+    display: none;
+  }
 }
 /* ===== ARCHIVE ===== */
 

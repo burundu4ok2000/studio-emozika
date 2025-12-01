@@ -4342,6 +4342,11 @@ body.is-lightbox-open {
   margin: 0 0 28px;
 }
 
+.section-casting .section-kicker {
+  text-align: left;
+  margin: 0 0 6px;
+}
+
 .section-casting .section-lead {
   color: var(--color-text-muted);
 }

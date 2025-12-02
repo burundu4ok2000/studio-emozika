@@ -64,35 +64,76 @@
 
   <main id="main-content">
     <section id="hero" class="hero">
-        <div class="hero-overlay">
-            <div class="container hero-inner">
-            <div class="hero-content">
-                <p class="hero-tagline">Театр-студия «Эмоцика» в Санкт-Петербурге представляет</p>
-                <h1 class="hero-title">«Любовь у сливного бачка»</h1>
-                <p class="hero-desc">Комедийная драма по пьесе В. Сигарева о жильцах коммунальной квартиры, которые ищут любовь и близость в самых неожиданных обстоятельствах. Камерный спектакль о взрослении, честности и смелости говорить правду.</p>
-                <div class="hero-meta">
-                <span class="hero-meta-item">Комедийная драма</span>
-                <span class="hero-meta-separator">•</span>
-                <span class="hero-meta-item">12 декабря, 18:00</span>
-                <span class="hero-meta-separator">•</span>
-                <span class="hero-meta-item">Сцена театра «Эмоцика» в ТРК «Гранд Каньон»</span>
-                </div>
-                <div class="hero-actions">
-                <a href="https://clck.ru/3QWtC2" class="btn btn-primary" target="_blank" rel="noopener">Купить билет</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-blob hero-blob-1"></div>
-                <div class="hero-blob hero-blob-2"></div>
-                <figure class="hero-poster">
-                <span class="hero-poster-badge hero-poster-badge--overlay badge badge--glass">ПРЕМЬЕРА</span>
-                <img class="hero-poster-image" src="assets/img/posters/love-tank-hero.png" alt="Постер спектакля «Любовь у сливного бачка»" />
-                </figure>
-            </div>
-            </div>
-        </div>
-    </section>
+      <div class="hero-overlay">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <p class="hero-tagline">
+              Театр-студия «Эмоцика» в Санкт-Петербурге представляет
+            </p>
 
+            <h1 class="hero-title">«Любовь у сливного бачка»</h1>
+
+            <p class="hero-desc">
+              Комедийная драма по пьесе В. Сигарева о жильцах коммунальной квартиры,
+              которые ищут любовь и близость в самых неожиданных обстоятельствах.
+              Камерный спектакль о взрослении, честности и смелости говорить правду.
+            </p>
+
+            <div class="hero-meta">
+              <span class="hero-meta-item">Комедийная драма</span>
+              <span class="hero-meta-separator">•</span>
+              <span class="hero-meta-item">12 декабря, 18:00</span>
+              <span class="hero-meta-separator">•</span>
+              <span class="hero-meta-item">
+                Сцена театра «Эмоцика» в ТРК «Гранд Каньон»
+              </span>
+            </div>
+
+            <div class="hero-actions">
+              <a
+                href="https://clck.ru/3QWtC2"
+                class="btn btn-primary"
+                target="_blank"
+                rel="noopener"
+              >
+                Купить билет
+              </a>
+              <!--<button
+                type="button"
+                class="btn btn-secondary"
+                data-scroll-to="contacts"
+              >
+                Записаться в студию
+              </button>-->
+              <!--<a href="#tracks" class="btn btn-ghost">
+                Посмотреть направления
+              </a>-->
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+
+            <figure class="hero-poster">
+              <span class="hero-poster-badge hero-poster-badge--overlay badge badge--glass">
+                ПРЕМЬЕРА
+              </span>
+              <img
+                class="hero-poster-image"
+                src="assets/img/posters/love-tank-hero.png"
+                alt="Постер спектакля «Любовь у сливного бачка»"
+              />
+              <figcaption class="hero-poster-caption">
+                <!--<span class="hero-poster-caption-text">
+                  «Любовь у сливного бачка»
+                </span>-->
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- 
     ========================================================================
@@ -249,92 +290,157 @@
     -->
 
     <section id="afisha" class="section section-afisha section-card reveal-on-scroll">
-        <div class="section-inner">
-            <div class="container">
-            <header class="section-header">
-                <h2 class="section-title">Афиша театра «Эмоцика»</h2>
-                <p class="section-subtitle">Семейные спектакли, новогодние приключения и премьеры с участием детей и профессиональных актёров.</p>
-            </header>
-            <div class="afisha-strip-wrapper">
-                <button type="button" class="afisha-strip-arrow afisha-strip-arrow--prev" aria-label="Предыдущий спектакль">‹</button>
-                <div class="afisha-strip" data-afisha-strip></div>
-                <button type="button" class="afisha-strip-arrow afisha-strip-arrow--next" aria-label="Следующий спектакль">›</button>
-            </div>
-            </div>
+      <div class="section-inner">
+        <div class="container">
+        <header class="section-header">
+          <h2 class="section-title">Афиша театра «Эмоцика»</h2>
+          <p class="section-subtitle">
+            Семейные спектакли, новогодние приключения и премьеры с участием детей и профессиональных актёров.
+          </p>
+        </header>
+
+        <div class="afisha-strip-wrapper">
+          <button
+            type="button"
+            class="afisha-strip-arrow afisha-strip-arrow--prev"
+            aria-label="Предыдущий спектакль"
+          >
+            ‹
+          </button>
+
+          <div class="afisha-strip" data-afisha-strip>
+            <!-- Карточки спектаклей будут рендериться из plays.json через JS -->
+          </div>
+
+          <button
+            type="button"
+            class="afisha-strip-arrow afisha-strip-arrow--next"
+            aria-label="Следующий спектакль"
+          >
+            ›
+          </button>
         </div>
+
+        <!--<p class="afisha-hint">
+          Листайте афишу вбок или нажимайте стрелки, чтобы увидеть больше спектаклей.
+        </p>-->
+        </div>
+      </div>
     </section>
 
     <section id="snow-queen" class="section section-snow-queen reveal-on-scroll">
-        <div class="container">
-            <header class="section-header snow-queen-header">
-            <p class="section-kicker">Количество билетов ограничено!</p>
-            <h2 class="section-title">Новогодняя программа</h2>
-            </header>
-            <div class="snow-queen-tags-row">
-            <span class="badge badge--glass">6+</span>
-            <span class="badge badge--glass">Квест + спектакль</span>
-            <span class="badge badge--glass">Программа ≈ 2 часа</span>
-            <span class="badge badge--glass">Камерный зал до 50 зрителей</span>
-            </div>
-            <div class="snow-queen-layout">
-            <figure class="snow-queen-poster">
-                <img src="assets/img/posters/snow-queen.png" alt="Постер новогодней программы «Снежная королева»" />
-            </figure>
-            <div class="snow-queen-details card-luxe">
-                <h3 class="snow-queen-details-title">Подробнее о квесте-спектакле «Снежная Королева»</h3>
-                <div class="snow-queen-details-columns">
-                <div class="snow-queen-details-column">
-                    <h4 class="snow-queen-details-heading">Для школьных классов и детских садов</h4>
-                    <ul class="snow-queen-list">
-                    <li>4–6 этапов поискового квеста по залу и фойе.</li>
-                    <li>Погружение в историю «Снежной королевы» с актёрами театра.</li>
-                    <li>Встреча с Дедом Морозом, общее фото и вручение подарков.</li>
-                    <li>Группы до 30–35 детей + сопровождающие взрослые.</li>
-                    <li>Продолжительность программы — около 2 часов.</li>
-                    </ul>
-                </div>
-                <div class="snow-queen-details-column">
-                    <h4 class="snow-queen-details-heading">Для семейных визитов</h4>
-                    <ul class="snow-queen-list">
-                    <li>Отдельные показы с камерной рассадкой (до 50 зрителей).</li>
-                    <li>Есть даты с квестом перед спектаклем и без него.</li>
-                    <li>Рекомендованный возраст детей — 5–12 лет.</li>
-                    <li>Все билеты — с местами у сцены и быстрым доступом в зал.</li>
-                    <li>Можно прийти всей семьёй или небольшой компанией друзей.</li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-            </div>
-            <div class="snow-queen-grid">
-            <article class="snow-queen-card card-luxe snow-queen-card--schools">
-                <h3 class="snow-queen-card-title">Для школьных классов и детских садов</h3>
-                <ul class="snow-queen-card-list">
-                <li>Групповая заявка от 25 или 40 детей, 2–3 взрослых сопровождающих — бесплатно.</li>
-                <li>Ребёнок-организатор участвует бесплатно и получает подарок от Деда Мороза.</li>
-                <li>Выгодные групповые цены при раннем бронировании программы.</li>
-                </ul>
-                <div class="snow-queen-card-actions">
-                <a href="#contacts" class="btn btn-primary btn-lg">Оставить заявку на класс</a>
-                </div>
-            </article>
-            <article class="snow-queen-card card-luxe snow-queen-card--family">
-                <h3 class="snow-queen-card-title">Для семейных визитов</h3>
-                <ul class="snow-queen-card-list">
-                <li>Билеты покупаются поштучно: детский, взрослый и семейный тариф.</li>
-                <li>Можно прийти всей семьёй или небольшой компанией друзей — без набора большой группы.</li>
-                <li>Выбираете удобный сеанс и места в зале при покупке на Яндекс.Афише.</li>
-                </ul>
-                <div class="snow-queen-card-actions">
-                <a href="#tickets" class="btn btn-primary btn-lg">Купить билеты</a>
-                </div>
-            </article>
-            </div>
+      <div class="container">
+        <header class="section-header snow-queen-header">
+          <p class="section-kicker">Количество билетов ограничено!</p>
+          <h2 class="section-title">Новогодняя программа</h2>
+          <!--<p class="section-subtitle">
+            Тёплый спектакль с квестом по театру и встречей с героями сказки.
+            Формат одинаково комфортен для целых классов и семейных визитов.
+          </p>-->
+        </header>
+
+        <div class="snow-queen-tags-row">
+          <span class="badge badge--glass">6+</span>
+          <span class="badge badge--glass">Квест + спектакль</span>
+          <span class="badge badge--glass">Программа ≈ 2 часа</span>
+          <span class="badge badge--glass">Камерный зал до 50 зрителей</span>
         </div>
+
+        <div class="snow-queen-layout">
+          <figure class="snow-queen-poster">
+            <img
+              src="assets/img/posters/snow-queen.png"
+              alt="Постер новогодней программы «Снежная королева»"
+            />
+          </figure>
+
+          <div class="snow-queen-details card-luxe">
+            <h3 class="snow-queen-details-title">Подробнее о квесте-спектале "Снежная Королева"</h3>
+
+            <div class="snow-queen-details-columns">
+              <div class="snow-queen-details-column">
+                <h4 class="snow-queen-details-heading">
+                  Для школьных классов и детских садов
+                </h4>
+
+                <ul class="snow-queen-list">
+                  <li>4–6 этапов поискового квеста по залу и фойе.</li>
+                  <li>Погружение в историю «Снежной королевы» с актёрами театра.</li>
+                  <li>Встреча с Дедом Морозом, общее фото и вручение подарков.</li>
+                  <li>Группы до 30–35 детей + сопровождающие взрослые.</li>
+                  <li>Продолжительность программы — около 2 часов.</li>
+                </ul>
+              </div>
+
+              <div class="snow-queen-details-column">
+                <h4 class="snow-queen-details-heading">
+                  Для семейных визитов
+                </h4>
+
+                <ul class="snow-queen-list">
+                  <li>Отдельные показы с камерной рассадкой (до 50 зрителей).</li>
+                  <li>Есть даты с квестом перед спектаклем и без него.</li>
+                  <li>Рекомендованный возраст детей — 5–12 лет.</li>
+                  <li>Все билеты — с местами у сцены и быстрым доступом в зал.</li>
+                  <li>Можно прийти всей семьёй или небольшой компанией друзей.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="snow-queen-grid">
+          <!-- Блок для организованных классов -->
+          <article class="snow-queen-card card-luxe">
+            <h3 class="snow-queen-card-title">
+              Для школьных классов и детских садов
+            </h3>
+
+            <ul class="snow-queen-card-list">
+              <li>Групповая заявка от 25 или 40 детей, 2–3 взрослых сопровождающих — бесплатно.</li>
+              <li>Ребёнок-организатор участвует бесплатно и получает подарок от Деда Мороза.</li>
+              <li>Выгодные групповые цены при раннем бронировании программы.</li>
+            </ul>
+
+            <div class="snow-queen-card-actions">
+              <a href="#contacts" class="btn btn-primary btn-lg">
+                Оставить заявку на класс
+              </a>
+              <!--<a href="#tickets" class="btn btn-outline btn-lg">
+                Купить билеты
+              </a>-->
+            </div>
+          </article>
+
+          <!-- Блок для семейных визитов -->
+          <article class="snow-queen-card card-luxe snow-queen-card--accent">
+            <h3 class="snow-queen-card-title">Для семейных визитов</h3>
+
+            <ul class="snow-queen-card-list">
+              <li>Билеты покупаются поштучно: детский, взрослый и семейный тариф.</li>
+              <li>Можно прийти всей семьёй или небольшой компанией друзей — без набора большой группы.</li>
+              <li>Выбираете удобный сеанс и места в зале при покупке на Яндекс.Афише.</li>
+            </ul>
+
+            <div class="snow-queen-card-actions">
+              <a href="#tickets" class="btn btn-primary btn-lg">
+                Купить билеты
+              </a>
+              <!--<a href="#contacts" class="btn btn-outline btn-lg">
+                Оставить заявку на группу
+              </a> -->
+            </div>
+          </article>
+        </div>
+
+        <!--<p class="snow-queen-note">
+          Квест проходит до спектакля: дети ищут подсказки в фойе и зале, знакомятся
+          с миром «Снежной королевы», а затем садятся на спектакль. Подробности
+          программ и свободные даты мы пришлём по запросу.
+        </p> -->
+      </div>
     </section>
-
-
-
 
     <!-- 
     ========================================================================
@@ -780,20 +886,28 @@
     -->
 
     <section id="people" class="section section-people section-card reveal-on-scroll">
-        <div class="section-inner">
-            <div class="container">
-            <header class="section-header">
-                <h2 class="section-title section-title--handdrawn">Люди театра</h2>
-                <p class="section-subtitle">За спектаклями и занятиями в «Эмоцике» стоят режиссёры, педагоги, актёры и юные артисты студии. Здесь только часть нашей команды и звёзд студии.</p>
-            </header>
-            <div class="people-shell">
-                <div class="people-filters" data-people-filters role="tablist" aria-label="Группы людей театра"></div>
-                <div class="people-layout" data-people-root></div>
-            </div>
-            </div>
-        </div>
-    </section>
+      <div class="section-inner">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-title section-title--handdrawn">Люди театра</h2>
+            <p class="section-subtitle">
+              За спектаклями и занятиями в «Эмоцике» стоят режиссёры, педагоги, актёры и
+              юные артисты студии. Здесь только часть нашей команды и звёзд студии.
+            </p>
+          </header>
 
+          <div class="people-shell">
+            <div class="people-filters" data-people-filters role="tablist" aria-label="Группы людей театра">
+              <-- Кнопки фильтров нарисует JavaScript на основе JSON -->
+            </div>
+
+            <div class="people-layout" data-people-root>
+              <-- Сетка карточек людей театра будет сгенерирована из JSON -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
 
     <!--
@@ -953,26 +1067,59 @@
     -->
 
     <section id="awards" class="section section-awards reveal-on-scroll">
-        <div class="container">
-            <div class="section-header">
-            <p class="eyebrow eyebrow--dark">Часть фестивального пути</p>
-            <h2 class="section-title">Награды и фестивали</h2>
-            <p class="section-subtitle">Спектакли и фильмы «Эмоцики» регулярно получают гран-при и призы на российских и международных конкурсах. Здесь — только часть наших наград последних лет.</p>
-            </div>
-            <div class="awards-strip awards-strip--auto" aria-label="Главные фестивальные награды" data-awards-strip>
-            <div class="awards-strip-viewport">
-                <div class="awards-strip-inner" data-top-awards-root></div>
-            </div>
-            <div class="awards-strip-controls" aria-label="Навигация по ленте наград">
-                <button type="button" class="awards-strip-btn" data-awards-scroll="prev" aria-label="Показать предыдущие награды">‹</button>
-                <button type="button" class="awards-strip-btn" data-awards-scroll="next" aria-label="Показать следующие награды">›</button>
-            </div>
-            </div>
-            <div class="awards-festivals">
-            <h3 class="awards-festivals-title">Фестивали последних лет</h3>
-            <div class="awards-festivals-grid" data-festivals-root></div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow eyebrow--dark">Часть фестивального пути</p>
+          <h2 class="section-title">Награды и фестивали</h2>
+          <p class="section-subtitle">
+            Спектакли и фильмы «Эмоцики» регулярно получают гран-при и призы на российских
+            и международных конкурсах. Здесь — только часть наших наград последних лет.
+          </p>
         </div>
+
+        <!-- Витрина топ-наград (бегущая лента бейджей) -->
+        <div
+          class="awards-strip awards-strip--auto"
+          aria-label="Главные фестивальные награды"
+          data-awards-strip
+        >
+          <div class="awards-strip-viewport">
+            <div class="awards-strip-inner" data-top-awards-root>
+              <!-- JS вставит сюда бейджи топ-наград -->
+            </div>
+          </div>
+
+          <div class="awards-strip-controls" aria-label="Навигация по ленте наград">
+            <button
+              type="button"
+              class="awards-strip-btn"
+              data-awards-scroll="prev"
+              aria-label="Показать предыдущие награды"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              class="awards-strip-btn"
+              data-awards-scroll="next"
+              aria-label="Показать следующие награды"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+
+        <!-- Карточки фестивалей -->
+        <div class="awards-festivals">
+          <h3 class="awards-festivals-title">
+            Фестивали последних лет
+          </h3>
+
+          <div class="awards-festivals-grid" data-festivals-root>
+            <!-- JS вставит сюда карточки фестивалей -->
+          </div>
+        </div>
+      </div>
     </section>
 
 
@@ -1546,47 +1693,71 @@
     </section> -->
 
     <section id="contacts" class="section section--contacts section-card">
-        <div class="section-inner">
-            <div class="container contacts">
-            <div class="contacts__info card-luxe">
-                <header class="section-header section-header--left">
-                <h2 class="section-title">Контакты</h2>
-                <p class="contacts__text section-subtitle">Записаться на пробное занятие, уточнить расписание или задать любой вопрос можно у администратора театра и студии.</p>
-                </header>
-                <dl class="contacts__list">
-                <div class="contacts__row">
-                    <dt>Телефон:</dt>
-                    <dd>
-                    <a href="tel:+79313157787">+7 (931) 315-77-87</a>
-                    <span class="contacts__note">— звонки и WhatsApp</span>
-                    </dd>
-                </div>
-                <div class="contacts__row">
-                    <dt>Email:</dt>
-                    <dd><a href="mailto:info@emozia.ru">info@emozia.ru</a></dd>
-                </div>
-                <div class="contacts__row">
-                    <dt>Адрес сцены:</dt>
-                    <dd>Санкт-Петербург, проспект Энгельса, 154, ТРК «Гранд Каньон», 3-й этаж</dd>
-                </div>
-                </dl>
-                <p class="contacts__note">Занятия студии проходят в нескольких филиалах Санкт-Петербурга — подберём удобную площадку и время для вашей семьи.</p>
-                <p class="contacts__time">Мы на связи ежедневно с 11:00 до 20:00.</p>
-                <div class="contacts__actions">
-                <a href="https://wa.me/79313157787" class="btn btn-primary" target="_blank" rel="noopener">
-                    <img src="assets/img/ui/whatsapp-icon.svg" alt="" class="icon" />
-                    Написать в WhatsApp
-                </a>
-                <a href="https://vk.com/teatr.emocika" class="btn btn-outline" target="_blank" rel="noopener">Мы во ВКонтакте</a>
-                </div>
-            </div>
-            <div class="contacts__map card-luxe">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=30.333187%2C60.059865&z=17&l=map&pt=30.333187,60.059865,pm2rdm" loading="lazy" title="Карта проезда в театр «Эмоцика»" frameborder="0" allowfullscreen></iframe>
-            </div>
-            </div>
-        </div>
-    </section>
+      <div class="section-inner">
+        <div class="container contacts">
+          <div class="contacts__info card-luxe">
+            <header class="section-header section-header--left">
+              <!-- <p class="section-kicker">Как с нами связаться</p> -->
+              <h2 class="section-title">Контакты</h2>
+              <p class="contacts__text section-subtitle">
+                Записаться на пробное занятие, уточнить расписание или задать любой вопрос
+                можно у администратора театра и студии.
+              </p>
+            </header>
 
+            <dl class="contacts__list">
+              <div class="contacts__row">
+                <dt>Телефон:</dt>
+                <dd>
+                  <a href="tel:+79313157787">+7 (931) 315-77-87</a>
+                  <span class="contacts__note">— звонки и WhatsApp</span>
+                </dd>
+              </div>
+              <div class="contacts__row">
+                <dt>Email:</dt>
+                <dd>
+                  <a href="mailto:info@emozia.ru">info@emozia.ru</a>
+                </dd>
+              </div>
+              <div class="contacts__row">
+                <dt>Адрес сцены:</dt>
+                <dd>Санкт-Петербург, проспект Энгельса, 154, ТРК «Гранд Каньон», 3-й этаж</dd>
+              </div>
+            </dl>
+
+            <p class="contacts__note">
+              Занятия студии проходят в нескольких филиалах Санкт-Петербурга — 
+              подберём удобную площадку и время для вашей семьи.
+            </p>
+            <p class="contacts__time">
+              Мы на связи ежедневно с 11:00 до 20:00.
+            </p>
+
+            <div class="contacts__actions">
+              <a href="https://wa.me/79313157787" class="btn btn-primary" target="_blank" rel="noopener">
+                <img src="assets/img/ui/whatsapp-icon.svg" alt="" class="icon">
+                Написать в WhatsApp
+              </a>
+              <a href="https://vk.com/teatr.emocika" class="btn btn-outline" target="_blank" rel="noopener">
+                Мы во ВКонтакте
+              </a>
+            </div>
+          </div>
+
+          <div class="contacts__map card-luxe">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?ll=30.333187%2C60.059865&z=17&l=map&pt=30.333187,60.059865,pm2rdm"
+              loading="lazy"
+              title="Карта проезда в театр «Эмоцика»"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
 
 
   </main>
@@ -1627,72 +1798,118 @@
     </div>
   </footer> -->
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__inner">
-            <div class="footer__brand">
-                <a href="#hero" class="footer__logo" data-scroll-to="hero">
-                <img class="footer__mark" src="assets/img/ui/favicon.png" alt="Логотип театра «Эмоцика»" />
-                <span class="footer__name">Театр «Эмоцика»</span>
-                </a>
-                <p class="footer__copy">© 2014–2025, театр «Эмоцика» и студия «Эмоция». Все права защищены.</p>
-            </div>
-            <nav class="footer__nav" aria-label="Навигация по сайту">
-                <a href="#afisha" class="footer__link" data-scroll-to="afisha">Афиша</a>
-                <a href="#snow-queen" class="footer__link" data-scroll-to="snow-queen">Новый год</a>
-                <a href="#people" class="footer__link" data-scroll-to="people">Люди театра</a>
-                <a href="#awards" class="footer__link" data-scroll-to="awards">Награды</a>
-                <a href="#docs" class="footer__link" data-scroll-to="docs">Документы</a>
-                <a href="#contacts" class="footer__link" data-scroll-to="contacts">Контакты</a>
-            </nav>
-            <div class="footer__meta">
-                <p class="footer__license">Лицензия на образовательную деятельность № 03-21-6065/24-0-3 от 05.11.2024, рег. № 1035-01271-78/01491532, ИП Бурундукова Е. А.</p>
-                <a href="#" class="footer__link footer__link--small">Политика конфиденциальности</a>
-                <p class="footer__dev">Сайт разработал <a href="https://telegram.me/BurundukovS" target="_blank" rel="noopener" class="footer__link footer__link--small">BurundukovS</a></p>
-            </div>
-            </div>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
 
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo" data-scroll-to="hero">
+            <img
+              class="footer__mark"
+              src="assets/img/ui/favicon.png"
+              alt="Логотип театра «Эмоцика»"
+            />
+            <span class="footer__name">Театр «Эмоцика»</span>
+          </a>
+          <p class="footer__copy">
+            © 2014–2025, театр «Эмоцика» и студия «Эмоция». Все права защищены.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация по сайту">
+          <a href="#afisha" class="footer__link" data-scroll-to="afisha">Афиша</a>
+          <a href="#snow-queen" class="footer__link" data-scroll-to="snow-queen">Новый год</a>
+          <a href="#people" class="footer__link" data-scroll-to="people">Люди театра</a>
+          <a href="#awards" class="footer__link" data-scroll-to="awards">Награды</a>
+          <a href="#docs" class="footer__link" data-scroll-to="docs">Документы</a>
+          <a href="#contacts" class="footer__link" data-scroll-to="contacts">Контакты</a>
+        </nav>
+
+        </nav>
+        <div class="footer__meta">
+          <p class="footer__license">
+            Лицензия на образовательную деятельность 
+            № 03-21-6065/24-0-3 от 05.11.2024,
+            рег. № 1035-01271-78/01491532, 
+            ИП&nbsp;Бурундукова&nbsp;Е.&nbsp;А.
+          </p>
+
+          <a class="footer__link footer__link--small">Политика конфиденциальности</a>
+          <p class="footer__dev">
+            Сайт разработал <a href="https://telegram.me/BurundukovS" target="_blank" rel="noopener" class="footer__link footer__link--small">BurundukovS</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
   <!-- Модальное окно спектакля -->
-    <div class="play-modal" data-play-modal hidden>
-        <div class="play-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="play-modal-title">
-            <button type="button" class="play-modal__close" data-play-modal-close aria-label="Закрыть окно о спектакле">×</button>
-            <div class="play-modal__header">
-            <span class="play-modal__badge badge badge--brand" data-play-badge></span>
-            <h2 class="play-modal__title" id="play-modal-title" data-play-title></h2>
-            <p class="play-modal__meta" data-play-meta></p>
-            </div>
-            <div class="play-modal__body">
-            <div class="play-modal__text">
-                <p class="play-modal__tagline" data-play-tagline></p>
-                <div class="play-modal__description" data-play-description></div>
-                <div class="play-modal__why" data-play-why-container>
-                <h3 class="play-modal__subheading">Почему стоит посмотреть</h3>
-                <ul class="play-modal__why-list" data-play-why></ul>
-                </div>
-                <div class="play-modal__credits">
-                <p class="play-modal__credit" data-play-author></p>
-                <p class="play-modal__credit" data-play-director></p>
-                <div class="play-modal__cast" data-play-cast-container>
-                    <h3 class="play-modal__subheading" data-play-cast-title></h3>
-                    <ul class="play-modal__cast-list" data-play-cast></ul>
-                </div>
-                </div>
-            </div>
-            <div class="play-modal__media">
-                <div class="play-modal__video" data-play-video></div>
-                <div class="play-modal__photos" data-play-photos></div>
-            </div>
-            </div>
-            <div class="play-modal__footer">
-            <a href="#" target="_blank" rel="noopener" class="btn btn-primary" data-play-ticket>Купить билет</a>
-            </div>
-        </div>
-    </div>
+  <div class="play-modal" data-play-modal hidden>
+    <div class="play-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="play-modal-title">
+      <button
+        type="button"
+        class="play-modal__close"
+        data-play-modal-close
+        aria-label="Закрыть окно о спектакле"
+      >
+        ×
+      </button>
 
+      <div class="play-modal__header">
+        <span class="play-modal__badge badge badge--brand" data-play-badge></span>
+        <h2 class="play-modal__title" id="play-modal-title" data-play-title></h2>
+        <p class="play-modal__meta" data-play-meta></p>
+      </div>
+
+      <div class="play-modal__body">
+        <div class="play-modal__text">
+          <p class="play-modal__tagline" data-play-tagline></p>
+
+          <div class="play-modal__description" data-play-description>
+            <!-- сюда прилетят абзацы описания -->
+          </div>
+
+          <div class="play-modal__why" data-play-why-container>
+            <h3 class="play-modal__subheading">Почему стоит посмотреть</h3>
+            <ul class="play-modal__why-list" data-play-why></ul>
+          </div>
+
+          <div class="play-modal__credits">
+            <p class="play-modal__credit" data-play-author></p>
+            <p class="play-modal__credit" data-play-director></p>
+
+            <div class="play-modal__cast" data-play-cast-container>
+              <h3 class="play-modal__subheading" data-play-cast-title></h3>
+              <ul class="play-modal__cast-list" data-play-cast></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="play-modal__media">
+          <div class="play-modal__video" data-play-video>
+            <!-- позже можно вставить реальный плеер/видео -->
+          </div>
+
+          <div class="play-modal__photos" data-play-photos>
+            <!-- сюда прилетят фото спектакля -->
+          </div>
+        </div>
+      </div>
+
+      <div class="play-modal__footer">
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+          data-play-ticket
+        >
+          Купить билет
+        </a>
+      </div>
+    </div>
+  </div>
 
   <div class="lightbox" id="gallery-lightbox" hidden>
     <button

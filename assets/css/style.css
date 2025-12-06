@@ -1201,6 +1201,9 @@ body.is-lightbox-open {
     display: flex;
     margin-top: 12px;
   }
+  .hero-actions--mobile .btn-primary {
+    opacity: 1;
+  }
   .hero-actions--mobile .btn {
     width: 100%;
     max-width: 340px;

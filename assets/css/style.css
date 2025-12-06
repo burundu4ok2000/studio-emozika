@@ -1422,7 +1422,11 @@ body.is-lightbox-open {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(5, 2, 20, 0.75);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 205, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 70% 80%, rgba(155, 120, 255, 0.12), transparent 40%),
+    rgba(19, 6, 36, 0.9);
+  backdrop-filter: blur(8px);
   z-index: 2000;
 }
 .play-modal[hidden] {
@@ -1434,23 +1438,40 @@ body.is-lightbox-open {
   width: 100%;
   max-height: 100%;
   overflow: auto;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
-  padding: 24px 24px 20px;
+  background:
+    linear-gradient(145deg, rgba(38, 16, 68, 0.95), rgba(26, 10, 52, 0.94));
+  border-radius: 28px;
+  box-shadow:
+    0 28px 90px rgba(12, 4, 30, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  padding: 28px;
+  color: #f3e9ff;
+  backdrop-filter: blur(6px);
 }
 .play-modal__close {
   position: absolute;
   top: 14px;
   right: 16px;
-  border: none;
-  background: transparent;
-  font-size: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f3e9ff;
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+  transition: transform var(--motion-fast) var(--motion-ease-soft), box-shadow var(--motion-fast) var(--motion-ease-soft);
+}
+.play-modal__close:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 .play-modal__header {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .play-modal__badge {
   display: inline-flex;
@@ -1461,8 +1482,9 @@ body.is-lightbox-open {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: #f2ecff;
-  color: #4a1fb8;
+  background: linear-gradient(135deg, rgba(198, 140, 255, 0.2), rgba(255, 208, 255, 0.35));
+  color: #f6eaff;
+  border: 1px solid rgba(205, 164, 255, 0.55);
   margin-bottom: 8px;
 }
 .play-modal__badge.is-hidden {
@@ -1470,29 +1492,46 @@ body.is-lightbox-open {
 }
 .play-modal__title {
   margin: 0 0 6px;
-  font-size: 24px;
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+@media (min-width: 768px) {
+  .play-modal__title {
+    font-size: 30px;
+  }
 }
 .play-modal__meta {
   margin: 0;
   font-size: 14px;
-  color: var(--color-text-muted, #666);
+  color: rgba(240, 226, 255, 0.78);
 }
 .play-modal__meta.is-hidden {
   display: none;
 }
 .play-modal__tagline {
-  font-weight: 500;
-  margin: 12px 0 10px;
+  font-weight: 600;
+  margin: 12px 0 12px;
+  color: #f0e1ff;
 }
 .play-modal__body {
   display: grid;
-  gap: 18px;
+  gap: 20px;
 }
 @media (min-width: 768px) {
   .play-modal__body {
     grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
     align-items: flex-start;
   }
+}
+.play-modal__text,
+.play-modal__media {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(4px);
 }
 .play-modal__description p {
   margin: 0 0 10px;
@@ -1501,12 +1540,17 @@ body.is-lightbox-open {
   padding-left: 18px;
   margin: 6px 0 0;
 }
+.play-modal__why-list li {
+  margin-bottom: 6px;
+  color: rgba(234, 240, 255, 0.9);
+}
 .play-modal__why.is-hidden {
   display: none;
 }
 .play-modal__credits p {
   margin: 0 0 6px;
   font-size: 14px;
+  color: rgba(245, 234, 255, 0.92);
 }
 .play-modal__cast-list {
   padding-left: 18px;
@@ -1518,13 +1562,21 @@ body.is-lightbox-open {
 .play-modal__media {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 .play-modal-photo {
   width: 100%;
   border-radius: 16px;
   object-fit: cover;
   display: block;
+}
+.play-modal__video iframe,
+.play-modal__video video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
 }
 .play-modal__footer {
   margin-top: 18px;
@@ -1768,61 +1820,146 @@ body.has-modal-open {
 
 .section-snow-queen {
   position: relative;
-  padding: 72px 0 64px;
+  padding: 56px 0 48px;
   overflow: hidden;
   background: 
     radial-gradient(circle at 50% 18%, rgba(88, 180, 255, 0.25), transparent 42%),
     linear-gradient(180deg, #0b1a2d 0%, #12355d 32%, #16507f 60%, #0f2d4c 80%, #091628 100%);
 }
+.section-snow-queen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.16) 0, rgba(255, 255, 255, 0.16) 2px, transparent 7px),
+    radial-gradient(circle at 78% 28%, rgba(255, 255, 255, 0.14) 0, rgba(255, 255, 255, 0.14) 2px, transparent 7px),
+    radial-gradient(circle at 30% 72%, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 2px, transparent 7px),
+    radial-gradient(circle at 68% 85%, rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.1) 2px, transparent 7px);
+  background-size: 220px 220px, 260px 260px, 240px 240px, 280px 280px;
+  opacity: 0.55;
+  z-index: 0;
+}
+.section-snow-queen .container {
+  position: relative;
+  z-index: 1;
+}
 .snow-queen-layout {
   display: grid;
-  gap: 24px;
-  align-items: center;
-  margin-top: 20px;
+  gap: 16px;
+  align-items: start;
+  justify-items: center;
+  margin-top: 16px;
+}
+.snow-queen-top {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 @media (min-width: 900px) {
   .snow-queen-layout {
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    gap: 40px;
-    align-items: center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+    justify-items: center;
   }
   .snow-queen-poster {
     max-width: 420px;
     margin: 0;
+    align-self: center;
   }
 }
 .snow-queen-poster {
-  max-width: 360px;
+  max-width: 420px;
   margin: 0 auto;
 }
-.snow-queen-poster img {
+.snow-queen-poster.hero-poster,
+.snow-queen-video.hero-poster {
+  margin-top: 0;
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  background: radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.78), rgba(196, 226, 255, 0.45)),
+    linear-gradient(140deg, rgba(188, 220, 255, 0.7), rgba(120, 177, 255, 0.4));
+  border: 2px solid rgba(172, 209, 255, 0.9);
+  box-shadow:
+    0 24px 60px rgba(5, 18, 46, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 0 26px rgba(134, 188, 255, 0.35);
+  display: flex;
+  align-items: stretch;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
+.snow-queen-video {
+  max-width: 420px;
   width: 100%;
+  height: 100%;
+}
+.snow-queen-video-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000;
+}
+.snow-queen-video-inner iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.snow-queen-poster .hero-poster-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
+  object-fit: contain;
+  object-position: center;
   display: block;
-  border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(5, 10, 30, 0.35);
+  border-radius: 18px;
+}
+.snow-queen-poster-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.snow-queen-content {
+  display: grid;
+  gap: 10px;
+  max-width: 460px;
+  width: 100%;
+  align-self: center;
 }
 
 .section-snow-queen .snow-queen-header {
   position: relative;
-  padding: 18px 22px 18px;
-  margin-bottom: 24px;
-  border-radius: 20px;
-  background:
-    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.18), transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(88, 180, 255, 0.35), transparent 60%),
-    rgba(9, 16, 40, 0.94);
-  border: 1px solid rgba(150, 220, 255, 0.55);
-  box-shadow: 0 20px 50px rgba(5, 8, 28, 0.75);
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
   text-align: center;
   overflow: hidden;
-  width: fit-content;
+  width: auto;
   max-width: 100%;
-  animation: snow-glow-header 9s ease-in-out infinite alternate;
+  animation: none;
 }
 
 .section-snow-queen .snow-queen-header .section-kicker {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 600;
@@ -1832,8 +1969,8 @@ body.has-modal-open {
 .section-snow-queen .snow-queen-header .section-title {
   font-family: var(--font-heading);
   font-size: 24px;
-  line-height: 1.25;
-  letter-spacing: 0.03em;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
   text-transform: none;
   color: #ffffff;
   text-shadow:
@@ -1865,29 +2002,38 @@ body.has-modal-open {
   gap: 8px;
   justify-content: center;
   width: fit-content;
-  margin: 12px auto 32px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.18), rgba(149, 219, 255, 0.5)),
-    radial-gradient(circle at 0% 0%, rgba(88, 180, 255, 0.45), transparent 55%),
-    radial-gradient(circle at 100% 100%, rgba(149, 219, 255, 0.4), transparent 55%),
-    rgba(5, 10, 30, 0.96);
-  background-size: 200% 200%, auto, auto, auto;
-  background-position: 0% 50%, 0 0, 100% 100%, 0 0;
-  border: 1px solid rgba(149, 219, 255, 0.6);
-  box-shadow: 0 18px 50px rgba(5, 8, 28, 0.8);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  animation: snow-tags-shimmer 12s ease-in-out infinite;
+  margin: 4px 0 10px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  animation: none;
+}
+@media (min-width: 900px) {
+  .section-snow-queen .snow-queen-header {
+    width: 100%;
+    text-align: center;
+  }
+
+  .snow-queen-tags-row {
+    justify-content: center;
+    margin: 4px 0 10px;
+  }
 }
 
 /* Бейджи поверх более тёмного фона */
 .section-snow-queen .snow-queen-tags-row .badge {
   --badge-bg-soft: rgba(255, 255, 255, 0.2);
   --badge-text-soft: #0b0b1f;
-  border-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  padding: 6px 10px;
 }
 
 
@@ -1928,16 +2074,40 @@ body.has-modal-open {
   margin: 32px 0 24px;
 }
 .snow-queen-details {
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 14px 12px;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.9), rgba(240, 249, 255, 0.78)),
+    linear-gradient(150deg, rgba(232, 244, 255, 0.96), rgba(212, 230, 255, 0.86));
+  border: 1px solid rgba(168, 201, 255, 0.65);
+  box-shadow:
+    0 14px 38px rgba(5, 18, 46, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+  color: #1f2f48;
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+.snow-queen-details--schools {
+  background:
+    radial-gradient(circle at 15% 25%, rgba(224, 243, 255, 0.9), rgba(243, 250, 255, 0.74)),
+    linear-gradient(150deg, rgba(220, 238, 255, 0.94), rgba(197, 225, 255, 0.85));
+  border-color: rgba(172, 209, 255, 0.65);
+}
+.snow-queen-details--family {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(210, 235, 255, 0.9), rgba(240, 249, 255, 0.74)),
+    linear-gradient(150deg, rgba(216, 240, 255, 0.94), rgba(188, 220, 255, 0.85));
+  border-color: rgba(156, 200, 255, 0.65);
 }
 /* Карточка с двумя сценариями (группы / семьи) */
 .snow-queen-details-title {
   margin: 0 0 12px;
   font-family: var(--font-heading);
-  font-size: 20px;
-  line-height: 1.3;
-  color: var(--color-brand-dark);
+  font-size: 17px;
+  line-height: 1.22;
+  color: #0f3b7a;
 }
 
 .snow-queen-details-columns {
@@ -1957,46 +2127,60 @@ body.has-modal-open {
   }
 
   .snow-queen-details-column + .snow-queen-details-column {
-    border-left: 1px solid rgba(122, 47, 180, 0.12);
+    border-left: 1px solid rgba(40, 110, 200, 0.15);
     padding-left: 18px;
   }
 }
 
 .snow-queen-details-heading {
   margin: 0 0 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--color-brand-dark);
+  color: #114b98;
 }
-
+.snow-queen-details,
+.snow-queen-list {
+  font-size: 13.5px;
+}
 .snow-queen-actions {
-  margin-top: 16px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+}
+.snow-queen-actions--bar {
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .snow-queen-btn {
-  flex: 1 1 180px;
+  flex: 1 1 150px;
   justify-content: center;
+  background: linear-gradient(135deg, #62b0ff, #3276d8);
+  box-shadow: 0 12px 32px rgba(12, 54, 114, 0.35);
+  border: 1px solid rgba(126, 182, 255, 0.8);
 }
-
+.snow-queen-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 42px rgba(12, 54, 114, 0.45);
+}
 .snow-queen-btn--schools {
-  box-shadow: 0 10px 26px rgba(8, 2, 26, 0.3);
   white-space: nowrap;
 }
-
 .snow-queen-btn--family {
-  background: linear-gradient(13deg, var(--color-brand-light), var(--color-brand));
-  box-shadow: 0 10px 26px rgba(8, 2, 26, 0.3);
+  background: linear-gradient(135deg, #6bc4ff, #3b82dd);
 }
 
 @media (max-width: 575.98px) {
   .snow-queen-actions {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  .snow-queen-actions--bar {
+    justify-content: center;
   }
 
   .snow-queen-btn {
@@ -2010,7 +2194,7 @@ body.has-modal-open {
   position: relative;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 22px 60px rgba(10, 4, 26, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 22px 60px rgba(5, 18, 46, 0.24), 0 0 0 1px rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.9);
   padding: 24px 22px 22px;
 }
@@ -2026,12 +2210,12 @@ body.has-modal-open {
   border-top: 4px solid var(--color-accent-gold);
 }
 .snow-queen-card--family {
-  border-top: 4px solid var(--color-brand-light);
+  border-top: 4px solid #6bc4ff;
 }
 .snow-queen-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 26px 80px rgba(8, 2, 26, 0.28);
-  border-color: rgba(122, 47, 180, 0.35);
+  box-shadow: 0 26px 80px rgba(5, 18, 46, 0.28);
+  border-color: rgba(40, 110, 200, 0.35);
 }
 .snow-queen-card:hover::before {
   opacity: 1;
@@ -2040,7 +2224,7 @@ body.has-modal-open {
   font-family: var(--font-heading);
   font-size: 17px;
   font-weight: 700;
-  color: var(--color-brand-dark);
+  color: #0f3b7a;
   margin: 0 0 10px;
 }
 
@@ -2050,9 +2234,9 @@ body.has-modal-open {
   list-style: none;
   margin: 0 0 16px;
   padding-left: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-text-soft);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #3d3744;
 }
 
 .snow-queen-list li,
@@ -2076,8 +2260,8 @@ body.has-modal-open {
   width: 7px;
   height: 7px;
   border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #ffcf71, #ffffff);
-  box-shadow: 0 0 0 1px rgba(5, 8, 28, 0.2);
+  background: linear-gradient(135deg, #9ad3ff, #5ba8ff);
+  box-shadow: 0 0 0 2px rgba(107, 175, 255, 0.18);
 }
 .snow-queen-card-actions {
   display: flex;
@@ -6185,6 +6369,7 @@ gallery__video-item iframe {
 
 .docs {
   max-width: 840px;
+  margin: 0 auto;
 }
 
 .docs-list {

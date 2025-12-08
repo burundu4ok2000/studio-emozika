@@ -1,0 +1,28 @@
+html {
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+    color: #3b2920;
+    background-color: var(--color-bg);
+    line-height: 1.6;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

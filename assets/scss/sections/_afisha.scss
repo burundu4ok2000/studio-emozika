@@ -1,0 +1,414 @@
+.section-afisha {
+    background: var(--color-bg-paper);
+}
+
+.section-afisha .section-title {
+    color: var(--color-brand-dark);
+}
+
+.section-afisha .section-subtitle {
+    max-width: 620px;
+    margin: 0 auto 32px;
+    color: var(--color-text-muted);
+}
+
+.afisha-strip-wrapper {
+    position: relative;
+    margin-top: 24px;
+    padding: 0 40px;
+}
+
+.afisha-strip {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 0 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.afisha-strip::-webkit-scrollbar {
+    height: 6px;
+}
+
+.afisha-strip::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.afisha-strip::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 999px;
+}
+
+.afisha-card--strip {
+    flex: 0 0 auto;
+    min-width: 360px;
+    max-width: 400px;
+    scroll-snap-align: start;
+}
+
+@media (max-width: 640px) {
+    .afisha-card--strip {
+        min-width: 82vw;
+        max-width: 82vw;
+    }
+}
+
+.afisha-card-poster-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0b0617;
+    aspect-ratio: 2 / 3;
+    min-height: 260px;
+}
+
+.afisha-card-poster-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #0b0617;
+    transition: transform 0.18s ease-out;
+}
+
+.afisha-card--strip:hover .afisha-card-poster-image {
+    transform: scale(1.03);
+}
+
+.afisha-card-badge-wrap {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.afisha-card-badge--premiere {
+    background: linear-gradient(135deg, #ffcf33, #ff7a00);
+}
+
+.afisha-card-badge--ny {
+    background: linear-gradient(135deg, #89c4ff, #4a1fb8);
+}
+
+.afisha-card-footer {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.afisha-card-subline {
+    margin: 0;
+    font-size: 13px;
+    color: var(--color-text-muted, #666);
+}
+
+.afisha-card--strip .afisha-title {
+    margin: 0;
+    font-size: 16px;
+}
+
+.afisha-buttons--strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+    .afisha-buttons--strip {
+        grid-template-columns: 1fr;
+    }
+}
+
+.afisha-strip-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.26), transparent 60%),
+        linear-gradient(135deg, rgba(9, 16, 40, 0.96), rgba(42, 16, 99, 0.9));
+    color: #ffffff;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(8, 2, 26, 0.6);
+    transition:
+        transform var(--motion-fast) var(--motion-ease-soft),
+        box-shadow var(--motion-fast) var(--motion-ease-soft),
+        background-color var(--motion-fast) var(--motion-ease-soft),
+        border-color var(--motion-fast) var(--motion-ease-soft);
+}
+
+.afisha-strip-arrow--prev {
+    left: -18px;
+}
+
+.afisha-strip-arrow--next {
+    right: -18px;
+}
+
+.afisha-strip-arrow:hover,
+.afisha-strip-arrow:focus-visible {
+    transform: translateY(-50%) translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 14px 32px rgba(8, 2, 26, 0.75);
+    outline: none;
+}
+
+@media (min-width: 768px) {
+    .afisha-strip-arrow {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-afisha {
+        padding: 52px 0;
+    }
+
+    .afisha-strip-wrapper {
+        padding: 0 12px;
+        position: relative;
+    }
+
+    .afisha-strip {
+        gap: 16px;
+        padding: 2px 4px 10px;
+    }
+
+    .afisha-strip-wrapper::after {
+        content: "Свайпните афишу →";
+        position: absolute;
+        right: 12px;
+        bottom: -12px;
+        font-size: 12px;
+        color: var(--color-text-muted);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 4px 10px;
+        border-radius: 999px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        pointer-events: none;
+    }
+}
+
+/* Modal */
+
+.play-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 205, 255, 0.08), transparent 35%),
+        radial-gradient(circle at 70% 80%, rgba(155, 120, 255, 0.12), transparent 40%),
+        rgba(19, 6, 36, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+}
+
+.play-modal[hidden] {
+    display: none;
+}
+
+.play-modal__dialog {
+    position: relative;
+    max-width: 960px;
+    width: 100%;
+    max-height: 100%;
+    overflow: auto;
+    background:
+        linear-gradient(145deg, rgba(38, 16, 68, 0.95), rgba(26, 10, 52, 0.94));
+    border-radius: 28px;
+    box-shadow:
+        0 28px 90px rgba(12, 4, 30, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+    padding: 28px;
+    color: #f3e9ff;
+    backdrop-filter: blur(6px);
+}
+
+.play-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: #f3e9ff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+    transition: transform var(--motion-fast) var(--motion-ease-soft), box-shadow var(--motion-fast) var(--motion-ease-soft);
+}
+
+.play-modal__close:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.play-modal__header {
+    margin-bottom: 18px;
+}
+
+.play-modal__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: linear-gradient(135deg, rgba(198, 140, 255, 0.2), rgba(255, 208, 255, 0.35));
+    color: #f6eaff;
+    border: 1px solid rgba(205, 164, 255, 0.55);
+    margin-bottom: 8px;
+}
+
+.play-modal__badge.is-hidden {
+    display: none;
+}
+
+.play-modal__title {
+    margin: 0 0 6px;
+    font-size: 26px;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+}
+
+@media (min-width: 768px) {
+    .play-modal__title {
+        font-size: 30px;
+    }
+}
+
+.play-modal__meta {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(240, 226, 255, 0.78);
+}
+
+.play-modal__meta.is-hidden {
+    display: none;
+}
+
+.play-modal__tagline {
+    font-weight: 600;
+    margin: 12px 0 12px;
+    color: #f0e1ff;
+}
+
+.play-modal__body {
+    display: grid;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .play-modal__body {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+        align-items: flex-start;
+    }
+}
+
+.play-modal__text,
+.play-modal__media {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 14px 16px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(4px);
+}
+
+.play-modal__description p {
+    margin: 0 0 10px;
+}
+
+.play-modal__why-list {
+    padding-left: 18px;
+    margin: 6px 0 0;
+}
+
+.play-modal__why-list li {
+    margin-bottom: 6px;
+    color: rgba(234, 240, 255, 0.9);
+}
+
+.play-modal__why.is-hidden {
+    display: none;
+}
+
+.play-modal__credits p {
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: rgba(245, 234, 255, 0.92);
+}
+
+.play-modal__cast-list {
+    padding-left: 18px;
+    margin: 4px 0 0;
+}
+
+.play-modal__cast.is-hidden {
+    display: none;
+}
+
+.play-modal__media {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.play-modal-photo {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    display: block;
+}
+
+.play-modal__video iframe,
+.play-modal__video video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.play-modal__footer {
+    margin-top: 18px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.play-modal__footer .btn {
+    min-width: 180px;
+}
+
+/* Утилита для скрытия элементов */
+.is-hidden {
+    display: none !important;
+}
+
+/* Блокируем скролл страницы при открытой модалке */
+body.has-modal-open {
+    overflow: hidden;
+}

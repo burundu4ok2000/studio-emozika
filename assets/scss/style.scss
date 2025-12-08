@@ -1,0 +1,45 @@
+/* ===========================
+   Правила оформления CSS-файла
+   =========================== */
+
+/* 1. БАЗА */
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/layout';
+
+/* 2. КОМПОНЕНТЫ */
+@import 'components/buttons';
+@import 'components/badges';
+@import 'components/cards';
+@import 'components/lightbox';
+
+/* 3. АКТИВНЫЕ СЕКЦИИ */
+@import 'sections/header';
+@import 'sections/banner';
+@import 'sections/hero';
+@import 'sections/afisha';
+@import 'sections/snow-queen';
+@import 'sections/people';
+@import 'sections/contacts';
+/* formerly #contacts */
+@import 'sections/footer';
+
+/* 4. ДОПОЛНИТЕЛЬНЫЕ И АРХИВНЫЕ СЕКЦИИ */
+@import 'sections/tracks';
+@import 'sections/studio';
+@import 'sections/films';
+@import 'sections/casting';
+@import 'sections/facts';
+/* #stats */
+@import 'sections/abonements';
+@import 'sections/reviews';
+@import 'sections/gallery';
+@import 'sections/docs';
+@import 'sections/faq';
+@import 'sections/branches';
+@import 'sections/archive';
+@import 'sections/about';
+@import 'sections/ny';
+@import 'sections/why';
+@import 'sections/play';

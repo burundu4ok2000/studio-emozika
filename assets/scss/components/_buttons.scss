@@ -1,0 +1,125 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        transform var(--motion-normal) var(--motion-ease-soft),
+        box-shadow var(--motion-normal) var(--motion-ease-soft),
+        background-color var(--motion-fast) var(--motion-ease-soft),
+        border-color var(--motion-fast) var(--motion-ease-soft),
+        color var(--motion-fast) var(--motion-ease-soft);
+}
+
+.btn-compact-mobile {
+    gap: 6px;
+}
+
+@media (max-width: 767.98px) {
+    .btn-compact-mobile {
+        padding: 9px 12px;
+        font-size: 13px;
+        min-height: 40px;
+        line-height: 1.2;
+    }
+}
+
+.btn-primary {
+    padding: 12px 22px;
+    border: none;
+    background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 14px 40px rgba(8, 2, 26, 0.45);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 52px rgba(8, 2, 26, 0.6);
+}
+
+.btn-lg {
+    padding: 13px 24px;
+    font-size: 15px;
+    min-height: 48px;
+}
+
+.btn-ghost {
+    border: 1px solid var(--color-accent);
+    color: var(--color-text);
+    background-color: transparent;
+}
+
+.btn-ghost:hover {
+    background-color: rgba(255, 204, 128, 0.12);
+}
+
+.btn-outline {
+    border: 1px solid rgba(122, 47, 180, 0.5);
+    color: var(--color-brand-dark);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: rgba(122, 47, 180, 0.06);
+}
+
+.btn,
+.main-nav a,
+.main-nav button,
+.site-nav a,
+.floating-cta,
+.social-pill,
+.contact-link {
+    outline: none;
+}
+
+.btn:focus-visible,
+.main-nav a:focus-visible,
+.main-nav button:focus-visible,
+.site-nav a:focus-visible,
+.floating-cta:focus-visible,
+.social-pill:focus-visible,
+.contact-link:focus-visible,
+.badge:focus-visible,
+.afisha-card:focus-visible,
+.abonement-card:focus-visible,
+.films-card:focus-visible,
+.award-badge:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+}
+
+.btn-secondary {
+    padding: 11px 20px;
+    border-radius: 999px;
+    border: 1px dashed rgba(255, 255, 255, 0.7);
+    background: transparent;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffffff;
+}
+
+.btn-secondary--dark {
+    border-color: rgba(122, 47, 180, 0.32);
+    color: var(--color-brand-dark);
+}
+
+.btn-secondary--dark:hover {
+    background: rgba(122, 47, 180, 0.06);
+    border-color: rgba(122, 47, 180, 0.5);
+}

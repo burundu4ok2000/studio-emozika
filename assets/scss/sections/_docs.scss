@@ -1,0 +1,43 @@
+.section-docs {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background: #f9f4ff;
+}
+
+.docs {
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.docs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.docs-item {
+    width: 100%;
+}
+
+.docs-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    border-radius: 18px;
+    border: 1px solid rgba(122, 47, 180, 0.16);
+    background: rgba(122, 47, 180, 0.01);
+    text-decoration: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+    color: inherit;
+}
+
+.docs-link:hover,
+.docs-link:focus-visible {
+    border-color: rgba(122, 47, 180, 0.38);
+    background: rgba(122, 47, 180, 0.04);
+}

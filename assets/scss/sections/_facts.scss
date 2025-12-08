@@ -1,0 +1,37 @@
+.section-facts {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.fact-card {
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: var(--color-surface);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
+}
+
+.fact-number {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    margin: 0 0 6px;
+    color: #3b2317;
+}
+
+.fact-label {
+    margin: 0 0 8px;
+    font-weight: 600;
+    color: #6c4b3b;
+}
+
+.fact-text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}

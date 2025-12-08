@@ -1,0 +1,19 @@
+.top-banner {
+    background: #ffe0b2;
+    font-size: 13px;
+}
+
+.top-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    gap: 10px;
+}
+
+.top-banner-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-stage-wood);
+    border-bottom: 1px solid rgba(75, 44, 37, 0.5);
+}

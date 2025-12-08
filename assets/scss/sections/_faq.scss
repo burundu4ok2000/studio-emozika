@@ -1,0 +1,85 @@
+.section--faq {
+    background: #f9f4ff;
+    /* лёгкий фон, в духе остальных блоков */
+}
+
+.section--faq .section-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section--faq .section-inner {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.faq {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.faq-item {
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(122, 47, 180, 0.10);
+    box-shadow: 0 12px 32px rgba(24, 1, 54, 0.06);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 14px 16px;
+    border: none;
+    background: transparent;
+    font: inherit;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.faq-question:hover,
+.faq-question:focus-visible {
+    background: rgba(122, 47, 180, 0.04);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(122, 47, 180, 0.45);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    transition: transform 150ms ease-out, background 150ms ease-out, color 150ms ease-out;
+}
+
+/* При раскрытии плюс превращаем в крестик лёгким поворотом */
+.faq-question[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+    background: #4a1fb8;
+    color: #fff;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 16px 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-text-muted, #666);
+}
+
+.faq-answer.open {
+    display: block;
+}
+
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}

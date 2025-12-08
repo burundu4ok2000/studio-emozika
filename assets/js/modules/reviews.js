@@ -23,10 +23,10 @@ const videoReviews = [
             "После первого спектакля мы увидели совсем другого ребёнка — уверенного и светящегося.",
         authorLabel: "Мама Маши, 9 лет",
 
-        thumbUrl: "assets/img/reviews/masha-9-thumb.jpg", // TODO: подставь реальный путь
+        thumbUrl: "assets/img/reviews/masha-9-thumb.webp",
         thumbAlt: "Кадр из видеоотзыва: мама Маши после спектакля",
 
-        videoEmbedUrl: "https://www.youtube.com/embed/XXXXXXXX", // TODO: сюда embed-ссылку
+        videoEmbedUrl: "", // Video temporarily unavailable
         platform: "youtube",
         videoId: "XXXXXXXX",
 
@@ -58,10 +58,10 @@ const videoReviews = [
             "Учителя в школе заметили, что Кирилл стал спокойно выходить к доске и не мямлить. Для нас это огромный шаг.",
         authorLabel: "Папа Кирилла, 12 лет",
 
-        thumbUrl: "assets/img/reviews/kirill-12-thumb.jpg",
+        thumbUrl: "assets/img/reviews/kirill-12-thumb.webp",
         thumbAlt: "Кирилл с папой после спектакля",
 
-        videoEmbedUrl: "https://vk.com/video-0000000_0000000", // TODO: embed VK
+        videoEmbedUrl: "", // Video temporarily unavailable
         platform: "vk",
         videoId: "0000000_0000000",
 
@@ -93,10 +93,10 @@ const videoReviews = [
             "Дети возвращаются из лагеря с ощущением, что у них появилась новая семья. Это не просто отдых, а глубокий опыт.",
         authorLabel: "Монтаж отзывов родителей",
 
-        thumbUrl: "assets/img/reviews/camp-montage-thumb.jpg",
+        thumbUrl: "assets/img/reviews/camp-montage-thumb.webp",
         thumbAlt: "Кадры из смены лагеря студии «Эмоция»",
 
-        videoEmbedUrl: buildVideoEmbedUrl("youtube", "YYYYYYYY"),
+        videoEmbedUrl: "", // Video temporarily unavailable
         platform: "youtube",
         videoId: "YYYYYYYY",
 

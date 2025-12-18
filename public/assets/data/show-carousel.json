@@ -1,0 +1,16 @@
+{
+  "shows": [
+    {
+      "id": "all",
+      "title": "Наши спектакли",
+      "photos": [
+        {
+          "type": "video",
+          "url": "https://vk.com/video_ext.php?oid=-232221941&id=456239085&autoplay=1"
+        },
+        "https://via.placeholder.com/1920x2560/16213e/ffffff?text=Photo+2",
+        "https://via.placeholder.com/1920x2560/0f3460/ffffff?text=Photo+3"
+      ]
+    }
+  ]
+}

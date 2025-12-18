@@ -1,0 +1,156 @@
+/**
+ * Docs Modal Styles
+ * Стили для модального окна с документами
+ */
+
+.docs-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.docs-modal[hidden] {
+    display: none;
+}
+
+.docs-modal__overlay {
+    position: absolute;
+    inset: 0;
+    border: none;
+    background: rgba(3, 0, 10, 0.88);
+    cursor: pointer;
+}
+
+.docs-modal__dialog {
+    position: relative;
+    z-index: 1;
+    max-width: min(640px, 90vw);
+    max-height: 85vh;
+    width: 100%;
+    border-radius: 1.5rem;
+    background:
+        radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08), transparent 55%),
+        rgba(8, 0, 25, 0.96);
+    box-shadow: 0 32px 90px rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+}
+
+.docs-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+    z-index: 2;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(1.08);
+    }
+}
+
+.docs-modal__content {
+    padding: 2.5rem 2rem 2rem;
+    overflow-y: auto;
+    max-height: 85vh;
+}
+
+.docs-modal__header {
+    margin-bottom: 2rem;
+}
+
+.docs-modal__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.75rem;
+}
+
+.docs-modal__subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.docs-modal__body {
+    margin-top: 1.5rem;
+}
+
+.docs-modal__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.docs-modal__item {
+    margin: 0;
+}
+
+.docs-modal__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.docs-modal__doc-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    flex: 1;
+}
+
+.docs-modal__doc-meta {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 1rem;
+    white-space: nowrap;
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+    .docs-modal__content {
+        padding: 2rem 1.25rem 1.5rem;
+    }
+
+    .docs-modal__title {
+        font-size: 1.5rem;
+    }
+
+    .docs-modal__link {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .docs-modal__doc-meta {
+        margin-left: 0;
+    }
+}

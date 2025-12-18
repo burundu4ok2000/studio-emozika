@@ -3,43 +3,45 @@
    =========================== */
 
 /* 1. БАЗА */
-@import 'base/variables';
-@import 'base/reset';
-@import 'base/typography';
-@import 'base/layout';
+/* 1. БАЗА */
+@use 'base/variables';
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/layout';
 
 /* 2. КОМПОНЕНТЫ */
-@import 'components/buttons';
-@import 'components/badges';
-@import 'components/cards';
-@import 'components/lightbox';
+@use 'components/buttons';
+@use 'components/badges';
+@use 'components/cards';
+@use 'components/lightbox';
+@use 'components/docs-modal';
 
 /* 3. АКТИВНЫЕ СЕКЦИИ */
-@import 'sections/header';
-@import 'sections/banner';
-@import 'sections/hero';
-@import 'sections/afisha';
-@import 'sections/snow-queen';
-@import 'sections/people';
-@import 'sections/contacts';
+@use 'sections/header';
+@use 'sections/banner';
+@use 'sections/hero';
+@use 'sections/afisha';
+@use 'sections/snow-queen';
+@use 'sections/director';
+@use 'sections/contacts';
 /* formerly #contacts */
-@import 'sections/footer';
+@use 'sections/footer';
 
 /* 4. ДОПОЛНИТЕЛЬНЫЕ И АРХИВНЫЕ СЕКЦИИ */
-@import 'sections/tracks';
-@import 'sections/studio';
-@import 'sections/films';
-@import 'sections/casting';
-@import 'sections/facts';
+@use 'sections/tracks';
+@use 'sections/studio';
+@use 'sections/films';
+@use 'sections/casting';
+@use 'sections/facts';
 /* #stats */
-@import 'sections/abonements';
-@import 'sections/reviews';
-@import 'sections/gallery';
-@import 'sections/docs';
-@import 'sections/faq';
-@import 'sections/branches';
-@import 'sections/archive';
-@import 'sections/about';
-@import 'sections/ny';
-@import 'sections/why';
-@import 'sections/play';
+@use 'sections/abonements';
+@use 'sections/reviews';
+@use 'sections/gallery';
+@use 'sections/docs';
+@use 'sections/faq';
+@use 'sections/branches';
+@use 'sections/archive';
+@use 'sections/about';
+@use 'sections/ny';
+@use 'sections/why';
+@use 'sections/play';

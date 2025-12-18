@@ -16,6 +16,10 @@ import { initBranches } from './modules/branches.js';
 import { initAbonements } from './modules/abonements.js';
 import { initAwards } from './modules/awards.js';
 import { initSnowQueen } from './modules/snow-queen.js';
+import { initDocsModal } from './modules/docs-modal.js';
+
+import { initHeroCarousel } from './modules/hero-carousel.js';
+import { initVideoLightbox } from './modules/video-lightbox.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Базовая инициализация и эффекты
@@ -24,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initScroll();
   initFaq();
   initSnowQueen();
+  // initHeroCarousel(); // Carousel removed - replaced with minimalist hero
+  initVideoLightbox();
+  initDocsModal();
 
   // 2. Студия и путешествие
   initJourney();

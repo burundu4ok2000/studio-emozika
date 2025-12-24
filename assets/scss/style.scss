@@ -3,7 +3,6 @@
    =========================== */
 
 /* 1. БАЗА */
-/* 1. БАЗА */
 @use 'base/variables';
 @use 'base/reset';
 @use 'base/typography';
@@ -17,7 +16,7 @@
 @use 'components/docs-modal';
 @use 'components/play-modal';
 
-/* 3. АКТИВНЫЕ СЕКЦИИ */
+/* 3. СЕКЦИИ */
 @use 'sections/header';
 @use 'sections/banner';
 @use 'sections/hero';
@@ -25,24 +24,4 @@
 @use 'sections/snow-queen';
 @use 'sections/director';
 @use 'sections/contacts';
-/* formerly #contacts */
 @use 'sections/footer';
-
-/* 4. ДОПОЛНИТЕЛЬНЫЕ И АРХИВНЫЕ СЕКЦИИ */
-@use 'sections/tracks';
-@use 'sections/studio';
-@use 'sections/films';
-@use 'sections/casting';
-@use 'sections/facts';
-/* #stats */
-@use 'sections/abonements';
-@use 'sections/reviews';
-@use 'sections/gallery';
-@use 'sections/docs';
-@use 'sections/faq';
-@use 'sections/branches';
-@use 'sections/archive';
-@use 'sections/about';
-@use 'sections/ny';
-@use 'sections/why';
-@use 'sections/play';

@@ -248,9 +248,12 @@
     }
 
     /* Logo Fix: Force square aspect ratio */
-    .logo-mark {
+    .logo-badge .logo-mark {
         width: 36px;
         height: 36px;
+        min-width: 36px;
+        /* prevent shrinking */
+        min-height: 36px;
         flex: 0 0 36px;
         border-radius: 50%;
         aspect-ratio: 1 / 1;
@@ -261,8 +264,12 @@
         font-size: 14px;
     }
 
-    /* Hide logo text on very small screens if needed, 
-       but user requested logo + buy button visible */
+    /* Ensure hamburger is visible and above nav overlay */
+    .header-toggle {
+        display: flex;
+        z-index: 1001;
+        /* Above mobile menu overlay (z-index 10) */
+    }
 }
 
 @media (max-width: 640px) {

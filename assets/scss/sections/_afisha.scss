@@ -69,7 +69,10 @@
 /* Card Styling */
 .afisha-card--strip {
     flex: 0 0 auto;
+    /* No shrink, no grow, fixed based on width */
     width: 340px;
+    min-width: 340px;
+    /* Explicit min-width for safari/mobile */
     scroll-snap-align: center;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);

@@ -49,11 +49,14 @@
 }
 
 .logo-mark {
-    width: auto;
-    height: 40px;
-    flex: 0 0 auto;
-    object-fit: contain;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    min-height: 40px;
+    flex: 0 0 40px;
+    object-fit: cover;
     border-radius: 50%;
+    aspect-ratio: 1 / 1;
 }
 
 .logo-text {
@@ -206,7 +209,8 @@
     }
 
     .header-toggle {
-        display: flex;
+        display: flex !important;
+        z-index: 1001;
     }
 
     /* Hide nav by default on mobile */

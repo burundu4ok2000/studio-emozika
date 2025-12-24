@@ -58,30 +58,6 @@
     color: var(--color-stage-wood);
 }
 
-.section-title--handdrawn {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
-}
-
-.section-title--handdrawn::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%) translateY(6px);
-    width: var(--hand-underline-width);
-    height: var(--hand-underline-height);
-    background: url("/assets/img/ui/underline-hand.svg") center/contain no-repeat;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.reveal-on-scroll.is-visible .section-title--handdrawn::after {
-    opacity: var(--hand-underline-opacity);
-    transform: translateX(-50%) translateY(0);
-}
 
 .eyebrow {
     text-transform: uppercase;

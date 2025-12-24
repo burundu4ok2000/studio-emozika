@@ -1,21 +1,3 @@
-.heading-with-scribble {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 4px;
-}
-
-.heading-with-scribble::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    height: 8px;
-    background: url("/assets/img/scribble-underline.svg") center/100% no-repeat;
-    opacity: 0.9;
-    pointer-events: none;
-}
-
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(10px);

@@ -1,8 +1,29 @@
+/**
+ * ==========================================================================
+ * BANNER
+ * ==========================================================================
+ *
+ * Top announcement banner for promotions or important notices.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   BANNER STYLES
+   ========================================================================== */
+
+/**
+ * Top banner container
+ */
 .top-banner {
-    background: #ffe0b2;
+    background: var(--color-accent);
     font-size: 13px;
 }
 
+/**
+ * Banner inner layout
+ */
 .top-banner-inner {
     display: flex;
     align-items: center;
@@ -11,6 +32,9 @@
     gap: 10px;
 }
 
+/**
+ * Banner call-to-action link
+ */
 .top-banner-link {
     font-weight: 600;
     text-decoration: none;

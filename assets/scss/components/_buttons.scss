@@ -1,3 +1,29 @@
+/**
+ * ==========================================================================
+ * BUTTONS
+ * ==========================================================================
+ *
+ * Button components with various styles and states.
+ * Includes primary, secondary, ghost, and outline variants.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ *
+ * TABLE OF CONTENTS:
+ * 1. Base Button
+ * 2. Button Variants
+ * 3. Button Sizes
+ * 4. Focus States
+ * 5. Responsive
+ */
+
+/* ==========================================================================
+   1. BASE BUTTON
+   ========================================================================== */
+
+/**
+ * Base button styles shared by all variants
+ */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -16,19 +42,13 @@
         color var(--motion-fast) var(--motion-ease-soft);
 }
 
-.btn-compact-mobile {
-    gap: 6px;
-}
+/* ==========================================================================
+   2. BUTTON VARIANTS
+   ========================================================================== */
 
-@media (max-width: 767.98px) {
-    .btn-compact-mobile {
-        padding: 9px 12px;
-        font-size: 13px;
-        min-height: 40px;
-        line-height: 1.2;
-    }
-}
-
+/**
+ * Primary CTA button with gradient background
+ */
 .btn-primary {
     padding: 12px 22px;
     border: none;
@@ -45,12 +65,9 @@
     box-shadow: 0 18px 52px rgba(8, 2, 26, 0.6);
 }
 
-.btn-lg {
-    padding: 13px 24px;
-    font-size: 15px;
-    min-height: 48px;
-}
-
+/**
+ * Ghost button with accent border
+ */
 .btn-ghost {
     border: 1px solid var(--color-accent);
     color: var(--color-text);
@@ -61,6 +78,9 @@
     background-color: rgba(255, 204, 128, 0.12);
 }
 
+/**
+ * Outline button with brand border
+ */
 .btn-outline {
     border: 1px solid rgba(76, 175, 80, 0.5);
     color: var(--color-brand-dark);
@@ -71,29 +91,9 @@
     background: rgba(76, 175, 80, 0.06);
 }
 
-.btn,
-.main-nav a,
-.main-nav button,
-.site-nav a,
-.floating-cta,
-.social-pill,
-.contact-link {
-    outline: none;
-}
-
-.btn:focus-visible,
-.main-nav a:focus-visible,
-.main-nav button:focus-visible,
-.site-nav a:focus-visible,
-.floating-cta:focus-visible,
-.social-pill:focus-visible,
-.contact-link:focus-visible,
-.badge:focus-visible,
-.afisha-card:focus-visible {
-    outline: 2px solid var(--color-brand);
-    outline-offset: 3px;
-}
-
+/**
+ * Secondary button with dashed border
+ */
 .btn-secondary {
     padding: 11px 20px;
     border-radius: 999px;
@@ -111,6 +111,9 @@
     border-color: #ffffff;
 }
 
+/**
+ * Dark variant of secondary button
+ */
 .btn-secondary--dark {
     border-color: rgba(76, 175, 80, 0.32);
     color: var(--color-brand-dark);
@@ -119,4 +122,70 @@
 .btn-secondary--dark:hover {
     background: rgba(76, 175, 80, 0.06);
     border-color: rgba(76, 175, 80, 0.5);
+}
+
+/* ==========================================================================
+   3. BUTTON SIZES
+   ========================================================================== */
+
+/**
+ * Large button
+ */
+.btn-lg {
+    padding: 13px 24px;
+    font-size: 15px;
+    min-height: 48px;
+}
+
+/**
+ * Compact mobile variant
+ */
+.btn-compact-mobile {
+    gap: 6px;
+}
+
+/* ==========================================================================
+   4. FOCUS STATES
+   ========================================================================== */
+
+/**
+ * Remove default outline on focus
+ */
+.btn,
+.main-nav a,
+.main-nav button,
+.site-nav a,
+.floating-cta,
+.social-pill,
+.contact-link {
+    outline: none;
+}
+
+/**
+ * Visible focus indicator for keyboard navigation (a11y)
+ */
+.btn:focus-visible,
+.main-nav a:focus-visible,
+.main-nav button:focus-visible,
+.site-nav a:focus-visible,
+.floating-cta:focus-visible,
+.social-pill:focus-visible,
+.contact-link:focus-visible,
+.badge:focus-visible,
+.afisha-card:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+    .btn-compact-mobile {
+        padding: 9px 12px;
+        font-size: 13px;
+        min-height: 40px;
+        line-height: 1.2;
+    }
 }

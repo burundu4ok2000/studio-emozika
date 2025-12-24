@@ -1,3 +1,32 @@
+/**
+ * ==========================================================================
+ * SNOW QUEEN SECTION
+ * ==========================================================================
+ *
+ * Special section for the "Snow Queen" New Year show.
+ * Features winter/ice theme with snowfall animation.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ *
+ * TABLE OF CONTENTS:
+ * 1. Section Container
+ * 2. Layout Grid
+ * 3. Poster & Video
+ * 4. Content Area
+ * 5. Tags/Badges
+ * 6. Details Cards
+ * 7. Buttons
+ * 8. Cards
+ * 9. Lists
+ * 10. Snow Animation
+ * 11. Responsive
+ */
+
+/* ==========================================================================
+   1. SECTION CONTAINER
+   ========================================================================== */
+
 .section-snow-queen {
     position: relative;
     padding: 56px 0 48px;
@@ -7,6 +36,7 @@
         linear-gradient(180deg, #0b1a2d 0%, #12355d 32%, #16507f 60%, #0f2d4c 80%, #091628 100%);
 }
 
+/** Star pattern overlay */
 .section-snow-queen::before {
     content: "";
     position: absolute;
@@ -27,6 +57,10 @@
     z-index: 1;
 }
 
+/* ==========================================================================
+   2. LAYOUT GRID
+   ========================================================================== */
+
 .snow-queen-layout {
     display: grid;
     gap: 16px;
@@ -42,20 +76,16 @@
     margin-bottom: 16px;
 }
 
-@media (min-width: 900px) {
-    .snow-queen-layout {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        align-items: start;
-        justify-items: center;
-    }
-
-    .snow-queen-poster {
-        max-width: 420px;
-        margin: 0;
-        align-self: center;
-    }
+.snow-queen-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 32px 0 24px;
 }
+
+/* ==========================================================================
+   3. POSTER & VIDEO
+   ========================================================================== */
 
 .snow-queen-poster {
     max-width: 420px;
@@ -128,6 +158,10 @@
     box-sizing: border-box;
 }
 
+/* ==========================================================================
+   4. CONTENT AREA
+   ========================================================================== */
+
 .snow-queen-content {
     display: grid;
     gap: 10px;
@@ -165,7 +199,7 @@
     line-height: 1.2;
     letter-spacing: 0.02em;
     text-transform: none;
-    color: #ffffff;
+    color: var(--color-text-main);
     text-shadow:
         0 3px 10px rgba(5, 8, 28, 0.6),
         0 0 1px rgba(0, 0, 0, 0.4);
@@ -179,15 +213,9 @@
     color: rgba(225, 235, 255, 0.92);
 }
 
-@media (min-width: 768px) {
-    .section-snow-queen .snow-queen-header .section-title {
-        font-size: 30px;
-    }
-
-    .section-snow-queen .snow-queen-header .section-subtitle {
-        font-size: 15px;
-    }
-}
+/* ==========================================================================
+   5. TAGS/BADGES
+   ========================================================================== */
 
 .snow-queen-tags-row {
     display: flex;
@@ -206,19 +234,6 @@
     animation: none;
 }
 
-@media (min-width: 900px) {
-    .section-snow-queen .snow-queen-header {
-        width: 100%;
-        text-align: center;
-    }
-
-    .snow-queen-tags-row {
-        justify-content: center;
-        margin: 4px 0 10px;
-    }
-}
-
-/* Бейджи поверх более тёмного фона */
 .section-snow-queen .snow-queen-tags-row .badge {
     --badge-bg-soft: rgba(255, 255, 255, 0.2);
     --badge-text-soft: #0b0b1f;
@@ -230,50 +245,9 @@
     padding: 6px 10px;
 }
 
-
-@keyframes snow-glow-header {
-    0% {
-        transform: translate3d(0, 0, 0);
-        opacity: 0.95;
-    }
-
-    100% {
-        transform: translate3d(-4px, -6px, 0);
-        opacity: 1;
-    }
-}
-
-@keyframes snow-tags-shimmer {
-    0% {
-        background-position: 0% 50%, 0 0, 100% 100%, 0 0;
-        box-shadow: 0 16px 46px rgba(5, 8, 28, 0.7);
-    }
-
-    50% {
-        background-position: 100% 50%, 0 0, 100% 100%, 0 0;
-        box-shadow: 0 22px 60px rgba(5, 8, 28, 0.9);
-    }
-
-    100% {
-        background-position: 0% 50%, 0 0, 100% 100%, 0 0;
-        box-shadow: 0 16px 46px rgba(5, 8, 28, 0.7);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    .section-snow-queen .snow-queen-header,
-    .snow-queen-tags-row {
-        animation: none;
-    }
-}
-
-.snow-queen-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin: 32px 0 24px;
-}
+/* ==========================================================================
+   6. DETAILS CARDS
+   ========================================================================== */
 
 .snow-queen-details {
     max-width: 100%;
@@ -306,7 +280,6 @@
     border-color: rgba(156, 200, 255, 0.65);
 }
 
-/* Карточка с двумя сценариями (группы / семьи) */
 .snow-queen-details-title {
     margin: 0 0 12px;
     font-family: var(--font-heading);
@@ -318,23 +291,6 @@
 .snow-queen-details-columns {
     display: grid;
     gap: 16px;
-}
-
-@media (min-width: 768px) {
-    .snow-queen-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-    }
-
-    .snow-queen-details-columns {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px 24px;
-    }
-
-    .snow-queen-details-column+.snow-queen-details-column {
-        border-left: 1px solid rgba(40, 110, 200, 0.15);
-        padding-left: 18px;
-    }
 }
 
 .snow-queen-details-heading {
@@ -350,6 +306,10 @@
 .snow-queen-list {
     font-size: 13.5px;
 }
+
+/* ==========================================================================
+   7. BUTTONS
+   ========================================================================== */
 
 .snow-queen-actions {
     margin-top: 10px;
@@ -385,22 +345,9 @@
     background: linear-gradient(135deg, #6bc4ff, #3b82dd);
 }
 
-@media (max-width: 575.98px) {
-    .snow-queen-actions {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .snow-queen-actions--bar {
-        justify-content: center;
-    }
-
-    .snow-queen-btn {
-        flex: 1 1 48%;
-        min-width: 140px;
-        width: auto;
-    }
-}
+/* ==========================================================================
+   8. CARDS
+   ========================================================================== */
 
 .snow-queen-card {
     position: relative;
@@ -446,7 +393,16 @@
     margin: 0 0 10px;
 }
 
-/* Общий стиль списков в блоке Snow Queen */
+.snow-queen-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   9. LISTS
+   ========================================================================== */
+
 .snow-queen-list,
 .snow-queen-card-list {
     list-style: none;
@@ -468,7 +424,7 @@
     margin-top: 6px;
 }
 
-/* Аккуратные «снежные» маркеры */
+/** "Snow" bullet markers */
 .snow-queen-list li::before,
 .snow-queen-card-list li::before {
     content: "";
@@ -482,21 +438,150 @@
     box-shadow: 0 0 0 2px rgba(107, 175, 255, 0.18);
 }
 
-.snow-queen-card-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+/* ==========================================================================
+   10. SNOW ANIMATION
+   ========================================================================== */
+
+@keyframes snow-drift {
+    0% {
+        background-position: 0 0, 80px -40px;
+    }
+
+    100% {
+        background-position: -180px 260px, -140px 260px;
+    }
 }
 
-@media (max-width: 767.98px) {
-    .snow-queen-card-actions .btn {
-        flex: 1 1 100%;
+@keyframes snow-glow-header {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.95;
+    }
+
+    100% {
+        transform: translate3d(-4px, -6px, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes snow-tags-shimmer {
+    0% {
+        background-position: 0% 50%, 0 0, 100% 100%, 0 0;
+        box-shadow: 0 16px 46px rgba(5, 8, 28, 0.7);
+    }
+
+    50% {
+        background-position: 100% 50%, 0 0, 100% 100%, 0 0;
+        box-shadow: 0 22px 60px rgba(5, 8, 28, 0.9);
+    }
+
+    100% {
+        background-position: 0% 50%, 0 0, 100% 100%, 0 0;
+        box-shadow: 0 16px 46px rgba(5, 8, 28, 0.7);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .section-snow-queen .snow-queen-header,
+    .snow-queen-tags-row {
+        animation: none;
+    }
+
+    .section-snow-queen::after {
+        animation: none;
+        opacity: 0.35;
+    }
+}
+
+/* ==========================================================================
+   11. RESPONSIVE
+   ========================================================================== */
+
+@media (min-width: 768px) {
+    .section-snow-queen .snow-queen-header .section-title {
+        font-size: 30px;
+    }
+
+    .section-snow-queen .snow-queen-header .section-subtitle {
+        font-size: 15px;
+    }
+
+    .snow-queen-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .snow-queen-details-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 24px;
+    }
+
+    .snow-queen-details-column+.snow-queen-details-column {
+        border-left: 1px solid rgba(40, 110, 200, 0.15);
+        padding-left: 18px;
+    }
+
+    /** Desktop snow effect */
+    .section-snow-queen {
+        position: relative;
+        z-index: 0;
+        min-height: 100vh;
+        padding-top: 96px;
+        padding-bottom: 96px;
+    }
+
+    .section-snow-queen::after {
+        content: "";
+        position: absolute;
+        inset: -32px -24px;
+        pointer-events: none;
+        z-index: 0;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0, transparent 55%),
+            radial-gradient(circle, rgba(255, 255, 255, 0.6) 0, transparent 50%);
+        background-repeat: repeat;
+        background-size: 180px 260px, 220px 300px;
+        background-position: 0 0, 80px -40px;
+        mix-blend-mode: screen;
+        opacity: 0.55;
+        animation: snow-drift var(--motion-snow) linear infinite;
+    }
+
+    .section-snow-queen>* {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 900px) {
+    .snow-queen-layout {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        align-items: start;
+        justify-items: center;
+    }
+
+    .snow-queen-poster {
+        max-width: 420px;
+        margin: 0;
+        align-self: center;
+    }
+
+    .section-snow-queen .snow-queen-header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .snow-queen-tags-row {
+        justify-content: center;
+        margin: 4px 0 10px;
     }
 }
 
 @media (max-width: 767.98px) {
     .section-snow-queen {
         padding: 56px 0 52px;
+        position: relative;
     }
 
     .section-snow-queen .section-header {
@@ -555,11 +640,7 @@
         padding: 8px 10px;
     }
 
-    /* Лёгкий «снежок» и на мобильных */
-    .section-snow-queen {
-        position: relative;
-    }
-
+    /** Mobile snow effect */
     .section-snow-queen::after {
         content: "";
         position: absolute;
@@ -580,57 +661,25 @@
         position: relative;
         z-index: 1;
     }
-}
 
-@media (min-width: 768px) {
-    .section-snow-queen {
-        min-height: 100vh;
-        padding-top: 96px;
-        padding-bottom: 96px;
+    .snow-queen-card-actions .btn {
+        flex: 1 1 100%;
     }
 }
 
-@media (min-width: 768px) {
-    .section-snow-queen {
-        position: relative;
-        z-index: 0;
+@media (max-width: 575.98px) {
+    .snow-queen-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
-    .section-snow-queen::after {
-        content: "";
-        position: absolute;
-        inset: -32px -24px;
-        pointer-events: none;
-        z-index: 0;
-        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0, transparent 55%),
-            radial-gradient(circle, rgba(255, 255, 255, 0.6) 0, transparent 50%);
-        background-repeat: repeat;
-        background-size: 180px 260px, 220px 300px;
-        background-position: 0 0, 80px -40px;
-        mix-blend-mode: screen;
-        opacity: 0.55;
-        animation: snow-drift var(--motion-snow) linear infinite;
+    .snow-queen-actions--bar {
+        justify-content: center;
     }
 
-    .section-snow-queen>* {
-        position: relative;
-        z-index: 1;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .section-snow-queen::after {
-        animation: none;
-        opacity: 0.35;
-    }
-}
-
-@keyframes snow-drift {
-    0% {
-        background-position: 0 0, 80px -40px;
-    }
-
-    100% {
-        background-position: -180px 260px, -140px 260px;
+    .snow-queen-btn {
+        flex: 1 1 48%;
+        min-width: 140px;
+        width: auto;
     }
 }

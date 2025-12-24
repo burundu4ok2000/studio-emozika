@@ -1,8 +1,31 @@
+/**
+ * ==========================================================================
+ * CONTACTS SECTION
+ * ==========================================================================
+ *
+ * Contact information section with map and details.
+ * Features premium green gradient background.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ *
+ * TABLE OF CONTENTS:
+ * 1. Section Container
+ * 2. Card Styling
+ * 3. Contact Info
+ * 4. Map
+ * 5. Actions
+ * 6. Responsive
+ */
+
+/* ==========================================================================
+   1. SECTION CONTAINER
+   ========================================================================== */
+
 .section--contacts {
     position: relative;
     padding: 60px 0;
     overflow: hidden;
-    /* Deep Green Premium Gradient Background */
     background: radial-gradient(circle at 50% 0%, #388E3C 0%, #1B5E20 60%, #0d3312 100%);
 }
 
@@ -24,10 +47,12 @@
     z-index: 1;
 }
 
-/* Common Card Style for Glass Effect */
-.card-luxe {
+/* ==========================================================================
+   2. CARD STYLING (Override for contacts)
+   ========================================================================== */
+
+.section--contacts .card-luxe {
     background: rgba(255, 255, 255, 0.94);
-    /* High opacity for max readability */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.8);
@@ -39,12 +64,16 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-luxe:hover {
+.section--contacts .card-luxe:hover {
     transform: translateY(-4px);
     box-shadow:
         0 24px 50px rgba(0, 0, 0, 0.25),
         0 0 0 1px rgba(255, 255, 255, 0.6) inset;
 }
+
+/* ==========================================================================
+   3. CONTACT INFO
+   ========================================================================== */
 
 .contacts__info {
     flex: 1 1 0;
@@ -52,43 +81,16 @@
     flex-direction: column;
 }
 
-.contacts__map {
-    flex: 1 1 0;
-    position: relative;
-    min-height: 400px;
-    padding: 0;
-    /* Remove padding for map to fill card exactly if needed, usually map inside card needs padding? Let's keep padding 0 and use overflow hidden on card or inner wrapper */
-    overflow: hidden;
-    padding: 12px;
-    /* Small padding frame around map */
-    background: rgba(255, 255, 255, 0.8);
-}
-
-/* Map specific override to reset padding if we want full bleed, 
-   but 'frame' look is more premium for this design */
-.contacts__map iframe {
-    display: block;
-    width: 100%;
-    height: 100% !important;
-    /* Force height */
-    min-height: 100%;
-    border: none;
-    border-radius: 16px;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
 .contacts__text {
     margin: 16px 0 24px;
     font-size: 16px;
     line-height: 1.6;
     color: #444;
-    /* Dark grey for readability */
 }
 
 .contacts__list {
     margin: 0 0 24px;
     background: rgba(46, 125, 50, 0.04);
-    /* Very subtle green tint */
     border-radius: 16px;
     padding: 24px;
 }
@@ -114,8 +116,7 @@
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #2e7d32;
-    /* Brand Green */
+    color: var(--color-brand-dark);
 }
 
 .contacts__row dd {
@@ -123,7 +124,6 @@
     font-size: 16px;
     font-weight: 500;
     color: #1a1a1a;
-    /* Almost Black for sharp text */
 
     a {
         color: inherit;
@@ -132,7 +132,7 @@
         border-bottom: 1px solid transparent;
 
         &:hover {
-            color: #2e7d32;
+            color: var(--color-brand-dark);
             border-bottom-color: rgba(46, 125, 50, 0.4);
         }
     }
@@ -154,24 +154,49 @@
 
 .contacts__time {
     margin: 0 0 24px;
-    /* Moved up or adjusted spacing */
     padding: 16px 20px;
     font-size: 15px;
     font-weight: 600;
     color: #1b5e20;
     background: linear-gradient(to right, rgba(76, 175, 80, 0.15), transparent);
     border-radius: 12px;
-    border-left: 4px solid #2e7d32;
+    border-left: 4px solid var(--color-brand-dark);
     display: inline-block;
     width: 100%;
 }
+
+/* ==========================================================================
+   4. MAP
+   ========================================================================== */
+
+.contacts__map {
+    flex: 1 1 0;
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.contacts__map iframe {
+    display: block;
+    width: 100%;
+    height: 100% !important;
+    min-height: 100%;
+    border: none;
+    border-radius: 16px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   5. ACTIONS
+   ========================================================================== */
 
 .contacts__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     margin-top: auto;
-    /* Push to bottom if height allows */
 }
 
 .contacts__actions .btn {
@@ -181,13 +206,12 @@
     font-weight: 700;
     padding: 12px 24px;
     border-radius: 50px;
-    /* Pill shape for modern feel */
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 0.05em;
 
     &.btn-find-us {
-        background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+        background: linear-gradient(135deg, var(--color-brand-dark) 0%, #43a047 100%);
         color: white;
         border: none;
         box-shadow:
@@ -214,18 +238,25 @@
     display: inline-block;
 }
 
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 900px) {
     .section--contacts {
         padding: 40px 0;
     }
 
     .contacts__info {
-        padding: 24px;
+        padding: 24px 20px;
+        border-radius: 20px;
     }
 
     .contacts__row {
         flex-direction: column;
-        gap: 6px;
+        gap: 4px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
     }
 
     .contacts__row dt {
@@ -236,10 +267,24 @@
 
     .contacts__list {
         padding: 16px;
+        margin: 0 0 16px;
+    }
+
+    .contacts__text {
+        margin: 0 0 16px;
+        font-size: 14px;
+    }
+
+    .contacts__time {
+        padding: 12px 16px;
+        margin: 0 0 20px;
+        font-size: 13px;
     }
 
     .contacts__map {
-        min-height: 280px;
+        min-height: 360px;
+        height: auto;
+        border-radius: 20px;
     }
 
     .contacts__actions {
@@ -250,53 +295,12 @@
             justify-content: center;
         }
     }
-
-    /* Contacts Mobile Fixes */
-    .section--contacts {
-        padding: 40px 0;
-    }
-
-    .contacts__info {
-        padding: 24px 20px;
-        border-radius: 20px;
-    }
-
-    /* Compress vertical space */
-    .contacts__text {
-        margin: 0 0 16px;
-        font-size: 14px;
-    }
-
-    .contacts__list {
-        padding: 16px;
-        margin: 0 0 16px;
-    }
-
-    .contacts__row {
-        gap: 4px;
-        margin-bottom: 12px;
-        padding-bottom: 12px;
-    }
-
-    .contacts__time {
-        padding: 12px 16px;
-        margin: 0 0 20px;
-        font-size: 13px;
-    }
-
-    /* Make map taller to match logic */
-    .contacts__map {
-        min-height: 360px;
-        height: auto;
-        border-radius: 20px;
-    }
 }
 
 @media (min-width: 900px) {
     .section--contacts .contacts {
         flex-direction: row;
         align-items: stretch;
-        /* Cards equal height */
         gap: 24px;
     }
 
@@ -307,6 +311,5 @@
 
     .contacts__map {
         min-height: 500px;
-        /* Taller map on desktop */
     }
 }

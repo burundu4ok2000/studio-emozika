@@ -1,3 +1,22 @@
+/**
+ * ==========================================================================
+ * BADGES
+ * ==========================================================================
+ *
+ * Badge and pill components for labels, tags, and status indicators.
+ * Used in afisha cards, awards, and various UI elements.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   BASE BADGE
+   ========================================================================== */
+
+/**
+ * Base badge styles with glassmorphism effect
+ */
 .badge,
 .afisha-card-badge {
     display: inline-flex;
@@ -25,6 +44,13 @@
         transform var(--motion-fast) var(--motion-ease-soft);
 }
 
+/* ==========================================================================
+   BADGE VARIANTS
+   ========================================================================== */
+
+/**
+ * Brand/warm gradient badge
+ */
 .badge--brand {
     background: linear-gradient(135deg,
             rgba(255, 248, 242, 0.08),
@@ -33,11 +59,17 @@
     color: var(--color-stage-wood);
 }
 
+/**
+ * Soft/subtle badge
+ */
 .badge--soft {
     background-color: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.18);
 }
 
+/**
+ * Gold/premium badge
+ */
 .badge--gold {
     background: linear-gradient(135deg,
             rgba(255, 234, 174, 0.08),
@@ -46,21 +78,34 @@
     color: #2a103f;
 }
 
+/**
+ * Outline badge
+ */
 .badge--outline {
     background-color: transparent;
     border-color: rgba(255, 255, 255, 0.35);
     color: rgba(255, 255, 255, 0.88);
 }
 
+/**
+ * Primary solid badge
+ */
 .badge-primary {
     background: var(--color-accent);
     color: var(--color-stage-wood);
 }
 
+/**
+ * Soft colored badge
+ */
 .badge-soft {
     background: var(--color-accent-2);
     color: var(--color-brand-dark);
 }
+
+/* ==========================================================================
+   BADGE INTERACTIONS
+   ========================================================================== */
 
 .badge:hover,
 .badge:focus-visible {

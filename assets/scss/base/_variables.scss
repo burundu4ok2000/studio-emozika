@@ -1,73 +1,148 @@
+/**
+ * ==========================================================================
+ * DESIGN SYSTEM VARIABLES
+ * ==========================================================================
+ *
+ * CSS Custom Properties (Variables) for the Emozika Theater website.
+ * All design tokens are defined here for consistent theming.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ *
+ * TABLE OF CONTENTS:
+ * 1. Backgrounds & Surfaces
+ * 2. Text Colors
+ * 3. Brand Colors (Green Theme)
+ * 4. Stage & Theater Accents
+ * 5. Status & Accent Colors
+ * 6. Borders & Shadows
+ * 7. Typography
+ * 8. Motion & Animation
+ */
+
 :root {
-  /* 1. Базовые фоны и поверхности (Dark Theme) */
+  /* ==========================================================================
+     1. BACKGROUNDS & SURFACES
+     ========================================================================== */
+
+  /** Primary dark background */
   --color-bg: #121212;
-  /* глубокий темный фон */
+
+  /** Card and elevated surface background */
   --color-surface: #1e1e1e;
-  /* темно-серые карточки */
 
-  /* Расширенные фоны для разных типов секций */
+  /** Slightly warmer dark background */
   --color-bg-warm: #181818;
-  /* чуть светлее основного фона */
+
+  /** Paper-like graphite background */
   --color-bg-paper: #232323;
-  /* «бумажный» фон -> темный графит */
+
+  /** Dark background with green tint */
   --color-bg-lilac: #1a201b;
-  /* был лиловый -> стал темный с зеленым отливом */
+
+  /** Near-black for film/cinema sections */
   --color-bg-film: #141414;
-  /* почти черный для кино */
 
-  /* 2. Текст (Light on Dark) */
+  /* ==========================================================================
+     2. TEXT COLORS
+     ========================================================================== */
+
+  /** Primary body text (light gray) */
   --color-text: #e0e0e0;
-  /* основной текст (светло-серый) */
-  --color-text-main: #ffffff;
-  /* заголовки (белый) */
-  --color-text-muted: #a0a0a0;
-  /* подписи (серый) */
-  --color-text-soft: #757575;
-  /* вторичный текст */
 
-  /* 3. Зеленый дизайн-код Эмоцики */
+  /** Headings and important text (white) */
+  --color-text-main: #ffffff;
+
+  /** Muted/secondary text */
+  --color-text-muted: #a0a0a0;
+
+  /** Tertiary/soft text */
+  --color-text-soft: #757575;
+
+  /* ==========================================================================
+     3. BRAND COLORS (Green Theme)
+     ========================================================================== */
+
+  /** Primary brand green */
   --color-brand: #4caf50;
-  /* основной зеленый */
+
+  /** Dark brand green (hover states, accents) */
   --color-brand-dark: #2e7d32;
-  /* темно-зеленый */
+
+  /** Light brand green (highlights) */
   --color-brand-light: #81c784;
-  /* светло-зеленый */
+
+  /** Alias for backwards compatibility */
   --brand-dark: var(--color-brand-dark);
 
-  /* 4. Сцена и «дерево» */
+  /* ==========================================================================
+     4. STAGE & THEATER ACCENTS
+     ========================================================================== */
+
+  /** Deep black for stage/theater elements */
   --color-stage-deep: #000000;
-  /* глубокий черный */
+
+  /** Warm wood tone for theatrical elements */
   --color-stage-wood: #8d6e63;
-  /* дерево -> более светлый, чтобы читалось на черном */
 
-  /* 5. Акценты и статусы */
+  /* ==========================================================================
+     5. STATUS & ACCENT COLORS
+     ========================================================================== */
+
+  /** Warm accent (gold-ish) */
   --color-accent: #ffcc80;
-  /* теплый акцент оставляем (хорошо с зеленым) */
+
+  /** Secondary accent (light green for kids) */
   --color-accent-2: #81c784;
-  /* был розовый -> стал светло-зеленый (младшие группы) */
+
+  /** Muted blue-gray */
   --color-muted: #546e7a;
-  /* приглушенный серо-голубой */
+
+  /** Gold accent for awards/highlights */
   --color-accent-gold: #ffd54f;
-  /* золото ярче для темного фона */
+
+  /** Soft dark accent */
   --color-accent-soft: #3e2723;
-  /* темный акцент */
 
-  /* 6. Футер и бордеры */
+  /* ==========================================================================
+     6. BORDERS & SHADOWS
+     ========================================================================== */
+
+  /** Footer background (darker than main bg) */
   --footer-bg: #050505;
-  /* еще темнее */
-  --footer-text: #bdbdbd;
-  --border-soft: rgba(255, 255, 255, 0.08);
-  /* светлая граница для темных карт */
-  --border-brand-soft: rgba(76, 175, 80, 0.2);
-  /* зеленый бордер */
 
-  /* 7. Типографика */
+  /** Footer text color */
+  --footer-text: #bdbdbd;
+
+  /** Subtle light border for dark cards */
+  --border-soft: rgba(255, 255, 255, 0.08);
+
+  /** Green-tinted border */
+  --border-brand-soft: rgba(76, 175, 80, 0.2);
+
+  /* ==========================================================================
+     7. TYPOGRAPHY
+     ========================================================================== */
+
+  /** Primary body font stack */
   --font-main: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /** Heading font stack */
   --font-heading: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* 8. Motion */
+  /* ==========================================================================
+     8. MOTION & ANIMATION
+     ========================================================================== */
+
+  /** Fast transitions (hover states) */
   --motion-fast: 0.15s;
+
+  /** Normal transitions */
   --motion-normal: 0.2s;
+
+  /** Smooth easing curve */
   --motion-ease-soft: cubic-bezier(0.19, 0.72, 0.26, 0.99);
+
+  /** Snow animation duration */
   --motion-snow: 26s;
 }

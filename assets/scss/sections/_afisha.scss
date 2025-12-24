@@ -1,10 +1,39 @@
+/**
+ * ==========================================================================
+ * AFISHA SECTION
+ * ==========================================================================
+ *
+ * Theater schedule/playbill section with horizontal scrolling card strip.
+ * Features dark theme with green accents.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ *
+ * TABLE OF CONTENTS:
+ * 1. Section Container
+ * 2. Strip Layout
+ * 3. Card Styling
+ * 4. Badges
+ * 5. Card Footer & Buttons
+ * 6. Navigation Arrows
+ * 7. Responsive
+ */
+
+/* ==========================================================================
+   1. SECTION CONTAINER
+   ========================================================================== */
+
+/**
+ * Dark section with glowing green accent
+ */
 .section-afisha {
     position: relative;
     background: radial-gradient(circle at 50% 0%, #0f2e13 0%, #051408 60%, #020a04 100%);
-    color: #fff;
+    color: var(--color-text-main);
     padding: 80px 0 100px;
     overflow: hidden;
 
+    /** Glow overlay */
     &::before {
         content: "";
         position: absolute;
@@ -38,15 +67,22 @@
     line-height: 1.6;
 }
 
-/* Strip Wrapper */
+/* ==========================================================================
+   2. STRIP LAYOUT
+   ========================================================================== */
+
+/**
+ * Container for scrollable strip
+ */
 .afisha-strip-wrapper {
     position: relative;
     margin-top: 40px;
     padding: 0 60px;
-    /* Space for arrows */
 }
 
-/* Scrollable Strip */
+/**
+ * Horizontal scrollable strip
+ */
 .afisha-strip {
     display: flex;
     gap: 24px;
@@ -57,8 +93,6 @@
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     width: 100%;
-
-    /* Hide scrollbar */
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -66,13 +100,17 @@
     }
 }
 
-/* Card Styling */
+/* ==========================================================================
+   3. CARD STYLING
+   ========================================================================== */
+
+/**
+ * Individual play card
+ */
 .afisha-card--strip {
     flex: 0 0 auto;
-    /* No shrink, no grow, fixed based on width */
     width: 340px;
     min-width: 340px;
-    /* Explicit min-width for safari/mobile */
     scroll-snap-align: center;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
@@ -88,6 +126,9 @@
     }
 }
 
+/**
+ * Poster wrapper with aspect ratio
+ */
 .afisha-card-poster-wrapper {
     position: relative;
     border-radius: 16px;
@@ -109,7 +150,10 @@
     transform: scale(1.05);
 }
 
-/* Badges */
+/* ==========================================================================
+   4. BADGES
+   ========================================================================== */
+
 .afisha-card-badge-wrap {
     position: absolute;
     top: 12px;
@@ -127,7 +171,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-radius: 99px;
-    color: #fff;
+    color: var(--color-text-main);
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -135,17 +179,20 @@
 }
 
 .afisha-card-badge--premiere {
-    background: linear-gradient(135deg, #ffcf33, #ff7a00);
+    background: linear-gradient(135deg, var(--color-accent-gold), #ff7a00);
     border: none;
     color: #000;
 }
 
 .afisha-card-badge--ny {
-    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+    background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
     border: none;
 }
 
-/* Footer & Typography */
+/* ==========================================================================
+   5. CARD FOOTER & BUTTONS
+   ========================================================================== */
+
 .afisha-card-footer {
     padding-top: 16px;
     display: flex;
@@ -166,12 +213,10 @@
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.3;
-    color: #fff;
+    color: var(--color-text-main);
     min-height: 2.6em;
-    /* Reserve space for 2 lines */
 }
 
-/* Buttons */
 .afisha-buttons--strip {
     display: grid;
     grid-template-columns: 1fr;
@@ -189,7 +234,7 @@
 }
 
 .afisha-buttons--strip .btn-primary {
-    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    background: linear-gradient(135deg, var(--color-brand), #388E3C);
     border: none;
     box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
 
@@ -202,16 +247,18 @@
 .afisha-buttons--strip .btn-outline {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    color: var(--color-text-main);
 
     &:hover {
-        border-color: #fff;
+        border-color: var(--color-text-main);
         background: rgba(255, 255, 255, 0.05);
     }
 }
 
+/* ==========================================================================
+   6. NAVIGATION ARROWS
+   ========================================================================== */
 
-/* Navigation Arrows */
 .afisha-strip-arrow {
     position: absolute;
     top: 50%;
@@ -222,7 +269,7 @@
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
+    color: var(--color-text-main);
     font-size: 1.5rem;
     display: flex;
     align-items: center;
@@ -233,7 +280,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
     &:hover {
-        background: #fff;
+        background: var(--color-text-main);
         color: #0a1f0d;
         transform: translateY(-50%) scale(1.1);
         box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
@@ -252,8 +299,10 @@
     right: 0;
 }
 
+/* ==========================================================================
+   7. RESPONSIVE
+   ========================================================================== */
 
-/* Responsive */
 @media (max-width: 1024px) {
     .section-afisha {
         padding: 60px 0 80px;
@@ -265,7 +314,6 @@
 
     .afisha-strip-arrow {
         display: none;
-        /* Hide arrows on touch/tablet, rely on swipe */
     }
 }
 
@@ -298,6 +346,3 @@
         min-height: auto;
     }
 }
-
-/* Modal styling overrides for dark theme context if needed, 
-   but modal is global. Just ensuring it doesn't break. */

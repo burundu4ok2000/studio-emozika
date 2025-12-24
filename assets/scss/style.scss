@@ -1,22 +1,37 @@
-/* ===========================
-   Правила оформления CSS-файла
-   =========================== */
+/**
+ * ==========================================================================
+ * EMOZIKA THEATER - MAIN STYLESHEET
+ * ==========================================================================
+ *
+ * Main entry point for all SCSS files.
+ * Organized into Base -> Components -> Sections following ITCSS methodology.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ */
 
-/* 1. БАЗА */
+/* ==========================================================================
+   1. BASE - Design tokens, resets, typography, layout utilities
+   ========================================================================== */
 @use 'base/variables';
 @use 'base/reset';
 @use 'base/typography';
 @use 'base/layout';
 
-/* 2. КОМПОНЕНТЫ */
+/* ==========================================================================
+   2. COMPONENTS - Reusable UI components
+   ========================================================================== */
 @use 'components/buttons';
 @use 'components/badges';
 @use 'components/cards';
 @use 'components/lightbox';
+@use 'components/video-lightbox';
 @use 'components/docs-modal';
 @use 'components/play-modal';
 
-/* 3. СЕКЦИИ */
+/* ==========================================================================
+   3. SECTIONS - Page-specific sections
+   ========================================================================== */
 @use 'sections/header';
 @use 'sections/banner';
 @use 'sections/hero';

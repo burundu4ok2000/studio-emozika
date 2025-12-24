@@ -1,5 +1,31 @@
-/* NEW MINIMALIST HERO SECTION WITH THEATRICAL EFFECT */
+/**
+ * ==========================================================================
+ * HERO SECTION
+ * ==========================================================================
+ *
+ * Main hero section with theatrical curtain animation effect.
+ * Includes spotlight, title animation, and hero-about description block.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ *
+ * TABLE OF CONTENTS:
+ * 1. Hero Container
+ * 2. Theatrical Curtains
+ * 3. Spotlight Effect
+ * 4. Hero Content
+ * 5. Hero Badge & Title
+ * 6. Hero About Section
+ * 7. Responsive
+ */
 
+/* ==========================================================================
+   1. HERO CONTAINER
+   ========================================================================== */
+
+/**
+ * Fullscreen hero section with gradient background
+ */
 .hero {
     position: relative;
     width: 100%;
@@ -22,21 +48,27 @@
     z-index: 1;
 }
 
-/* THEATRICAL CURTAINS */
+/* ==========================================================================
+   2. THEATRICAL CURTAINS
+   ========================================================================== */
+
+/**
+ * Animated curtain that opens like a theater
+ */
 .hero-curtain {
     position: absolute;
     top: 0;
     width: 50%;
     height: 100%;
     background: linear-gradient(to bottom,
-            #2e7d32 0%,
+            var(--color-brand-dark) 0%,
             #1b5e20 50%,
             #0d3d10 100%);
     z-index: 100;
     animation: curtainOpen 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
     box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 
-    /* Velvet texture */
+    /** Velvet texture overlay */
     &::before {
         content: '';
         position: absolute;
@@ -52,20 +84,21 @@
         opacity: 0.3;
     }
 
-    /* Gold trim */
+    /** Gold trim accent */
     &::after {
         content: '';
         position: absolute;
         top: 0;
         width: 8px;
         height: 100%;
-        background: linear-gradient(to bottom, #ffd700, #b8860b, #ffd700);
+        background: linear-gradient(to bottom, var(--color-accent-gold), #b8860b, var(--color-accent-gold));
         box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
 }
 
 .hero-curtain--left {
     left: 0;
+    animation: curtainOpenLeft 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 
     &::after {
         right: 0;
@@ -74,6 +107,7 @@
 
 .hero-curtain--right {
     right: 0;
+    animation: curtainOpenRight 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 
     &::after {
         left: 0;
@@ -83,27 +117,13 @@
 @keyframes curtainOpen {
     0% {
         transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-
-    0% {
         clip-path: inset(0 0 0 0);
     }
 
     100% {
+        transform: translateX(0);
         clip-path: inset(0 100% 0 0);
     }
-}
-
-.hero-curtain--left {
-    animation: curtainOpenLeft 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-}
-
-.hero-curtain--right {
-    animation: curtainOpenRight 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes curtainOpenLeft {
@@ -126,7 +146,13 @@
     }
 }
 
-/* SPOTLIGHT EFFECT */
+/* ==========================================================================
+   3. SPOTLIGHT EFFECT
+   ========================================================================== */
+
+/**
+ * Pulsing spotlight behind main content
+ */
 .hero-spotlight {
     position: absolute;
     top: 50%;
@@ -155,7 +181,13 @@
     }
 }
 
-/* MAIN CONTENT */
+/* ==========================================================================
+   4. HERO CONTENT
+   ========================================================================== */
+
+/**
+ * Main content wrapper with fade-in animation
+ */
 .hero-inner {
     position: relative;
     z-index: 50;
@@ -176,7 +208,13 @@
     }
 }
 
-/* BADGE */
+/* ==========================================================================
+   5. HERO BADGE & TITLE
+   ========================================================================== */
+
+/**
+ * Small badge above title
+ */
 .hero-badge {
     display: inline-block;
     font-size: 11px;
@@ -213,25 +251,24 @@
     }
 }
 
-/* TITLE */
+/**
+ * Main hero title with green glow
+ */
 .hero-title {
-    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    font-family: var(--font-heading);
     font-size: 160px;
     font-weight: 800;
     line-height: 0.9;
     text-align: center;
     margin: 0;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--color-text-main);
     letter-spacing: -0.04em;
-
-    /* Green glow matching logo */
     text-shadow:
         0 0 40px rgba(76, 175, 80, 0.5),
         0 0 80px rgba(76, 175, 80, 0.3),
         0 0 120px rgba(76, 175, 80, 0.2),
         0 4px 8px rgba(0, 0, 0, 0.5);
-
     animation: titleZoom 1.5s cubic-bezier(0.2, 1, 0.3, 1) 2s forwards;
     transform: scale(0.8);
 }
@@ -252,7 +289,237 @@
     }
 }
 
-/* RESPONSIVE */
+/* ==========================================================================
+   6. HERO ABOUT SECTION
+   ========================================================================== */
+
+/**
+ * Theater description section below hero
+ */
+.hero-about {
+    position: relative;
+    z-index: 50;
+    background: linear-gradient(135deg, #0a1f0d 0%, #0d2a12 50%, #0a1a0e 100%);
+    color: var(--color-text-main);
+    padding: 120px 0;
+    overflow: hidden;
+
+    /** Subtle gradient overlay */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+            radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(76, 175, 80, 0.06) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    /** Top edge glow */
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(76, 175, 80, 0.3) 50%,
+                transparent 100%);
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+    }
+}
+
+.hero-about-layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    gap: 80px;
+    align-items: center;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+}
+
+/**
+ * Logo container with glass effect
+ */
+.hero-about-logo {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1/1;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: -20px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 50%;
+        border: 1px solid rgba(76, 175, 80, 0.2);
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        z-index: -1;
+
+        @media (max-width: 900px) {
+            inset: -15px;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 40px rgba(76, 175, 80, 0.1));
+        position: relative;
+        z-index: 1;
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+
+        @media (max-width: 900px) {
+            width: 250px;
+            height: 250px;
+            max-width: 250px;
+        }
+    }
+}
+
+.hero-about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+}
+
+/**
+ * Title with organic frame
+ */
+.hero-about-title {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-brand);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 12px 32px;
+    background: rgba(76, 175, 80, 0.08);
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    border-radius: 64% 36% 47% 53% / 46% 58% 42% 54%;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow:
+        inset 0 0 40px rgba(76, 175, 80, 0.05),
+        0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+
+    &:hover {
+        border-radius: 46% 54% 39% 61% / 54% 41% 59% 46%;
+        background: rgba(76, 175, 80, 0.12);
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 900px) {
+        font-size: 36px;
+        padding: 12px 24px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
+}
+
+/**
+ * Text block with theatrical styling
+ */
+.hero-about-text {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+    /** Corner accents */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 20px;
+        height: 20px;
+        border-top: 2px solid var(--color-brand);
+        border-left: 2px solid var(--color-brand);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        width: 20px;
+        height: 20px;
+        border-bottom: 2px solid var(--color-brand);
+        border-right: 2px solid var(--color-brand);
+    }
+
+    p {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--color-text-main);
+            font-style: normal;
+            font-family: var(--font-heading);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+
+        p:first-child {
+            font-size: 18px;
+        }
+    }
+}
+
+/* ==========================================================================
+   7. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 1024px) {
     .hero-title {
         font-size: 100px;
@@ -292,328 +559,5 @@
 @media (max-width: 480px) {
     .hero-title {
         font-size: 48px;
-    }
-}
-
-/* --- HERO ABOUT (Theater Description Section) --- */
-.hero-about {
-    position: relative;
-    z-index: 50;
-    background: linear-gradient(135deg, #0a1f0d 0%, #0d2a12 50%, #0a1a0e 100%);
-    color: #ffffff;
-    padding: 120px 0;
-    overflow: hidden;
-
-    /* Subtle pattern overlay */
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-            radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 50%, rgba(76, 175, 80, 0.06) 0%, transparent 50%);
-        pointer-events: none;
-    }
-
-    /* Top edge glow */
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(90deg,
-                transparent 0%,
-                rgba(76, 175, 80, 0.3) 50%,
-                transparent 100%);
-        box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
-    }
-}
-
-.hero-about-layout {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 35% 1fr;
-    gap: 80px;
-    align-items: center;
-
-    @media (max-width: 900px) {
-        grid-template-columns: 1fr;
-        gap: 50px;
-        text-align: center;
-    }
-}
-
-.hero-about-logo {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    max-width: 380px;
-    aspect-ratio: 1/1;
-
-    /* Glass card effect */
-    &::before {
-        content: '';
-        position: absolute;
-        inset: -20px;
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 50%;
-        border: 1px solid rgba(76, 175, 80, 0.2);
-        box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        z-index: -1;
-
-        @media (max-width: 900px) {
-            inset: -15px;
-        }
-    }
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter:
-            drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 40px rgba(76, 175, 80, 0.1));
-        position: relative;
-        z-index: 1;
-        border-radius: 50%;
-        aspect-ratio: 1 / 1;
-        /* Force square */
-
-        @media (max-width: 900px) {
-            width: 250px;
-            height: 250px;
-            max-width: 250px;
-        }
-    }
-}
-
-.hero-about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    position: relative;
-}
-
-.hero-about-title {
-    font-family: var(--font-heading, "Montserrat", sans-serif);
-    font-size: 48px;
-    font-weight: 800;
-    line-height: 1;
-    color: #4CAF50;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-
-    /* ORGANIC FRAME STYLING */
-    display: inline-block;
-    padding: 12px 32px;
-    background: rgba(76, 175, 80, 0.08);
-    border: 2px solid rgba(76, 175, 80, 0.3);
-    /* Organic shape using border-radius blob */
-    border-radius: 64% 36% 47% 53% / 46% 58% 42% 54%;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    box-shadow:
-        inset 0 0 40px rgba(76, 175, 80, 0.05),
-        0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: all 0.5s ease;
-
-    &:hover {
-        border-radius: 46% 54% 39% 61% / 54% 41% 59% 46%;
-        background: rgba(76, 175, 80, 0.12);
-        transform: scale(1.02);
-    }
-
-    @media (max-width: 900px) {
-        font-size: 36px;
-        padding: 12px 24px;
-    }
-
-    @media (max-width: 768px) {
-        font-size: 32px;
-    }
-}
-
-.hero-about-text {
-    font-family: var(--font-body, "Open Sans", sans-serif);
-    font-size: 18px;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-
-    /* Stylized Box for Text */
-    background: rgba(0, 0, 0, 0.4);
-    padding: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    /* Slightly sharp for contrast with organic title, or match it? User said "square" */
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-
-    /* SERIF FONT for theatrical feel */
-    font-family: 'Georgia', 'Times New Roman', serif;
-    font-style: italic;
-
-    /* Corner accents (Gold/Green) */
-    &::before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        width: 20px;
-        height: 20px;
-        border-top: 2px solid #4CAF50;
-        border-left: 2px solid #4CAF50;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: -1px;
-        right: -1px;
-        width: 20px;
-        height: 20px;
-        border-bottom: 2px solid #4CAF50;
-        border-right: 2px solid #4CAF50;
-    }
-
-    p {
-        margin-bottom: 20px;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Strong emphasis on first paragraph */
-        &:first-child {
-            font-size: 22px;
-            font-weight: 500;
-            color: #fff;
-            font-style: normal;
-            /* Keep first line distinct */
-            font-family: var(--font-heading, "Montserrat", sans-serif);
-            /* Keep heading font for impact? Or all serif? User asked for "interesting". Let's mix. */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 16px;
-            margin-bottom: 24px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        font-size: 16px;
-
-        p:first-child {
-            font-size: 18px;
-        }
-    }
-}
-
-/* --- VIDEO LIGHTBOX --- */
-.video-lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-
-    &:not([hidden]) {
-        opacity: 1;
-        pointer-events: auto;
-    }
-}
-
-.video-lightbox__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    border: none;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.video-lightbox__content {
-    position: relative;
-    z-index: 2;
-    width: 90%;
-    max-width: 800px;
-    height: 80vh;
-    max-height: 900px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-
-    @media (max-width: 768px) {
-        width: 95%;
-        height: 85vh;
-    }
-}
-
-.video-lightbox__close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    font-size: 32px;
-    line-height: 1;
-    cursor: pointer;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: scale(1.1);
-    }
-
-    &:active {
-        transform: scale(0.95);
-    }
-}
-
-.video-lightbox__video {
-    width: 100%;
-    height: 100%;
-
-    iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
     }
 }

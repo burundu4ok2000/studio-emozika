@@ -1,3 +1,23 @@
+/**
+ * ==========================================================================
+ * LAYOUT
+ * ==========================================================================
+ *
+ * Base layout utilities, containers, and structural components.
+ * Includes reveal animations and accessibility features.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   SCROLL REVEAL ANIMATION
+   ========================================================================== */
+
+/**
+ * Elements with this class fade in when scrolled into view.
+ * JavaScript adds .is-visible class when element enters viewport.
+ */
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(10px);
@@ -11,12 +31,35 @@
     transform: translateY(0);
 }
 
+/* ==========================================================================
+   CONTAINERS
+   ========================================================================== */
+
+/**
+ * Inner container with max-width constraint
+ */
 .section-inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 16px;
 }
 
+/**
+ * Generic container
+ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ==========================================================================
+   SECTION CARD
+   ========================================================================== */
+
+/**
+ * Card-style section with elevated background
+ */
 .section-card {
     padding: 80px 0;
 }
@@ -42,17 +85,25 @@
     }
 }
 
+/* ==========================================================================
+   SECTION SPACING
+   ========================================================================== */
+
+/**
+ * Default section padding
+ */
 .section {
     padding: 64px 0;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
 
-/* Skip link (accessibility) */
+/**
+ * Visually hidden skip link for keyboard navigation.
+ * Becomes visible on focus for accessibility.
+ */
 .skip-link {
     position: absolute;
     top: -9999px;

@@ -1,26 +1,69 @@
+/**
+ * ==========================================================================
+ * CSS RESET
+ * ==========================================================================
+ *
+ * Minimal CSS reset for consistent cross-browser behavior.
+ * Sets up box-sizing, removes default margins, and normalizes elements.
+ *
+ * @author Stanislav Burundukov
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   BASE RESET
+   ========================================================================== */
+
+/**
+ * Enable smooth scrolling for anchor links
+ */
 html {
     scroll-behavior: smooth;
 }
 
+/**
+ * Universal box-sizing reset
+ * All elements use border-box for predictable sizing
+ */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+/**
+ * Body defaults
+ * - Remove margin
+ * - Set base typography
+ * - Apply dark theme background
+ */
 body {
     margin: 0;
     font-family: var(--font-main, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
-    color: #3b2920;
+    color: var(--color-text);
     background-color: var(--color-bg);
     line-height: 1.6;
 }
 
+/* ==========================================================================
+   TYPOGRAPHY RESET
+   ========================================================================== */
+
+/**
+ * Paragraph spacing
+ */
 p {
     margin-top: 0;
     margin-bottom: 0.75rem;
 }
 
+/* ==========================================================================
+   MEDIA RESET
+   ========================================================================== */
+
+/**
+ * Responsive images by default
+ */
 img {
     max-width: 100%;
     height: auto;

@@ -28,10 +28,7 @@
 }
 
 .card-luxe,
-.afisha-card,
-.abonement-card,
-.films-card,
-.gallery-card {
+.afisha-card {
     transition:
         transform var(--motion-fast) var(--motion-ease-soft),
         box-shadow var(--motion-fast) var(--motion-ease-soft),
@@ -39,10 +36,7 @@
 }
 
 .card-luxe:hover,
-.afisha-card:hover,
-.abonement-card:hover,
-.films-card:hover,
-.gallery-card:hover {
+.afisha-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 18px 45px rgba(8, 2, 26, 0.28);
 }

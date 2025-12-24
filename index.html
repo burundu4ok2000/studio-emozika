@@ -7,6 +7,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap"
     rel="stylesheet">
+  <script>
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
   <meta charset="utf-8" />
   <title>Детский театр «Эмоцика»</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -78,15 +84,15 @@
       },
       "offers": {
         "@type": "Offer",
-        "url": "https://clck.ru/3QWtC2",
+        "url": "https://afisha.yandex.ru/saint-petersburg/theatre/places/emotsika",
         "availability": "https://schema.org/InStock"
       }
     }
   </script>
 
 
-  <script type="module" crossorigin src="/studio-emozika/assets/index--1R_8umV.js"></script>
-  <link rel="stylesheet" crossorigin href="/studio-emozika/assets/index-DOwx2dF6.css">
+  <script type="module" crossorigin src="/studio-emozika/assets/index-CxyJ4Lq3.js"></script>
+  <link rel="stylesheet" crossorigin href="/studio-emozika/assets/index-CfpjiEqp.css">
 </head>
 
 <body>
@@ -94,7 +100,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#hero" class="logo-badge" data-scroll-to="hero">
-        <img class="logo-mark" src="assets/img/ui/favicon.png" alt="Логотип театра «Эмоцика»" />
+        <img class="logo-mark" src="assets/img/ui/logo-emozika-green.jpg" alt="Логотип театра «Эмоцика»" />
         <span class="logo-text">Театр «Эмоцика»</span>
       </a>
 
@@ -102,9 +108,9 @@
         <button type="button" class="nav-link" data-scroll-to="afisha">Афиша</button>
         <button type="button" class="nav-link" data-scroll-to="snow-queen">Новый год</button>
         <button type="button" class="nav-link" data-scroll-to="people">Люди</button>
-        <button type="button" class="nav-link" data-scroll-to="docs">Документы</button>
       </nav>
-      <a href="https://clck.ru/3QWtC2" class="nav-link nav-link-cta header-cta" target="_blank" rel="noopener">
+      <a href="https://afisha.yandex.ru/saint-petersburg/theatre/places/emotsika"
+        class="nav-link nav-link-cta header-cta" target="_blank" rel="noopener">
         Купить билеты
       </a>
 
@@ -113,37 +119,39 @@
 
   <main id="main-content">
     <section id="hero" class="hero">
-      <div class="hero-overlay">
-        <div class="container hero-inner">
-          <div class="hero-content">
-            <p class="hero-tagline">Театр-студия «Эмоцика» в Санкт-Петербурге представляет</p>
-            <h1 class="hero-title">«Любовь у сливного бачка»</h1>
-            <p class="hero-desc">Комедийная драма по пьесе В. Сигарева о жильцах коммунальной квартиры, которые ищут
-              любовь и близость в самых неожиданных обстоятельствах. Камерный спектакль о взрослении, честности и
-              смелости говорить правду.</p>
-            <div class="hero-meta">
-              <span class="hero-meta-item">Комедийная драма</span>
-              <span class="hero-meta-separator">•</span>
-              <span class="hero-meta-item">12 декабря, 18:00</span>
-              <span class="hero-meta-separator">•</span>
-              <span class="hero-meta-item">Сцена театра «Эмоцика» в ТРК «Гранд Каньон»</span>
-            </div>
-            <div class="hero-actions hero-actions--desktop">
-              <a href="https://clck.ru/3QWtC2" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Купить
-                билет</a>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <div class="hero-blob hero-blob-1"></div>
-            <div class="hero-blob hero-blob-2"></div>
-            <figure class="hero-poster">
-              <span class="hero-poster-badge hero-poster-badge--overlay badge badge--glass">ПРЕМЬЕРА</span>
-              <img class="hero-poster-image" src="assets/img/posters/love-tank-hero.webp"
-                alt="Постер спектакля «Любовь у сливного бачка»" />
-            </figure>
-            <div class="hero-actions hero-actions--mobile">
-              <a href="https://clck.ru/3QWtC2" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Купить
-                билет</a>
+      <div class="hero-content">
+        <!-- Theatrical Curtains -->
+        <div class="hero-curtain hero-curtain--left"></div>
+        <div class="hero-curtain hero-curtain--right"></div>
+
+        <!-- Spotlight -->
+        <div class="hero-spotlight"></div>
+
+        <!-- Main Content -->
+        <div class="hero-inner">
+          <div class="hero-badge">Театр-студия в Санкт-Петербурге</div>
+          <h1 class="hero-title">ЭМОЦИКА</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Второй блок Hero: О театре (Светлая тема) -->
+    <section class="hero-about">
+      <div class="container">
+        <div class="hero-about-layout">
+          <figure class="hero-about-logo">
+            <img src="assets/img/ui/logo-emozika-green.jpg" alt="Логотип театра Эмоцика" />
+          </figure>
+          <div class="hero-about-content">
+            <h2 class="hero-about-title">Семейный театр</h2>
+            <div class="hero-about-text">
+              <p>Театр Эмоцика — это Семейный театр.</p>
+              <p>Здесь одинаково интересно детям, родителям и бабушкам с дедушками.</p>
+              <p>Мы создаём спектакли, которые можно смотреть всей семьёй — вместе смеяться, вместе удивляться и
+                обсуждать после в кругу близких.</p>
+              <p>Наш театр вырос из театральной студии Эмоция, где с 2013 года занимались тысячи ребят. Сегодня у нас
+                есть своя сцена, и мы открываем её для всех поколений зрителей.</p>
+              <p>Приходите к нам всей семьёй — мы обещаем, что каждому найдётся что-то близкое и важное.</p>
             </div>
           </div>
         </div>
@@ -186,7 +194,8 @@
         <div class="snow-queen-layout">
           <figure class="hero-poster snow-queen-video snow-queen-video--left">
             <div class="snow-queen-video-inner">
-              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239065&autoplay=1"
+              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239085" width="325" height="646"
+                style="background-color: #000"
                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0"
                 allowfullscreen></iframe>
             </div>
@@ -201,35 +210,54 @@
 
           <figure class="hero-poster snow-queen-video snow-queen-video--right">
             <div class="snow-queen-video-inner">
-              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239063&autoplay=1"
+              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239063"
                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0"
                 allowfullscreen></iframe>
             </div>
           </figure>
         </div>
         <div class="snow-queen-actions snow-queen-actions--bar">
-          <a href="https://wa.me/79313157787"
-            class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--schools">
+          <a href="https://wa.me/79313157787?text=Здравствуйте!%20Хотим%20записаться%20на%20новогоднюю%20программу%20%22Снежная%20королева%22"
+            class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--schools" target="_blank"
+            rel="noopener">
             Оставить заявку на класс
           </a>
-          <a href="#tickets" class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--family">
+          <a href="https://afisha.yandex.ru/saint-petersburg/theatre/places/emotsika"
+            class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--family" target="_blank"
+            rel="noopener">
             Купить билеты
           </a>
         </div>
       </div>
     </section>
 
-    <section id="people" class="section section-people section-card reveal-on-scroll">
+    <section id="director" class="section section-director section-card reveal-on-scroll">
       <div class="section-inner">
         <div class="container">
-          <header class="section-header">
-            <h2 class="section-title section-title--handdrawn">Люди театра</h2>
-            <p class="section-subtitle">За спектаклями и занятиями в «Эмоцике» стоят режиссёры, педагоги, актёры и юные
-              артисты студии. Здесь только часть нашей команды и звёзд студии.</p>
-          </header>
-          <div class="people-shell">
-            <div class="people-filters" data-people-filters role="tablist" aria-label="Группы людей театра"></div>
-            <div class="people-layout" data-people-root></div>
+          <div class="director-layout">
+            <figure class="director-photo-wrapper">
+              <img class="director-photo" src="assets/img/people/elena-molodan.webp"
+                alt="Елена Молодан — художественный руководитель" />
+            </figure>
+            <div class="director-content">
+              <header class="section-header section-header--left">
+                <p class="section-kicker">Основатель и душа театра</p>
+                <h2 class="section-title">Елена Молодан</h2>
+                <p class="director-role">Художественный руководитель театра «Эмоцика» и основатель студии «Эмоция»</p>
+              </header>
+              <div class="director-bio section-text">
+                <p>Актриса театра и кино, член Союза театральных деятелей России.</p>
+                <p>Главная роль в жизни Елены — создавать пространство, где раскрываются таланты. Она прошла путь от
+                  камерной студии до собственного театра, где профессиональные актёры выходят на сцену вместе с
+                  учениками.</p>
+                <p>Если вы хотите, чтобы ваш ребенок тоже стал частью нашей театральной семьи — приходите в студию.</p>
+              </div>
+              <div class="director-actions">
+                <a href="https://studio-emotion.ru/" class="btn btn-primary" target="_blank" rel="noopener">
+                  Перейти на сайт студии
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -258,35 +286,6 @@
         </div>
     </section> -->
 
-
-    <!-- Блок документов-->
-    <section id="docs" class="section section-docs section-card">
-      <div class="section-inner">
-        <div class="container">
-          <header class="section-header">
-            <h2 class="section-title">Документы</h2>
-            <p class="section-subtitle">
-              Все официальные бумаги театра «Эмоция» доступны для скачивания.
-            </p>
-          </header>
-
-          <div class="docs">
-            <ul class="docs-list">
-              <li class="docs-item">
-                <a href="assets/docs/license.pdf" class="docs-link" target="_blank" rel="noopener noreferrer">
-                  <span class="docs-title">
-                    Лицензия на образовательную деятельность
-                  </span>
-                  <span class="docs-meta">
-                    PDF, 303&nbsp;КБ
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section id="contacts" class="section section--contacts section-card">
       <div class="section-inner">
@@ -318,6 +317,9 @@
               площадку и время для вашей семьи.</p>
             <p class="contacts__time">Мы на связи ежедневно с 11:00 до 20:00.</p>
             <div class="contacts__actions">
+              <button type="button" class="btn btn-primary btn-find-us" data-open-location-video>
+                Как нас найти?
+              </button>
               <a href="https://wa.me/79313157787" class="btn btn-primary" target="_blank" rel="noopener">
                 <img src="assets/img/ui/whatsapp-icon.svg" alt="" class="icon" />
                 Написать в WhatsApp
@@ -340,27 +342,38 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
+        <!-- Brand Section -->
         <div class="footer__brand">
           <a href="#hero" class="footer__logo" data-scroll-to="hero">
-            <img class="footer__mark" src="assets/img/ui/favicon.png" alt="Логотип театра «Эмоцика»" />
+            <img class="footer__mark" src="assets/img/ui/logo-emozika-green.jpg" alt="Логотип театра «Эмоцика»" />
             <span class="footer__name">Театр «Эмоцика»</span>
           </a>
-          <p class="footer__copy">© 2014–2025, театр «Эмоцика» и студия «Эмоция». Все права защищены.</p>
+          <p class="footer__copy">© 2014–2025, театр «Эмоцика» и студия «Эмоция». Все права защищены.</p>
         </div>
+
+        <!-- Navigation Section -->
         <nav class="footer__nav" aria-label="Навигация по сайту">
-          <a href="#afisha" class="footer__link" data-scroll-to="afisha">Афиша</a>
-          <a href="#snow-queen" class="footer__link" data-scroll-to="snow-queen">Новый год</a>
-          <a href="#people" class="footer__link" data-scroll-to="people">Люди театра</a>
-          <!-- <a href="#awards" class="footer__link" data-scroll-to="awards">Награды</a> -->
-          <a href="#docs" class="footer__link" data-scroll-to="docs">Документы</a>
-          <a href="#contacts" class="footer__link" data-scroll-to="contacts">Контакты</a>
+          <h3 class="footer__nav-title">Навигация</h3>
+          <div class="footer__nav-grid">
+            <a href="#afisha" class="footer__link" data-scroll-to="afisha">Афиша</a>
+            <a href="#snow-queen" class="footer__link" data-scroll-to="snow-queen">Новый год</a>
+            <a href="#director" class="footer__link" data-scroll-to="director">О театре</a>
+            <button type="button" class="footer__link" data-open-docs-modal>Документы</button>
+            <a href="#contacts" class="footer__link" data-scroll-to="contacts">Контакты</a>
+          </div>
         </nav>
+
+        <!-- Legal & Credits Section -->
         <div class="footer__meta">
-          <p class="footer__license">Лицензия на образовательную деятельность № 03-21-6065/24-0-3 от 05.11.2024, рег.
-            № 1035-01271-78/01491532, ИП Бурундукова Е. А.</p>
-          <a href="#" class="footer__link footer__link--small">Политика конфиденциальности</a>
+          <div>
+            <h3 class="footer__meta-title">Информация</h3>
+            <p class="footer__license">Лицензия на образовательную деятельность № 03-21-6065/24-0-3 от 05.11.2024, рег.
+              № 1035-01271-78/01491532, ИП Бурундукова Е. А.</p>
+            <a href="#" class="footer__link footer__link--small" style="text-align: right; margin-top: 8px;">Политика
+              конфиденциальности</a>
+          </div>
           <p class="footer__dev">Сайт разработал <a href="https://telegram.me/BurundukovS" target="_blank"
-              rel="noopener" class="footer__link footer__link--small">BurundukovS</a></p>
+              rel="noopener">BurundukovS</a></p>
         </div>
       </div>
     </div>
@@ -407,6 +420,24 @@
   </div>
 
 
+  <!-- Video Lightbox for Location -->
+  <div class="video-lightbox" id="location-video-lightbox" hidden>
+    <button class="video-lightbox__overlay" type="button" data-close-location-video></button>
+
+    <div class="video-lightbox__content" role="dialog" aria-modal="true" aria-label="Видео: Как найти театр">
+      <button class="video-lightbox__close" type="button" data-close-location-video aria-label="Закрыть видео">
+        ×
+      </button>
+
+      <div class="video-lightbox__video">
+        <iframe id="location-video-iframe" src=""
+          allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
   <div class="lightbox" id="gallery-lightbox" hidden>
     <button class="lightbox__overlay" type="button" data-lightbox-close></button>
 
@@ -429,6 +460,34 @@
         aria-label="Следующая фотография">
         ›
       </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно документов -->
+  <div class="docs-modal" data-docs-modal hidden>
+    <button class="docs-modal__overlay" type="button" data-close-docs-modal></button>
+
+    <div class="docs-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="docs-modal-title">
+      <button type="button" class="docs-modal__close" data-close-docs-modal
+        aria-label="Закрыть окно с документами">×</button>
+
+      <div class="docs-modal__content">
+        <header class="docs-modal__header">
+          <h2 class="docs-modal__title" id="docs-modal-title">Документы</h2>
+          <p class="docs-modal__subtitle">Все официальные бумаги театра «Эмоцика» доступны для скачивания.</p>
+        </header>
+
+        <div class="docs-modal__body">
+          <ul class="docs-modal__list">
+            <li class="docs-modal__item">
+              <a href="assets/docs/license.pdf" class="docs-modal__link" target="_blank" rel="noopener noreferrer">
+                <span class="docs-modal__doc-title">Лицензия на образовательную деятельность</span>
+                <span class="docs-modal__doc-meta">PDF, 303 КБ</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 

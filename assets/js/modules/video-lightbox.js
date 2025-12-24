@@ -9,7 +9,7 @@ export function initVideoLightbox() {
     const openButton = document.querySelector('[data-open-location-video]');
     const closeButtons = document.querySelectorAll('[data-close-location-video]');
 
-    const VIDEO_URL = 'https://vk.com/video_ext.php?oid=-232221941&id=456239082&autoplay=1';
+    const VIDEO_URL = 'https://vk.com/video_ext.php?oid=-232221941&id=456239082';
 
     if (!lightbox || !iframe || !openButton) {
         console.warn('Video lightbox elements not found');

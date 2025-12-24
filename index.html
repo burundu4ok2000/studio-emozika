@@ -7,6 +7,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap"
     rel="stylesheet">
+  <script>
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
   <meta charset="utf-8" />
   <title>Детский театр «Эмоцика»</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -78,7 +84,7 @@
       },
       "offers": {
         "@type": "Offer",
-        "url": "https://clck.ru/3QWtC2",
+        "url": "https://afisha.yandex.ru/saint-petersburg/theatre/places/emotsika",
         "availability": "https://schema.org/InStock"
       }
     }
@@ -92,7 +98,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#hero" class="logo-badge" data-scroll-to="hero">
-        <img class="logo-mark" src="assets/img/ui/favicon.png" alt="Логотип театра «Эмоцика»" />
+        <img class="logo-mark" src="assets/img/ui/logo-emozika-green.jpg" alt="Логотип театра «Эмоцика»" />
         <span class="logo-text">Театр «Эмоцика»</span>
       </a>
 
@@ -101,7 +107,8 @@
         <button type="button" class="nav-link" data-scroll-to="snow-queen">Новый год</button>
         <button type="button" class="nav-link" data-scroll-to="people">Люди</button>
       </nav>
-      <a href="https://clck.ru/3QWtC2" class="nav-link nav-link-cta header-cta" target="_blank" rel="noopener">
+      <a href="https://afisha.yandex.ru/saint-petersburg/theatre/places/emotsika"
+        class="nav-link nav-link-cta header-cta" target="_blank" rel="noopener">
         Купить билеты
       </a>
 
@@ -144,9 +151,6 @@
                 есть своя сцена, и мы открываем её для всех поколений зрителей.</p>
               <p>Приходите к нам всей семьёй — мы обещаем, что каждому найдётся что-то близкое и важное.</p>
             </div>
-            <button type="button" class="btn btn-find-us" data-open-location-video>
-              Как нас найти?
-            </button>
           </div>
         </div>
       </div>
@@ -188,7 +192,7 @@
         <div class="snow-queen-layout">
           <figure class="hero-poster snow-queen-video snow-queen-video--left">
             <div class="snow-queen-video-inner">
-              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239085&autoplay=1" width="325" height="646"
+              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239085" width="325" height="646"
                 style="background-color: #000"
                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0"
                 allowfullscreen></iframe>
@@ -204,18 +208,21 @@
 
           <figure class="hero-poster snow-queen-video snow-queen-video--right">
             <div class="snow-queen-video-inner">
-              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239063&autoplay=1"
+              <iframe src="https://vk.com/video_ext.php?oid=-232221941&id=456239063"
                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0"
                 allowfullscreen></iframe>
             </div>
           </figure>
         </div>
         <div class="snow-queen-actions snow-queen-actions--bar">
-          <a href="https://wa.me/79313157787"
-            class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--schools">
+          <a href="https://wa.me/79313157787?text=Здравствуйте!%20Хотим%20записаться%20на%20новогоднюю%20программу%20%22Снежная%20королева%22"
+            class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--schools" target="_blank"
+            rel="noopener">
             Оставить заявку на класс
           </a>
-          <a href="#tickets" class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--family">
+          <a href="https://afisha.yandex.ru/saint-petersburg/theatre/places/emotsika"
+            class="btn btn-primary btn-compact-mobile snow-queen-btn snow-queen-btn--family" target="_blank"
+            rel="noopener">
             Купить билеты
           </a>
         </div>
@@ -244,7 +251,7 @@
                 <p>Если вы хотите, чтобы ваш ребенок тоже стал частью нашей театральной семьи — приходите в студию.</p>
               </div>
               <div class="director-actions">
-                <a href="https://emozia.ru" class="btn btn-primary" target="_blank" rel="noopener">
+                <a href="https://studio-emotion.ru/" class="btn btn-primary" target="_blank" rel="noopener">
                   Перейти на сайт студии
                 </a>
               </div>
@@ -308,6 +315,9 @@
               площадку и время для вашей семьи.</p>
             <p class="contacts__time">Мы на связи ежедневно с 11:00 до 20:00.</p>
             <div class="contacts__actions">
+              <button type="button" class="btn btn-primary btn-find-us" data-open-location-video>
+                Как нас найти?
+              </button>
               <a href="https://wa.me/79313157787" class="btn btn-primary" target="_blank" rel="noopener">
                 <img src="assets/img/ui/whatsapp-icon.svg" alt="" class="icon" />
                 Написать в WhatsApp
@@ -330,27 +340,38 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
+        <!-- Brand Section -->
         <div class="footer__brand">
           <a href="#hero" class="footer__logo" data-scroll-to="hero">
-            <img class="footer__mark" src="assets/img/ui/favicon.png" alt="Логотип театра «Эмоцика»" />
+            <img class="footer__mark" src="assets/img/ui/logo-emozika-green.jpg" alt="Логотип театра «Эмоцика»" />
             <span class="footer__name">Театр «Эмоцика»</span>
           </a>
-          <p class="footer__copy">© 2014–2025, театр «Эмоцика» и студия «Эмоция». Все права защищены.</p>
+          <p class="footer__copy">© 2014–2025, театр «Эмоцика» и студия «Эмоция». Все права защищены.</p>
         </div>
+
+        <!-- Navigation Section -->
         <nav class="footer__nav" aria-label="Навигация по сайту">
-          <a href="#afisha" class="footer__link" data-scroll-to="afisha">Афиша</a>
-          <a href="#snow-queen" class="footer__link" data-scroll-to="snow-queen">Новый год</a>
-          <a href="#people" class="footer__link" data-scroll-to="people">Люди театра</a>
-          <!-- <a href="#awards" class="footer__link" data-scroll-to="awards">Награды</a> -->
-          <button type="button" class="footer__link" data-open-docs-modal>Документы</button>
-          <a href="#contacts" class="footer__link" data-scroll-to="contacts">Контакты</a>
+          <h3 class="footer__nav-title">Навигация</h3>
+          <div class="footer__nav-grid">
+            <a href="#afisha" class="footer__link" data-scroll-to="afisha">Афиша</a>
+            <a href="#snow-queen" class="footer__link" data-scroll-to="snow-queen">Новый год</a>
+            <a href="#director" class="footer__link" data-scroll-to="director">О театре</a>
+            <button type="button" class="footer__link" data-open-docs-modal>Документы</button>
+            <a href="#contacts" class="footer__link" data-scroll-to="contacts">Контакты</a>
+          </div>
         </nav>
+
+        <!-- Legal & Credits Section -->
         <div class="footer__meta">
-          <p class="footer__license">Лицензия на образовательную деятельность № 03-21-6065/24-0-3 от 05.11.2024, рег.
-            № 1035-01271-78/01491532, ИП Бурундукова Е. А.</p>
-          <a href="#" class="footer__link footer__link--small">Политика конфиденциальности</a>
+          <div>
+            <h3 class="footer__meta-title">Информация</h3>
+            <p class="footer__license">Лицензия на образовательную деятельность № 03-21-6065/24-0-3 от 05.11.2024, рег.
+              № 1035-01271-78/01491532, ИП Бурундукова Е. А.</p>
+            <a href="#" class="footer__link footer__link--small" style="text-align: right; margin-top: 8px;">Политика
+              конфиденциальности</a>
+          </div>
           <p class="footer__dev">Сайт разработал <a href="https://telegram.me/BurundukovS" target="_blank"
-              rel="noopener" class="footer__link footer__link--small">BurundukovS</a></p>
+              rel="noopener">BurundukovS</a></p>
         </div>
       </div>
     </div>

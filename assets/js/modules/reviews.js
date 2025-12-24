@@ -200,7 +200,8 @@ function openReviewLightbox(lightbox, review) {
 
     if (review.videoEmbedUrl) {
         var iframe = document.createElement("iframe");
-        iframe.src = review.videoEmbedUrl;
+        var src = review.videoEmbedUrl;
+        iframe.src = src;
         iframe.title = review.title || "Видеоотзыв";
         iframe.allow =
             "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";

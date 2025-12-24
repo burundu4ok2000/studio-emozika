@@ -1,111 +1,270 @@
+.section--contacts {
+    position: relative;
+    padding: 60px 0;
+    overflow: hidden;
+    /* Deep Green Premium Gradient Background */
+    background: radial-gradient(circle at 50% 0%, #388E3C 0%, #1B5E20 60%, #0d3312 100%);
+}
+
+.section--contacts::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0, transparent 200px),
+        radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.05) 0, transparent 200px);
+    pointer-events: none;
+}
+
 .contacts {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Common Card Style for Glass Effect */
+.card-luxe {
+    background: rgba(255, 255, 255, 0.94);
+    /* High opacity for max readability */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    border-radius: 24px;
+    padding: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-luxe:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
 }
 
 .contacts__info {
     flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .contacts__map {
     flex: 1 1 0;
+    position: relative;
+    min-height: 400px;
+    padding: 0;
+    /* Remove padding for map to fill card exactly if needed, usually map inside card needs padding? Let's keep padding 0 and use overflow hidden on card or inner wrapper */
+    overflow: hidden;
+    padding: 12px;
+    /* Small padding frame around map */
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Map specific override to reset padding if we want full bleed, 
+   but 'frame' look is more premium for this design */
+.contacts__map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 16px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .contacts__text {
-    margin: 8px 0 16px;
-    font-size: 14px;
+    margin: 16px 0 24px;
+    font-size: 16px;
     line-height: 1.6;
+    color: #444;
+    /* Dark grey for readability */
 }
 
 .contacts__list {
-    margin: 0 0 16px;
+    margin: 0 0 24px;
+    background: rgba(46, 125, 50, 0.04);
+    /* Very subtle green tint */
+    border-radius: 16px;
+    padding: 24px;
 }
 
 .contacts__row {
     display: flex;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 16px;
+
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
 }
 
 .contacts__row dt {
-    min-width: 110px;
-    font-weight: 600;
+    min-width: 140px;
+    font-weight: 700;
     font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2e7d32;
+    /* Brand Green */
 }
 
 .contacts__row dd {
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+    /* Almost Black for sharp text */
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+            color: #2e7d32;
+            border-bottom-color: rgba(46, 125, 50, 0.4);
+        }
+    }
 }
 
 .contacts__note {
-    margin: 6px 0 0;
-    font-size: 12px;
-    color: var(--color-text-muted);
+    margin: 12px 0 0;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
 }
 
 .contacts__row .contacts__note {
     display: inline-block;
-    margin: 0 0 0 6px;
+    margin: 0 0 0 8px;
+    font-size: 13px;
+    color: #888;
 }
 
 .contacts__time {
-    margin: 8px 0 18px;
-    font-size: 13px;
-    color: var(--color-text-muted);
+    margin: 0 0 24px;
+    /* Moved up or adjusted spacing */
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1b5e20;
+    background: linear-gradient(to right, rgba(76, 175, 80, 0.15), transparent);
+    border-radius: 12px;
+    border-left: 4px solid #2e7d32;
+    display: inline-block;
+    width: 100%;
 }
 
 .contacts__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
+    margin-top: auto;
+    /* Push to bottom if height allows */
 }
 
 .contacts__actions .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 50px;
+    /* Pill shape for modern feel */
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+
+    &.btn-find-us {
+        background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+        color: white;
+        border: none;
+        box-shadow:
+            0 8px 20px rgba(46, 125, 50, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 28px rgba(46, 125, 50, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
 }
 
 .contacts__actions .btn .icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     display: inline-block;
 }
 
-.contacts__map iframe {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .section--contacts {
-        padding: 52px 0;
+        padding: 40px 0;
+    }
+
+    .contacts__info {
+        padding: 24px;
     }
 
     .contacts__row {
         flex-direction: column;
-        gap: 4px;
+        gap: 6px;
     }
 
     .contacts__row dt {
         min-width: 0;
+        font-size: 12px;
+        margin-bottom: 2px;
     }
 
-    .contacts__map iframe {
-        min-height: 220px;
+    .contacts__list {
+        padding: 16px;
+    }
+
+    .contacts__map {
+        min-height: 280px;
+    }
+
+    .contacts__actions {
+        flex-direction: column;
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .section--contacts .contacts {
         flex-direction: row;
         align-items: stretch;
+        /* Cards equal height */
+        gap: 24px;
     }
 
-    .contacts__map iframe {
-        min-height: 260px;
+    .contacts__info,
+    .contacts__map {
+        width: 50%;
+    }
+
+    .contacts__map {
+        min-height: 500px;
+        /* Taller map on desktop */
     }
 }

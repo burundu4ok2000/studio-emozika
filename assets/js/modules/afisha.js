@@ -109,7 +109,7 @@ export function initAfisha() {
                     }
 
                     return (
-                        '<article class="afisha-card afisha-card--strip card-luxe" data-play-id="' +
+                        '<article class="afisha-card afisha-card--strip" data-play-id="' +
                         play.id +
                         '">' +
                         '<div class="afisha-card-poster-wrapper">' +
@@ -247,7 +247,30 @@ export function initAfisha() {
 
             if (mediaPhotosEl) {
                 mediaPhotosEl.innerHTML = "";
-                if (
+
+                if (play.media && play.media.videoEmbed) {
+                    // Если есть встроенное видео (iframe), показываем его вместо фото
+                    const embedWrapper = document.createElement("div");
+                    embedWrapper.className = "play-modal-embed";
+
+                    // Пытаемся вытащить width и height из строки iframe для правильного aspect-ratio
+                    const widthMatch = play.media.videoEmbed.match(/width="(\d+)"/);
+                    const heightMatch = play.media.videoEmbed.match(/height="(\d+)"/);
+
+                    if (widthMatch && heightMatch) {
+                        const w = widthMatch[1];
+                        const h = heightMatch[1];
+                        embedWrapper.style.aspectRatio = `${w} / ${h}`;
+                        // Для вертикальных видео ограничиваем ширину, чтобы они не занимали весь экран
+                        if (parseInt(h) > parseInt(w)) {
+                            embedWrapper.style.maxWidth = "350px";
+                            embedWrapper.style.margin = "0 auto";
+                        }
+                    }
+
+                    embedWrapper.innerHTML = play.media.videoEmbed;
+                    mediaPhotosEl.appendChild(embedWrapper);
+                } else if (
                     play.media &&
                     Array.isArray(play.media.photos) &&
                     play.media.photos.length

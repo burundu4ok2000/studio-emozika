@@ -11,35 +11,10 @@
     transform: translateY(0);
 }
 
-.section-alt {
-    background: #fff9f4;
-}
-
 .section-inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 16px;
-}
-
-.two-column {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    align-items: flex-start;
-}
-
-.two-column-text {
-    flex: 3;
-    min-width: 260px;
-}
-
-.two-column-media {
-    flex: 2;
-    min-width: 240px;
-}
-
-.placeholder-media {
-    background: radial-gradient(circle at top left, #FFCC80, #FFD1DC);
 }
 
 .section-card {

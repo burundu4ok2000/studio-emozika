@@ -295,12 +295,14 @@ export function initAfisha() {
 
             modalEl.removeAttribute("hidden");
             document.body.classList.add("has-modal-open");
+            document.body.style.overflow = "hidden";
         }
 
         function closePlayModal() {
             if (!modalEl) return;
             modalEl.setAttribute("hidden", "true");
             document.body.classList.remove("has-modal-open");
+            document.body.style.overflow = "";
         }
 
         function bindAfishaEvents() {

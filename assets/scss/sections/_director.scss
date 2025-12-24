@@ -48,6 +48,44 @@
     min-width: 300px;
 }
 
+/* Wrapper for title to apply organic frame */
+.director-header-frame {
+    display: inline-block;
+    padding: 24px 32px;
+    background: rgba(76, 175, 80, 0.06);
+    border: 2px solid rgba(76, 175, 80, 0.2);
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-bottom: 32px;
+    text-align: center;
+    transition: all 0.5s ease;
+
+    &:hover {
+        border-radius: 48% 52% 44% 56% / 59% 49% 51% 41%;
+        background: rgba(76, 175, 80, 0.09);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-kicker {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .section-title {
+        color: #4CAF50;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        margin: 0;
+    }
+
+    .director-role {
+        margin: 12px 0 0;
+        font-size: 16px;
+        color: #81c784;
+    }
+}
+
 .director-role {
     font-size: 18px;
     color: var(--color-brand);
@@ -55,16 +93,48 @@
     font-weight: 600;
     margin-bottom: 24px;
     line-height: 1.4;
+    /* Legacy keeping just in case used elsewhere, but overridden above if nested */
 }
 
 .director-bio {
-    color: var(--color-text);
-    margin-bottom: 32px;
-    font-size: 16px;
-    line-height: 1.7;
+    /* Stylized Box for Text */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+    /* SERIF FONT */
+    font-family: 'Georgia',
+        'Times New Roman',
+        serif;
+    font-size: 17px;
+    line-height: 1.8;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+
+    /* Framing elements (different from hero for variety, maybe full border with gap?) */
+    /* Let's do a simple elegant border offset */
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border: 1px solid rgba(76, 175, 80, 0.3);
+        pointer-events: none;
+    }
 
     p {
-        margin-bottom: 16px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+
+        &:last-child {
+            margin-bottom: 0;
+            font-style: normal;
+            font-weight: 500;
+            color: #4CAF50;
+            /* Highlight call to action */
+        }
     }
 }
 

@@ -21,6 +21,42 @@ import { initDocsModal } from './modules/docs-modal.js';
 import { initHeroCarousel } from './modules/hero-carousel.js';
 import { initVideoLightbox } from './modules/video-lightbox.js';
 
+// --- HEADER TOGGLE & SCROLL ---
+const header = document.querySelector(".site-header");
+const headerToggle = document.querySelector("[data-header-toggle]");
+const body = document.body;
+
+if (headerToggle && header) {
+  headerToggle.addEventListener("click", () => {
+    header.classList.toggle("is-open");
+    // Toggle body scroll
+    if (header.classList.contains("is-open")) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
+    }
+  });
+
+  // Close menu when clicking a link
+  const navLinks = header.querySelectorAll(".nav-link");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      header.classList.remove("is-open");
+      body.style.overflow = "";
+    });
+  });
+}
+
+if (header) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Базовая инициализация и эффекты
   initReveal();

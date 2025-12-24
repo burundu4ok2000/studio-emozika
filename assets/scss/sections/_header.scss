@@ -141,63 +141,128 @@
     flex: 0 0 auto;
 }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-    .site-header {
-        background: rgba(10, 31, 13, 0.92);
-    }
+/* Header Actions & Hamburger */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-    .header-inner {
-        flex-wrap: nowrap;
-        gap: 10px;
-        padding: 10px 0;
-    }
+.header-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 20;
+    position: relative;
 
-    .logo-badge {
-        padding: 5px 10px;
+    span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 2px;
+        transition: all 0.3s ease;
     }
+}
 
-    .logo-mark {
-        width: 28px;
-        height: 28px;
-        flex: 0 0 28px;
-    }
+/* Open State for Hamburger */
+.site-header.is-open {
+    .header-toggle {
+        span:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
 
-    .logo-text {
-        font-size: 13px;
+        span:nth-child(2) {
+            opacity: 0;
+        }
+
+        span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
+        }
     }
 
     .main-nav {
-        flex: 1 1 auto;
-        gap: 6px;
-        justify-content: flex-end;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
 
-        &::-webkit-scrollbar {
-            height: 3px;
-        }
 
-        &::-webkit-scrollbar-thumb {
-            background: rgba(76, 175, 80, 0.3);
-            border-radius: 999px;
-        }
+/* Mobile styles */
+@media (max-width: 900px) {
+    .site-header {
+        background: rgba(10, 31, 13, 0.95);
+    }
+
+    .header-inner {
+        padding: 12px 0;
+    }
+
+    .header-toggle {
+        display: flex;
+    }
+
+    /* Hide nav by default on mobile */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 31, 13, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        padding: 80px 20px;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-link {
-        padding: 6px 12px;
-        font-size: 13px;
-        background: rgba(76, 175, 80, 0.08);
+        font-size: 18px;
+        padding: 12px 24px;
+        width: 100%;
+        text-align: center;
+        max-width: 300px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
 
-        &::before {
-            display: none;
+        &:hover,
+        &:focus {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: rgba(76, 175, 80, 0.4);
         }
     }
 
-    .nav-link-cta {
-        padding: 8px 14px;
-        margin-left: 4px;
+    /* Logo Fix: Force square aspect ratio */
+    .logo-mark {
+        width: 36px;
+        height: 36px;
+        flex: 0 0 36px;
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
     }
+
+    .logo-text {
+        font-size: 14px;
+    }
+
+    /* Hide logo text on very small screens if needed, 
+       but user requested logo + buy button visible */
 }
 
 @media (max-width: 640px) {
@@ -205,7 +270,16 @@
         display: none;
     }
 
-    .logo-badge {
-        padding: 5px;
+    .nav-link-cta {
+        padding: 8px 12px;
+        font-size: 13px;
+
+        span {
+            display: none;
+        }
+
+        &::after {
+            content: "Билеты";
+        }
     }
 }

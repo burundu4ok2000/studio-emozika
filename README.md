@@ -1,181 +1,58 @@
-# 🎭 Emozika Theatre Platform
+# 🎭 Emozika Theatre
 
-> **A full-stack, data-driven web platform for a family theatre in Saint Petersburg — featuring automated content pipelines, modular JavaScript architecture, and a polished premium UI.**
+<div align="center">
 
-## 📌 Elevator Pitch
+**Детский театр «Эмоцика» — A premium web experience for a children's theatre in Saint Petersburg**
 
-**Emozika Theatre Platform** transforms how a local theatre manages its digital presence by replacing manual content updates with **automated VK API scraping pipelines** and a **modular, component-based frontend**. The result is a production-ready website that dynamically renders plays, media galleries, and real-time event data from structured JSON sources.
+[![Live Demo](https://img.shields.io/badge/🎪_Live_Demo-Visit_Site-4CAF50?style=for-the-badge)](https://burundu4ok2000.github.io/studio-emozika/)
+[![CS50x](https://img.shields.io/badge/CS50x-Final_Project-crimson?style=for-the-badge&logo=edx)](https://cs50.harvard.edu/x/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
----
-
-## 💡 The Problem
-
-Managing a theatre's online presence traditionally involves:
-
-| Challenge | Pain Point |
-|-----------|------------|
-| **Manual Content Updates** | Every new show, photo, or video requires editing static HTML files |
-| **Fragmented Media Sources** | VK, YouTube, and local assets scattered across platforms |
-| **Non-Technical Stakeholders** | Theatre staff can't update content without developer intervention |
-| **Performance Bottlenecks** | Unoptimized images and heavy assets slow page loads |
-| **SEO Gaps** | Missing structured data hurts discoverability for local searches |
+</div>
 
 ---
 
-## 🏗️ The Solution: Target Architecture
+## 📺 Video Demo
 
-The platform implements a **Source → Scrape → Transform → Render** pipeline that automates content flow from VK social media to the production website.
+> *Video walkthrough link here*
 
-```
-┌────────────────────────────────────────────────────────────────────────────┐
-│                           DATA PIPELINE                                    │
-├────────────────────────────────────────────────────────────────────────────┤
-│                                                                            │
-│   ┌─────────────┐     ┌─────────────────┐     ┌─────────────────────┐     │
-│   │   VK API    │────▶│  scrape-vk.js   │────▶│  Raw JSON (.bd/)    │     │
-│   │  (Source)   │     │  (Ingestion)    │     │  wall, photos, etc  │     │
-│   └─────────────┘     └─────────────────┘     └──────────┬──────────┘     │
-│                                                          │                 │
-│                                                          ▼                 │
-│   ┌─────────────────────────────────────────────────────────────────┐     │
-│   │              TRANSFORMATION SCRIPTS                             │     │
-│   │  ├── generate-show-carousel-data.js  (→ show-carousel.json)    │     │
-│   │  ├── select-hero-photos.js           (→ curated hero images)   │     │
-│   │  ├── find-best-photos.js             (→ gallery selections)    │     │
-│   │  └── optimize-images.js              (→ WebP conversion)       │     │
-│   └──────────────────────────────────────────┬──────────────────────┘     │
-│                                              │                             │
-│                                              ▼                             │
-│   ┌─────────────────────────────────────────────────────────────────┐     │
-│   │              STRUCTURED DATA (public/assets/data/)              │     │
-│   │  ├── plays.json        (repertoire, schedules, tickets)        │     │
-│   │  ├── people.json       (cast, directors, staff)                │     │
-│   │  ├── show-carousel.json (featured carousel items)              │     │
-│   │  └── docs.json         (legal documents metadata)              │     │
-│   └──────────────────────────────────────────┬──────────────────────┘     │
-│                                              │                             │
-└──────────────────────────────────────────────┼─────────────────────────────┘
-                                               │
-                                               ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           FRONTEND LAYER                                    │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   ┌───────────────────┐    ┌───────────────────────────────────────┐       │
-│   │   Vite Build      │    │     Modular JS Architecture           │       │
-│   │   (Dev/Prod)      │    │                                       │       │
-│   │                   │    │  main.js                              │       │
-│   │  ├── HMR          │    │    ├── initAfisha()     (plays)       │       │
-│   │  ├── SCSS→CSS     │    │    ├── initGallery()    (lightbox)    │       │
-│   │  └── ES Modules   │    │    ├── initReviews()    (video grid)  │       │
-│   │                   │    │    ├── initAwards()     (festivals)   │       │
-│   └───────────────────┘    │    ├── initPeople()     (team)        │       │
-│                            │    ├── initHeroCarousel() (3D stage)  │       │
-│                            │    └── ... (20+ modules)              │       │
-│                            └───────────────────────────────────────┘       │
-│                                                                             │
-│   ┌───────────────────────────────────────────────────────────────────┐    │
-│   │                    SCSS ARCHITECTURE                              │    │
-│   │  scss/                                                            │    │
-│   │    ├── base/      (reset, typography, variables)                  │    │
-│   │    ├── components/ (buttons, modals, cards, badges)               │    │
-│   │    ├── sections/   (hero, afisha, contacts, awards...)            │    │
-│   │    └── utils/      (mixins, functions)                            │    │
-│   └───────────────────────────────────────────────────────────────────┘    │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+---
+
+## 🎯 Project Overview
+
+This is a **production-ready theatre website** built for Emozika — a children's drama studio in Saint Petersburg that has been inspiring young actors since 2014.
+
+### What makes it special?
+
+| Feature | Implementation |
+|---------|---------------|
+| 🎬 **Theatrical Opening** | CSS-animated stage curtains that "open" on page load |
+| ❄️ **Seasonal Theme** | "Snow Queen" section with particle snowfall animation |
+| 📱 **Mobile-First** | Fully responsive with hamburger navigation and touch gestures |
+| ⚡ **Performance** | Optimized WebP images, minimal JS (9.7 KB gzipped) |
+| ♿ **Accessibility** | Skip links, ARIA labels, keyboard navigation |
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-| Technology | Purpose |
-|------------|---------|
-| **Vite 6.0** | Build tool with HMR, ES module bundling |
-| **Vanilla JavaScript (ES6+)** | Zero-dependency modular architecture |
-| **SCSS (Dart Sass)** | Component-scoped styling with design tokens |
-| **HTML5 Semantic Markup** | Accessibility-first structure |
+```
+Frontend           Build & Deploy        Design
+─────────────────────────────────────────────────────
+HTML5              Vite 6.0              SCSS/Sass
+Vanilla JS (ES6)   GitHub Pages          CSS Variables
+CSS Animations     gh-pages CLI          Glassmorphism
+```
 
-### Data Layer
-| Technology | Purpose |
-|------------|---------|
-| **VK API v5.131** | Automated scraping of wall posts, photos, videos |
-| **JSON Data Files** | plays.json, people.json — structured content storage |
-| **Node.js Scripts** | ETL pipeline for content transformation |
+### Dependencies
 
-### Dev & Deployment
-| Technology | Purpose |
-|------------|---------|
-| **Sharp** | Image optimization and WebP conversion |
-| **gh-pages** | Automated deployment to GitHub Pages |
-| **Schema.org JSON-LD** | Structured data for SEO (TheaterEvent, PerformingGroup) |
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `vite` | ^6.0.0 | Lightning-fast dev server & bundler |
+| `sass` | ^1.83.0 | SCSS compilation |
+| `gh-pages` | ^6.3.0 | Automated deployment |
 
-### Third-Party Integrations
-| Service | Purpose |
-|---------|---------|
-| **Yandex.Afisha Widget** | Ticket purchasing integration |
-| **Yandex Maps Embed** | Location and directions |
-| **VK Video Embeds** | Performance trailers and promo content |
-
----
-
-## 📊 Current Status & Roadmap
-
-### ✅ Completed Features
-
-- [x] **Core Website Architecture** — Vite build, SCSS system, modular JS
-- [x] **Afisha Module** — Dynamic plays rendering from `plays.json` with modal details
-- [x] **Play Modal System** — Full play info with video embeds, cast, and ticket CTA
-- [x] **Hero Section** — Animated theatrical curtains with spotlight effects
-- [x] **VK API Scraper** — Automated ingestion of wall posts, photos, videos, discussions
-- [x] **Image Optimization Pipeline** — Sharp-based WebP conversion
-- [x] **Gallery Lightbox** — Keyboard-navigable photo viewer
-- [x] **Video Lightbox** — Fullscreen video player for location guides
-- [x] **Contacts Section** — Yandex Maps integration, WhatsApp CTAs
-- [x] **Documents Modal** — Legal documents (licenses, permits) display
-- [x] **SEO Implementation** — Schema.org JSON-LD for events, Open Graph tags
-- [x] **Responsive Design** — Mobile-first with glassmorphism effects
-- [x] **Accessibility** — Skip links, ARIA labels, keyboard navigation
-
-### 🔄 In Progress
-
-- [ ] **Hero Carousel** — 3D carousel for featured shows (currently disabled)
-- [ ] **Awards Section** — Festival trophies and achievements display
-- [ ] **Reviews Module** — Video testimonials from parents and students
-- [ ] **People Section** — Team members with photos from `people.json`
-- [ ] **Photo Gallery Automation** — Connect raw VK photos to gallery component
-
-### 📋 Planned Enhancements
-
-- [ ] **Admin Dashboard** — CMS for non-technical staff to update `plays.json`
-- [ ] **Automated CI/CD Pipeline** — GitHub Actions for scheduled VK scrapes
-- [ ] **Analytics Integration** — Yandex.Metrica event tracking
-- [ ] **Telegram Notifications** — Alert admins when new VK content is scraped
-- [ ] **Multi-Page Architecture** — Dedicated pages per play for SEO
-
----
-
-## ⭐ Key Features
-
-### 🎬 Data-Driven Afisha System
-Renders plays dynamically from structured JSON, with automatic date sorting, age badges, and integrated ticket purchasing via Yandex.Afisha.
-
-### 🔄 VK Content Ingestion Pipeline
-Custom Node.js scraper pulls wall posts, photos, videos, and discussions from the theatre's VK group — transforming raw social data into structured assets.
-
-### 🎨 Premium Glassmorphism UI
-Modern design language with frosted glass panels, smooth micro-animations, and a theatrical dark theme that evokes the stage experience.
-
-### 📦 Modular JavaScript Architecture
-20+ self-contained modules (`afisha.js`, `gallery.js`, `reviews.js`, etc.) with zero external dependencies — clean separation of concerns for maintainability.
-
-### 🖼️ Automated Image Optimization
-Sharp-powered pipeline converts and compresses images to WebP, with automated selection of best photos from scraped VK albums.
-
-### 🔍 SEO-Optimized Structured Data
-Schema.org JSON-LD markup for `TheaterEvent` and `PerformingGroup` entities, plus Open Graph and Twitter Card meta tags for social sharing.
+**Zero frontend dependencies** — pure vanilla JavaScript!
 
 ---
 
@@ -183,47 +60,93 @@ Schema.org JSON-LD markup for `TheaterEvent` and `PerformingGroup` entities, plu
 
 ```
 studio-emozika/
-├── assets/
-│   ├── js/
-│   │   ├── main.js                 # Entry point, module orchestration
-│   │   └── modules/                # 20+ feature modules
-│   │       ├── afisha.js           # Repertoire rendering & modal
-│   │       ├── gallery.js          # Photo lightbox
-│   │       ├── reviews.js          # Video testimonials
-│   │       ├── awards.js           # Festival achievements
-│   │       ├── hero-carousel.js    # 3D carousel (WIP)
+├── 📄 index.html              # Single-page application
+├── 📦 package.json            # Project configuration
+├── ⚙️ vite.config.js          # Vite configuration
+│
+├── 🎨 assets/
+│   ├── scss/                  # Styling (ITCSS methodology)
+│   │   ├── base/              # Variables, reset, typography
+│   │   ├── components/        # Buttons, cards, modals
+│   │   └── sections/          # Header, hero, afisha, footer
+│   │
+│   ├── js/                    # JavaScript modules
+│   │   ├── main.js            # Entry point
+│   │   └── modules/           # Feature modules
+│   │       ├── afisha.js      # Play cards & strip navigation
+│   │       ├── snow-queen.js  # Seasonal section logic
+│   │       ├── reveal.js      # Scroll animations
 │   │       └── ...
-│   └── scss/
-│       ├── base/                   # Reset, typography, tokens
-│       ├── components/             # Buttons, modals, badges
-│       └── sections/               # Hero, afisha, contacts, etc.
-├── public/assets/data/
-│   ├── plays.json                  # Repertoire data
-│   ├── people.json                 # Cast and team
-│   └── show-carousel.json          # Featured content
-├── scripts/
-│   ├── scrape-vk.js               # VK API ingestion
-│   ├── generate-show-carousel-data.js
-│   ├── select-hero-photos.js
-│   └── optimize-images.js
-├── .bd/                            # Raw scraped VK data (gitignored)
-├── index.html                      # Single-page application
-└── vite.config.js                  # Build configuration
+│   │
+│   └── docs/                  # Legal documents
+│
+└── 🖼️ public/assets/
+    ├── data/plays.json        # Repertoire data
+    └── img/                   # Optimized images (WebP)
 ```
 
 ---
 
-## 🚀 Quick Start
+## ✨ Key Features
+
+### 1. Animated Theatre Curtains
+The hero section features **CSS keyframe animations** simulating stage curtains opening — creating an immersive theatrical experience from the first second.
+
+```scss
+@keyframes curtainOpenLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+```
+
+### 2. Data-Driven Afisha (Playbill)
+Plays are rendered dynamically from `plays.json`, allowing easy content updates without touching HTML:
+
+```json
+{
+  "slug": "snow-queen",
+  "title": "Снежная Королева",
+  "badges": ["ny", "premiere"]
+}
+```
+
+### 3. Horizontal Scrolling Strip
+The afisha uses **CSS Scroll Snap** for smooth, swipeable card navigation on mobile:
+
+```scss
+.afisha-strip {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+```
+
+### 4. Professional SCSS Architecture
+Following **ITCSS methodology** with:
+- Design tokens in CSS variables
+- Component-based structure
+- JSDoc-style file headers
+- Organized section comments
+
+### 5. Accessibility Features
+- Skip-to-content link for keyboard users
+- ARIA labels on interactive elements
+- Reduced motion support (`prefers-reduced-motion`)
+- Focus-visible indicators
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+# Clone the repository
+git clone https://github.com/burundu4ok2000/studio-emozika.git
+cd studio-emozika
+
 # Install dependencies
 npm install
 
-# Start development server with HMR
+# Start development server (http://localhost:5173)
 npm run dev
-
-# Scrape content from VK (requires .env configuration)
-node scripts/scrape-vk.js
 
 # Build for production
 npm run build
@@ -232,24 +155,59 @@ npm run build
 npm run deploy
 ```
 
-### Environment Variables
+---
 
-Create a `.env` file in the project root:
+## � Build Output
 
-```env
-VK_SERVICE_TOKEN=your_vk_service_token
-VK_GROUP_ID=-232221941
 ```
+dist/
+├── index.html          24.24 kB │ gzip:  6.43 kB
+├── assets/
+│   ├── index-*.css     55.67 kB │ gzip: 11.09 kB
+│   └── index-*.js       9.71 kB │ gzip:  3.36 kB
+```
+
+**Total: ~21 KB gzipped** — optimized for fast loading!
+
+---
+
+## 🎓 CS50x Final Project
+
+This project was created as the final project for **Harvard's CS50x: Introduction to Computer Science**.
+
+### Skills Demonstrated
+
+- ✅ HTML/CSS/JavaScript fundamentals
+- ✅ Responsive web design
+- ✅ CSS animations and transitions
+- ✅ JavaScript DOM manipulation
+- ✅ JSON data handling
+- ✅ Build tools (Vite, npm)
+- ✅ Version control (Git)
+- ✅ Deployment (GitHub Pages)
+
+---
+
+## 👤 Author
+
+**Stanislav Burundukov**
+
+- Telegram: [@BurundukovS](https://t.me/BurundukovS)
+- GitHub: [@burundu4ok2000](https://github.com/burundu4ok2000)
 
 ---
 
 ## 📄 License
 
-This project is a private portfolio piece developed for Emozika Theatre Studio.  
-© 2014–2025 Emozika Theatre & Emotion Studio. All rights reserved.
+Private portfolio project for Emozika Theatre Studio.  
+© 2014–2025 Emozika Theatre. All rights reserved.
 
 ---
 
-<p align="center">
-  <strong>Developed by</strong> <a href="https://telegram.me/BurundukovS">Stanislav Burundukov</a>
-</p>
+<div align="center">
+
+**Built with 💚 in Saint Petersburg**
+
+*This was CS50!*
+
+</div>

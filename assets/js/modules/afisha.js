@@ -247,34 +247,21 @@ export function initAfisha() {
 
             if (mediaPhotosEl) {
                 mediaPhotosEl.innerHTML = "";
+                // Reset style to default in case it was modified
+                mediaPhotosEl.style.display = "";
 
                 if (play.media && play.media.videoEmbed) {
-                    // Если есть встроенное видео (iframe), показываем его вместо фото
-                    const embedWrapper = document.createElement("div");
-                    embedWrapper.className = "play-modal-embed";
-
-                    // Пытаемся вытащить width и height из строки iframe для правильного aspect-ratio
-                    const widthMatch = play.media.videoEmbed.match(/width="(\d+)"/);
-                    const heightMatch = play.media.videoEmbed.match(/height="(\d+)"/);
-
-                    if (widthMatch && heightMatch) {
-                        const w = widthMatch[1];
-                        const h = heightMatch[1];
-                        embedWrapper.style.aspectRatio = `${w} / ${h}`;
-                        // Для вертикальных видео ограничиваем ширину, чтобы они не занимали весь экран
-                        if (parseInt(h) > parseInt(w)) {
-                            embedWrapper.style.maxWidth = "350px";
-                            embedWrapper.style.margin = "0 auto";
-                        }
-                    }
-
-                    embedWrapper.innerHTML = play.media.videoEmbed;
-                    mediaPhotosEl.appendChild(embedWrapper);
+                    // Show video embed instead of photos
+                    // Use block display to allow video to take full width
+                    mediaPhotosEl.style.display = "block";
+                    mediaPhotosEl.innerHTML = play.media.videoEmbed;
                 } else if (
                     play.media &&
                     Array.isArray(play.media.photos) &&
                     play.media.photos.length
                 ) {
+                    // Show photos grid
+                    mediaPhotosEl.style.display = "grid"; // Ensure grid is restored
                     play.media.photos.forEach(function (src) {
                         const img = document.createElement("img");
                         img.src = src;

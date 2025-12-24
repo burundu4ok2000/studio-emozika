@@ -38,10 +38,14 @@
 .play-modal__dialog {
     position: relative;
     width: 100%;
-    0 40px 80px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(76, 175, 80, 0.1);
+    /* Removed orphaned shadow/border values here */
     border-radius: 24px;
     color: #f1f1f1;
+    background: #0f2e13;
+    /* Ensure bg is set */
+    overflow: visible;
+    max-height: none;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(76, 175, 80, 0.1);
 
     /* Scrollbar styling */
     &::-webkit-scrollbar {

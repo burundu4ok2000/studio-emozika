@@ -389,8 +389,12 @@
         position: relative;
         z-index: 1;
         border-radius: 50%;
+        aspect-ratio: 1 / 1;
+        /* Force square */
 
         @media (max-width: 900px) {
+            width: 250px;
+            height: 250px;
             max-width: 250px;
         }
     }

@@ -484,6 +484,8 @@
 @media (max-width: 600px) {
     .play-modal {
         padding: 0;
+        overflow: hidden;
+        /* Overlay does NOT scroll on mobile */
     }
 
     .play-modal__dialog {
@@ -491,15 +493,26 @@
         max-height: 100%;
         border-radius: 0;
         width: 100%;
+        margin: 0;
+        /* CRITICAL: Dialog scrolls on mobile */
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-direction: column;
     }
 
     .play-modal__header {
         padding: 60px 24px 0;
+        flex-shrink: 0;
+        /* Don't shrink header */
     }
 
     .play-modal__body {
         padding: 0 24px 100px;
         /* Extra bottom padding for sticky footer */
+        flex: 1 1 auto;
+        overflow-y: visible;
+        /* Let parent scroll */
     }
 
     .play-modal__text {

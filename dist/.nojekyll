@@ -1,0 +1,17 @@
+# Task: Verify Studio Emozika Website
+
+- [x] Verify website structure and content <!-- id: 0 -->
+    - [x] Analyze project structure (files, config) <!-- id: 1 -->
+    - [x] Verify Homepage existence and loading <!-- id: 2 -->
+    - [x] Investigate missing pages (/studio, /cinema, etc.) status <!-- id: 3 -->
+    - [x] Verify "Afisha" section <!-- id: 4 -->
+    - [x] Verify "People" section (Studio) <!-- id: 5 -->
+    - [x] Verify "Snow Queen" section (New Year/Cinema?) <!-- id: 6 -->
+    - [x] Verify "Contacts" section (Enroll/Tickets) <!-- id: 7 -->
+- [x] Create Walkthrough of verification <!-- id: 8 -->
+- [/] Check GitHub Pages Compatibility <!-- id: 9 -->
+    - [x] Check package.json for deploy scripts <!-- id: 10 -->
+    - [x] Check vite.config.js base path correctness <!-- id: 11 -->
+    - [x] Check for existing GitHub Actions workflows <!-- id: 12 -->
+    - [ ] Create/Update deployment workflow if needed <!-- id: 13 -->
+    - [x] Add .nojekyll to public folder <!-- id: 14 -->

@@ -282,9 +282,15 @@
     }
 
     .contacts__map {
-        min-height: 360px;
-        height: auto;
+        min-height: 300px;
+        height: 300px;
         border-radius: 20px;
+        padding: 8px;
+
+        iframe {
+            height: 100%;
+            min-height: 280px;
+        }
     }
 
     .contacts__actions {

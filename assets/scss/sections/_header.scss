@@ -116,7 +116,7 @@
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     flex: 1;
     justify-content: center;
 }
@@ -125,13 +125,13 @@
  * Navigation link with hover effect
  */
 .nav-link {
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 999px;
     text-decoration: none;
     background: none;
     border: none;
     font-family: var(--font-main);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.85);

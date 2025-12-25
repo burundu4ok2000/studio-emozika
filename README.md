@@ -188,6 +188,23 @@ This project was created as the final project for **Harvard's CS50x: Introductio
 
 ---
 
+## 🤖 AI Acknowledgment
+
+This project was developed with the assistance of AI coding tools, as permitted by CS50x guidelines:
+
+- **IDE**: Antigravity IDE
+- **AI Models**: Claude Opus 4.5 (Thinking), Gemini 3 Pro (High)
+
+AI was used as a coding assistant to help with:
+- Complex SCSS styles and animations
+- Responsive layout implementations
+- Cross-browser compatibility fixes
+- Code refactoring and optimization
+
+All architectural decisions, the design system, project structure, and the overall implementation represent my own work. AI tools served as amplifiers of productivity, not replacements for understanding.
+
+---
+
 ## 👤 Author
 
 **Stanislav Burundukov**

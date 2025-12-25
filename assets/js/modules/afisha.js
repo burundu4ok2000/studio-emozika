@@ -1,3 +1,4 @@
+import { lockScroll, unlockScroll } from './scroll-lock.js';
 
 export function initAfisha() {
     const afishaSection = document.querySelector("#afisha");
@@ -295,14 +296,16 @@ export function initAfisha() {
 
             modalEl.removeAttribute("hidden");
             document.body.classList.add("has-modal-open");
-            document.body.style.overflow = "hidden";
+            // Передаём dialog для iOS Safari scroll
+            const dialogEl = modalEl.querySelector('.play-modal__dialog');
+            lockScroll(dialogEl);
         }
 
         function closePlayModal() {
             if (!modalEl) return;
             modalEl.setAttribute("hidden", "true");
             document.body.classList.remove("has-modal-open");
-            document.body.style.overflow = "";
+            unlockScroll();
         }
 
         function bindAfishaEvents() {

@@ -3,6 +3,8 @@
  * Управление модальным окном с документами
  */
 
+import { lockScroll, unlockScroll } from './scroll-lock.js';
+
 export function initDocsModal() {
     const modal = document.querySelector('[data-docs-modal]');
     if (!modal) return;
@@ -13,10 +15,11 @@ export function initDocsModal() {
     // Открытие модального окна
     function openModal() {
         modal.removeAttribute('hidden');
-        document.body.style.overflow = 'hidden';
+        // Передаём dialog для iOS Safari scroll
+        const dialog = modal.querySelector('.docs-modal__dialog');
+        lockScroll(dialog);
 
         // Фокус на диалоге для доступности
-        const dialog = modal.querySelector('.docs-modal__dialog');
         if (dialog) {
             dialog.focus();
         }
@@ -25,7 +28,7 @@ export function initDocsModal() {
     // Закрытие модального окна
     function closeModal() {
         modal.setAttribute('hidden', '');
-        document.body.style.overflow = '';
+        unlockScroll();
     }
 
     // Обработчики событий

@@ -3,6 +3,8 @@
  * Handles opening and closing of the location video lightbox
  */
 
+import { lockScroll, unlockScroll } from './scroll-lock.js';
+
 export function initVideoLightbox() {
     const lightbox = document.getElementById('location-video-lightbox');
     const iframe = document.getElementById('location-video-iframe');
@@ -20,7 +22,8 @@ export function initVideoLightbox() {
     function openLightbox() {
         lightbox.removeAttribute('hidden');
         iframe.src = VIDEO_URL;
-        document.body.style.overflow = 'hidden';
+        // Передаём lightbox для iOS Safari scroll
+        lockScroll(lightbox);
 
         // Focus trap
         lightbox.focus();
@@ -30,7 +33,7 @@ export function initVideoLightbox() {
     function closeLightbox() {
         lightbox.setAttribute('hidden', '');
         iframe.src = '';
-        document.body.style.overflow = '';
+        unlockScroll();
     }
 
     // Event listeners

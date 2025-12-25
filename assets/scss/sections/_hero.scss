@@ -358,8 +358,9 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100%;
-    max-width: 380px;
+    width: 400px;
+    height: 400px;
+    max-width: 400px;
     aspect-ratio: 1/1;
 
     &::before {
@@ -394,9 +395,9 @@
         aspect-ratio: 1 / 1;
 
         @media (max-width: 900px) {
-            width: 320px;
-            height: 320px;
-            max-width: 320px;
+            width: 400px;
+            height: 400px;
+            max-width: 400px;
         }
     }
 }

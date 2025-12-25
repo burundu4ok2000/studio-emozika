@@ -95,6 +95,10 @@
     padding: 2.5rem 2rem 2rem;
     overflow-y: auto;
     max-height: 85vh;
+    /* iOS Safari scroll fixes */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
 }
 
 .docs-modal__header {

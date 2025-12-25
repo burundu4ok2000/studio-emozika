@@ -140,9 +140,9 @@ export function initAfisha() {
                             play.ticketUrl +
                             '" target="_blank" rel="noopener">Купить билет</a>'
                             : "") +
-                        '<button type="button" class="btn btn-outline btn-lg" data-play-open="' +
+                        '<a class="btn btn-outline btn-lg" href="plays/' +
                         play.id +
-                        '">Подробнее о спектакле</button>' +
+                        '.html">Подробнее о спектакле</a>' +
                         "</div>" +
                         "</div>" +
                         "</article>"

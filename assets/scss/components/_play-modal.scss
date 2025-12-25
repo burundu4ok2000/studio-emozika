@@ -550,3 +550,79 @@
 .is-hidden {
     display: none !important;
 }
+
+/* ===========================
+   PLAY PAGE (Separate page, not modal)
+   =========================== */
+
+.play-page-body {
+    background: #0a1a0d;
+    min-height: 100vh;
+}
+
+.play-page {
+    padding: 100px 20px 40px;
+    min-height: calc(100vh - 200px);
+}
+
+.play-page__content {
+    margin: 0 auto;
+}
+
+.play-page-back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #4CAF50;
+    }
+}
+
+.play-page-back__arrow {
+    font-size: 1.2rem;
+}
+
+.site-header--play-page {
+    .header-inner {
+        justify-content: space-between;
+    }
+}
+
+.play-modal__footer--visible {
+    display: block;
+    padding: 32px 48px;
+    text-align: center;
+
+    .btn {
+        min-width: 200px;
+    }
+}
+
+.footer__inner--simple {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    padding: 32px 0;
+}
+
+@media (max-width: 768px) {
+    .play-page {
+        padding: 80px 16px 24px;
+    }
+
+    .play-modal__footer--visible {
+        padding: 24px;
+    }
+
+    .play-page-back__text {
+        display: none;
+    }
+}

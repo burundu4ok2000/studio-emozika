@@ -484,8 +484,9 @@
 @media (max-width: 600px) {
     .play-modal {
         padding: 0;
+        /* CRITICAL: Prevent page scroll when modal is open */
         overflow: hidden;
-        /* Overlay does NOT scroll on mobile */
+        touch-action: none;
     }
 
     .play-modal__dialog {
@@ -496,7 +497,10 @@
         margin: 0;
         /* CRITICAL: Dialog scrolls on mobile */
         overflow-y: auto !important;
+        overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
         display: flex;
         flex-direction: column;
     }

@@ -35,6 +35,8 @@
     border-bottom: 1px solid rgba(76, 175, 80, 0.15);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 100vw;
+    overflow-x: hidden;
 
     &.scrolled {
         background: rgba(10, 31, 13, 0.95);
@@ -63,7 +65,10 @@
     gap: 10px;
     padding: 6px 14px;
     border-radius: 999px;
-    flex-shrink: 0;
+    flex-shrink: 1;
+    /* Allow shrinking on mobile */
+    min-width: 0;
+    /* Allow text truncation */
     background: rgba(76, 175, 80, 0.1);
     border: 1px solid rgba(76, 175, 80, 0.2);
     text-decoration: none;
@@ -203,7 +208,7 @@
 }
 
 /**
- * Hamburger toggle button (hidden on desktop)
+ * Hamburger toggle button (hidden on desktop, visible on mobile)
  */
 .header-toggle {
     display: none;
@@ -211,22 +216,23 @@
     justify-content: space-between;
     width: 32px;
     height: 24px;
+    min-width: 32px;
+    min-height: 24px;
+    flex-shrink: 0;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 20;
+    z-index: 1001;
     position: relative;
 
     span {
-        display: block !important;
+        display: block;
         width: 100%;
         height: 3px;
-        background-color: var(--color-text-main) !important;
+        background-color: var(--color-text-main);
         border-radius: 2px;
         transition: all 0.3s ease;
-        opacity: 1 !important;
-        visibility: visible !important;
     }
 }
 
@@ -234,6 +240,9 @@
  * Open state for hamburger (X animation)
  */
 .site-header.is-open {
+    /** Allow menu to overflow when open */
+    overflow: visible !important;
+
     .header-toggle {
         span:nth-child(1) {
             transform: translateY(11px) rotate(45deg);
@@ -248,7 +257,9 @@
         }
     }
 
+    /** CRITICAL: Show menu when open (mobile uses display:none by default) */
     .main-nav {
+        display: flex !important;
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
@@ -262,19 +273,55 @@
 @media (max-width: 900px) {
     .site-header {
         background: rgba(10, 31, 13, 0.95);
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        /* Prevent page scroll, but NOT clip children */
     }
 
+    /** Mobile header inner - reduced padding for more space */
     .header-inner {
-        padding: 12px 0;
+        padding: 12px 8px;
+        /* Reduced side padding */
+        width: 100%;
+        box-sizing: border-box;
+        /* NO overflow:hidden - allow children to be visible */
     }
 
+    /** CRITICAL: Force hamburger visible with explicit sizing */
     .header-toggle {
         display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         z-index: 1001;
+        flex-shrink: 0 !important;
+        width: 32px !important;
+        min-width: 32px !important;
+        height: 24px !important;
     }
 
-    /** Fullscreen mobile navigation overlay */
+    /** Header actions: explicit width to fit CTA + gap + toggle */
+    .header-actions {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0 !important;
+        margin-left: auto;
+        /* min-width: CTA (~80px on small) + gap (8px) + toggle (32px) = ~120px */
+        min-width: 120px;
+    }
+
+    /** CTA button: compact on mobile */
+    .header-cta {
+        font-size: 12px;
+        padding: 6px 10px;
+        white-space: nowrap;
+    }
+
+    /** Fullscreen mobile navigation overlay - HIDDEN by default */
     .main-nav {
+        display: none;
+        /* CRITICAL: Remove from flex flow until opened */
         position: fixed;
         top: 0;
         left: 0;
@@ -288,11 +335,11 @@
         align-items: center;
         gap: 24px;
         padding: 80px 20px;
-        z-index: 10;
+        z-index: 1000;
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     }
 
     .nav-link {
@@ -326,21 +373,13 @@
     .logo-text {
         font-size: 14px;
     }
-
-    .header-toggle {
-        display: flex;
-        z-index: 1001;
-    }
 }
 
+/** Medium-small screens: shorten CTA button text */
 @media (max-width: 640px) {
-    .logo-text {
-        display: none;
-    }
-
     .nav-link-cta {
         padding: 8px 12px;
-        font-size: 13px;
+        font-size: 12px;
 
         span {
             display: none;
@@ -349,5 +388,27 @@
         &::after {
             content: "Билеты";
         }
+    }
+}
+
+/** Small screens: hide logo text earlier */
+@media (max-width: 560px) {
+    .logo-text {
+        display: none;
+    }
+
+    .logo-badge {
+        padding: 6px;
+    }
+}
+
+/** Very small screens: hide CTA completely to ensure hamburger fits */
+@media (max-width: 500px) {
+    .header-cta {
+        display: none !important;
+    }
+
+    .header-actions {
+        min-width: 40px;
     }
 }

@@ -14,7 +14,7 @@
 
 ## 📺 Video Demo
 
-> *Video walkthrough link here*
+[![CS50x Video Demo](https://img.shields.io/badge/▶_Watch_Demo-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=lP56K4tAYLs)
 
 ---
 
